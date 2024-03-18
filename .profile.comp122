@@ -1,0 +1,204 @@
+#! /bin/bash
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export COMP122_HOME="$HOME/classes/comp122"
+export COMP122_BIN="${COMP122_HOME}/bin"
+export COMP122_KEY="$HOME/.ssh/id_comp122_github"
+
+export GIT_EDITOR
+export SUBLIME_BIN
+export SUBLIME
+export LAUNCH
+export CLIP_COPY
+
+
+# Check which effective OS is being used
+_OS=$(uname -o 2>/dev/null)
+if [[ -z "$_OS" ]] ; then
+   # Older versions of MacOS don't support the -o option
+  _OS="$(uname -s)"
+fi
+
+case "${_OS}" in
+   Msys )   # Windows Machine using GitBash
+     SUBLIME_BIN='/c/Program Files/Sublime Text/'
+     SUBLIME='subl.exe -w'
+     LAUNCH="start"
+     CLIP_COPY="clip"
+     ;;
+   Darwin ) # MacOS
+     SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
+     SUBLIME='subl -w -n'
+     LAUNCH="open"
+     CLIP_COPY="pbcopy"
+     ;;
+   GNU/Linux ) # Ubuntu
+     #SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
+     SUBLIME='subl -w -n'
+     LAUNCH="open"
+     #CLIP_COPY="pbcopy"
+     ;;
+esac
+
+function rebuild_MIPS_OS_Interface () {
+  ( cd $COMP122_BIN
+    javac MIPS_OS_Interface.java 
+  )
+}
+
+function comp122-keygen () {
+   
+   mkdir -m 700 -p ~/.ssh
+   ssh-keygen -t ed25519 -C "comp122 git@github.com" 2>/dev/null
+   COMP122_KEY=~/.ssh/id_ed25519
+
+   if [[ $? != 0 ]] ; then 
+     # Note if the ed25519 type is not recognized then use RSA with 4096 bits
+     ssh-keygen -t rsa -b 4096 -C "comp122 git@github.com"
+     COMP122_KEY=~/.ssh/id_rsa
+   fi
+
+   if [[ $? == 0 ]] ; then 
+     ${CLIP_COPY} < "${COMP122_KEY}.pub"
+
+     echo 
+     echo "A copy of your public key has been placed into the clip board."
+     echo "  Copy this public key to your github account!"
+     echo
+     echo "  ${LAUNCH} https://github.com/settings/keys"
+   else
+     echo "Error: a public/private key pair was not correctly generated."
+   fi
+   return $?
+}
+
+# Additional functionality for git
+
+alias git="my_git "
+function my_git () {
+
+    case "$1" in 
+      safe-to-switch)
+        git-safe-to-switch
+        ;;
+
+      pull-request)
+          shift 
+          git-pull-request "$@"
+          ;;
+
+      repo-state)
+          shift
+          git-repo-state "$@"
+          ;;
+      *)
+        'git' "$@"
+        ;;
+    esac
+}
+
+function git-pull-request () {
+   local base=
+   local repo=$(git config --get remote.origin.url)
+   local url
+   local branch
+
+   if [[ ${1:0:1} == "-" ]] ; then
+
+
+     echo "Usage: $0 [ first-commit repo-url ] [ branch ]"
+     echo "   defaults:  "
+     echo "     first-commit: $base "
+     echo "     repo-url: ${repo}"
+     echo "     branch: main"
+     return
+   fi
+
+   case $# in 
+      0)   ;;
+      1)   branch="$1" ;;
+      2|3) 
+           base="$1"
+           repo="$2"
+           branch="$3"
+           ;;
+      *)   echo "Error in usage."
+           return 1
+   esac
+
+   [[ -z "$branch" ]] && branch="main"
+   
+   local exists="$(git branch --list ${branch})"   ## -av to list local and remote
+   if [[ -z "$exists" ]] ; then
+      echo "Error branch, \"${branch}\", does not exist"
+      return 1
+   fi
+
+   [[ -z "$base" ]] && base=$(git rev-list ${branch} 2>&1 | tail -1)
+   [[ -z "$repo" ]] && repo=$(git config --get remote.origin.url)
+
+
+   git-repo-state "$branch"
+   'git' request-pull $base $repo $branch | tee pull-request.$(date +%b%d:%H:%M)
+}
+
+function git-safe-to-switch () {
+  local _output=$(git status --untracked-files=no -s)
+  if [[ -z $_output ]] ; then
+    return 0
+   else
+     return 1
+  fi
+}
+
+function git-repo-state () {
+    local branch="$1"
+    [[ -z "$branch" ]] && branch="main"
+
+    git diff --exit-code HEAD  >/dev/null
+    commit_diff="$?"
+    if [[ ${commit_diff} != 0 ]] ; then
+      echo "Warning: You have uncommitted files."
+      echo "  (use \"git status\" for more information.)"
+      echo
+    fi
+    git fetch
+    git diff --exit-code ${branch} origin/${branch} >/dev/null
+    remote_diff="$?"
+    if [[ ${remote_diff} != 0 ]] ; then
+      echo "Warning: Your local and remote repositories are NOT in sync."
+      echo "  (use \"git pull\" to update your local repository.)"
+      echo "  (use \"git push\" to update your remote repository.)"
+      echo
+    fi
+    return_value=$(( commit_diff + remote_diff ))
+    if [[ $return_value == 0 ]] ; then
+       echo "Your local and remote repository share the same state for branch \"${branch}\""
+    fi
+    return ${return_value}
+}
+
+function git_commit_on_time () {
+  date="$1"
+  commit="$2"
+
+  # Note that this requires the DATE to be in the format of: Nov 11 12:52
+  due_date=$(date -j -f "%b %d %H:%M" "$date" +%s)
+
+  # Note if the commit is empty, then it is equivalent to the last commit
+  commit_date=$(git log "${commit}" -1 --date=unix --pretty=format:"%ad" 2>/dev/null)
+  if [[ -z ${commit_date} ]] ; then
+    # the ${commit} did not exist
+    return 1
+  fi
+
+  if (( "${commit_date}" <= "${due_date}" )) ; then
+    return 0    # on time 
+  else
+    return 1    # the commit did not occur before the due date
+  fi
+}
+
+
+PATH="${COMP122_BIN}:${SUBLIME_BIN}:$PATH"
+GIT_EDITOR="$SUBLIME"

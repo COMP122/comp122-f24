@@ -1,0 +1,7 @@
+#! /bin/bash
+
+MARS_JAR="$HOME/classes/comp122/bin/Mars4_5.jar"
+# On gitbash -- if a user has a quote in it, there is a problem.
+
+java -jar "${MARS_JAR}" $*
+

@@ -1,0 +1,13 @@
+scratch
+.DS_Store
+local
+deliverables
+assignment-grading
+grade_guesstimator.md
+.boot.*
+~*
+.java_sub*
+.mips_sub*
+templates
+*.class
+*.bak

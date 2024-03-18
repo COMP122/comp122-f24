@@ -1,0 +1,19 @@
+#! /bin/bash
+
+TAG='<!-- response'
+ANSWER="\(.*[^ ]\)"
+
+# Remove all extra space at the end of a line
+# Print out each section heading:  ^#
+# Print out each response blocks
+# Print out each answer associated with a TAG line
+# Print out each table line
+
+
+sed -n -e "s/[[:blank:]]*$//" \
+       -e '/^#/i\
+'                       \
+       -e '/^#/p'       \
+       -e '/```response/,/```/p'   \
+       -e "/|$/p"       \
+       -e "/${TAG}/s/^${ANSWER} *${TAG}.*/\1/p" 
