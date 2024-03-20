@@ -1,6 +1,6 @@
 # Conversion of a for-loop into TAC style
 
-The for loop statement is common to every programming language.  This statement allows the repetitive execution of a block of code based upon the value of a Boolean expression (known as the `test`).  When the value of Boolean expression is TRUE, the block of code is executed.  After the block of code is executed, the Boolean expression is then reevaluated.  When the value of Boolean expression is FALSE, the execution of the for-loop is complete and execution flows to the statement after the for-loop.
+The for loop statement is common to every programming language. This statement allows the repetitive execution of a block of code based upon the value of a Boolean expression (known as the `test`). When the value of Boolean expression is TRUE, the block of code is executed. After the block of code is executed, the Boolean expression is then reevaluated.  When the value of Boolean expression is FALSE, the execution of the for-loop is complete and execution flows to the statement after the for-loop.
 
 
 Consider the following example of an for-loop, and its control flow graph.
@@ -58,7 +58,7 @@ Notice that the semantics of the original Java statement and the resulting state
 
 
 
-## Algorithm:  for-loop --> TAC Transformation 
+## Algorithm: for-loop --> TAC Transformation 
 
 Consider the following code template:
 
@@ -114,7 +114,7 @@ Consider the following code template:
          - move the evaluation of $r into the {init} block
          - place a copy of the eval of $r at the end of the {next} block
            * but before the `continue {loop}`
-       - replace the boolean expression with a simple test:  `$l <comp> $r`
+       - replace the boolean expression with a simple test: `$l <comp> $r`
          - yielding:  `if ( $l <comp> $r ) {`
 
 Applying the above algorithm results in the following template:
@@ -136,3 +136,4 @@ Applying the above algorithm results in the following template:
   done:    ;
   ```
 
+[^opt]: Only the {loop} and {done} labels are required.

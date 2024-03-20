@@ -1,83 +1,83 @@
 # Process to Writing MIPS code for COMP122
 
-In COMP122, the Professor has devised a way to write MIPS code based upon your knowled of Java.  This approach has been developed to achieve the following goals.
+In COMP122, you will be writing Java code to help you develop, debugged, and validated each of your programming assignments. You will then rewrite your Java code to conform to the Professor's Three-Address-Code (TAC) style. Your modified code can validated to ensure your changes does not introduce programming errors. At that point, crafting your MIPS code is mostly a transliteration exercise.
+
+This approach will been developed to achieve the following goals:
 
   1. Reinforce your understanding of the Java Program Language
-  1. Introduce you to operational semantics
+  1. Introduce you to operational semantics and compiler technology
   1. Simplify your efforts to craft MIPS code
+  1. Focus your attention on the salient material of COMP122
 
-The development process is as follows:
+The general programming assignment steps are as follows:
 
+  1. Write a Java Subroutine: `method.j`
+     - the Java must conform to a subset of java
+     - the algorithm design must match that provided in the specification
+     - ensure that it is 100% correct
+     
+  1. Rewrite Java Subroutine into TAC style: `method.j`
+     - ensure that it is 100% correct
+     - ensure it it in PROPER TAC form
 
- 1. Development Process:
-     1. Write Java Subroutine: `method.j`
-        - the Java must conform to a subset of java
-        - the algorithm design must match that provided in the specifiction
-        - ensure that it is 100% correct
-     1. Rewrite Java Subroutine into TAC style:  `method.`
-        - ensure that it is 100% correct
-        - ensure it it in PROPER TAC form
-     1. Transliterate your Java subroutine into MIPS: `method.s`
-        - Copy your `method.j` into `method.s`
-        - Comment out your Java Code
-        - Transliterate: line by line!
-          ```
-          {label}:      {mips instruction}       #  {java instruction}
-          ```
-        - If you have to do more than transliteration, 
-          - your Java code is WRONG--even it generates the desired results!
+  1. Transliterate your Java subroutine into MIPS: `method.s`
+     - Copy your `method.j` into `method.s`
+     - Comment out your Java Code
+     - Transliterate: line by line!
+       * Each line will match for following format
+         ```
+         {label}:      {mips instruction}       #  {java instruction}
+         ```
+     - If you have to do more than transliteration, your Java code is WRONG--even it generates the desired results!
 
-
-## Simplied Java Code for Comp122
-
-When writing Jave code, you want 
-
-
-# Rules to write Simplified Java Code for COMP122
+## General Rules for Writing Java Code for COMP122
 
   1. Strive to keep you code simple and readable
+  1. Pick meaningful names for variables
   1. Provide comments that provide clarity of purpose
-  1. Keep your mathematical expression simple
-  1. Use the simpliest control structure
+  1. Keep your mathematical expressions simple
+  1. Use the simplest control structure that gets the job done
      * if-then-else
      * for 
      * while
      * do-while
-  1. Don't use the following..
-     * Objects
-     * the for-each control flow statment
+  1. Don't use Object-Oriented Features: classes, objects, etc., 
+     * Remember this is an assembly level class
+
+## Translation of Java --> Java TAC
+
+In this section we provide the process to transform Java code into the Three-Address-Code (TAC) style. This process is performed one statement at a time.  Each of the following sections, provides more detail on this process.
+
+### Conversion of an Assignment Statement and Expressions
+
+The right-hand-side (RHS) of an assignment is a mathematical expression, whereas the left-hand-side (LHS) is a single variable.  To conform to TAC style, you need to simplify the expression to use at most one mathematical operation (or function call).  
+
+Consider the following Java assignment statement:
+
+  ```java
+  r =  ( 2 * b + a ) / 3;
+  ```
+By using PEMDAS (order of operations), you can rewrite the statement as follows:
+
+   ```java
+   $t1 = 2 * b;
+   $t2 = $t1 + a;
+   r   = $t2 / 3;
+   ```
+
+Notice that there are three mathematical operations, and each is computed separately with the result placed into a new temporary variable ($t1, $t2, $t3).  We further constrain TAC style to require immediate values (e.g., the literal 2) to be first be assigned to a variable.  With this constraint in place, the resulting set of instructions are:
+
+  ```java
+  $t0 = 2;
+  $t1 = $t0 * b;
+  $t2 = $t1 + a;
+  $t3 = 3;
+  r   = $t2 / $t3;
+  ```
+
+By converting the original mathematical expression into TAC style, you can have many different solutions.  As long as you preserve the semantics of expression, you are free to craft the set of instructions via any method you choose.
 
 
-
-* Dos
-  - 
-* Don't
-1. 
-
-1. Write 
-
-## Writing Java Code
-
- 1. Development Process:
-     1. Write Java Subroutine: `method.j`
-        - ensure that it is 100% correct
-     1. Rewrite Java Subroutine into TAC style:  `method.`
-        - ensure that it is 100% correct
-        - ensure it it in PROPER TAC form
-     1. Transliterate your Java subroutine into MIPS: `method.s`
-        - Copy your `method.j` into `method.s`
-        - Comment out your Java Code
-        - Transliterate: line by line!
-          ```
-          {label}:      {mips instruction}       #  {java instruction}
-          ```
-        - If you have to do more than transliteration, 
-          - your Java code is WRONG--even it generates the desired results!
-
-
-## Java --> Java TAC
-
-### [Expressions and Assignment Conversion Algorithm](./expression2TAC.md)
 
 ### [Conversion of an if-then-else statement into TAC](./if-then-else2TAC.md)
 
@@ -85,9 +85,9 @@ When writing Jave code, you want
 
 ### Conversion of while-loop statement into TAC style
 
-One of the most versitile statements is the `while-loop`.  The Java `for-loop`, however, is effectively a `while-loop`, but with improved syntax for readibility. A true `for-loop` iterates for a predefined number of times.  This number can be determined prior to ever executing the body of the loop.  
+One of the most versatile statements is the `while-loop`. The Java `for-loop`, however, is effectively a `while-loop`, but with improved syntax for readability. As such, we prefer the use of the `for-loop` over the `while-loop`. 
 
-As such, we prefer the use of the `for-loop` over the `while-loop`.  If you do use a `while-loop`, the first step in the conversion process is to replace the `while-loop` with a `for-loop`.  This replace is performed by simply modify the line that contents the Boole test.
+A true `for-loop` iterates for a predefined number of times. This number can be determined prior to ever executing the body of the loop.  Java's `for-each` loop is an example of a true `for` loop.  If you do use a `while-loop`, the first step in the conversion process is to replace the `while-loop` with a `for-loop`.  This replace is performed by simply modify the line that contents the Boole test.
 
 Consider the following `while-loop` construct.
 
@@ -97,7 +97,6 @@ Consider the following `while-loop` construct.
    }
    ```
 
-
 Simple convert your code to match the following template:
 
   ```java
@@ -105,15 +104,25 @@ Simple convert your code to match the following template:
     <body>
   }
   ```
-
+Then use the process to convert a `for-loop` statement into TAC style.
 
 ### Conversion of do-while-loop statement into TAC style
+
+A `do-while` loop differs from a `while` loop in the following ways.
+  1. The Boolean test that controls the loop is performed after each iteration.
+  1. The `do-whole` loop is guaranteed to execute 1 or more times. 
+  1. the `while` loop is guaranteed to execute 0 or more times.
+  1. The `do-while` loop is rarely used in high-level programs, and used a lot in low-level programs.
+
+Consider the following `do-while` template.
 
    ```java
    do {
       <body>
    } while( <test> );
    ```
+
+The resulting TAC style template is a follows:
 
    ```java
    loop:     do {
@@ -126,16 +135,21 @@ Simple convert your code to match the following template:
    done:     ;
    ```
 
+Notice the following elements of the resulting template
+  1. Three labels have been added: 
+     - {loop}, which is associated with the `do {` statement,
+     - {body}, which is placed at the beginning of the loop's body
+     - {done}, which is the first line of code executed after the for-loop 
+  1. Two variables were introduced that represent the LHS and RHS of the Boolean test
+     - these two variables are evaluated at the end of the {body} block
+  1. The Boolean test has been simplified
 
-   ```java
-   while( <test> ) {
-      <body>
-   }
-   ```
+[^opt]: Only the {loop} and {done} labels are required.
+
 
 ### Conversion of for-each-loop statement into TAC style
 
-The 'for-each' loop allows one to interate over a collection, such as an array.  Consider the following Java code example which sums the individual elements in the array A.
+The 'for-each' loop allows one to iterate over a collection, such as an array. Consider the following Java code example which sums the individual elements in the array A.
 
    ```java
    sum = 0;
@@ -144,12 +158,16 @@ The 'for-each' loop allows one to interate over a collection, such as an array. 
    } 
    ```
 
+This `for-each` statement code can be converted to the following `for` statement 
+
   ```java
    sum = 0;
-   for ( int index = 0;  index < A.length; index ++ ) {
+   for ( index = 0; index < A.length; index ++ ) {
       sum += A[index];
    } 
-   ```  
+   ```
+In COMP122, you should reframe from using the `for-each` statement.  
+
 
 ### Conversion of switch statement into TAC style
 
@@ -194,14 +212,13 @@ The equivalent code using a switch statement is as follows:
    }
    ```
 
-Each case block corresponds directly to one of the consequence block of an `if-the-else` statement.  The default block corresponds directly to the last alternative block.  It is typical that each of case blocks end with a `break`.  These `break` statements are not required.  Without appending the `break` statement to the end of the case block, execution continues into the next case block.  As such, this is a common source of a programming bug.
+Each case block corresponds directly to one of the consequence block of an `if-the-else` statement. The default block corresponds directly to the last alternative block. It is typical that each of case blocks end with a `break`. These `break` statements are not required. Without appending the `break` statement to the end of the case block, execution continues into the next case block. As such, this is a common source of a programming bug.
 
-Prior to converting a switch stytement into TAC style the following requirements must be met.
+Prior to converting a switch statement into TAC style the following requirements must be met.
 
   1. each case value must be a single variable or immediate value (limitation of Java)
   1. each case block _should_ end with a `break` statement
   1. a default block must be included and it must be the last code block
-
 
 
 Consider the following example of switch statement, and its control flow graph.
@@ -269,7 +286,7 @@ Notice the following
   1. a control variable, $t1, has been introduced
   1. the expression that computes the value of the control value is placed into the {init} section
   1. a label ({stmt}) has been associated with the switch keyword
-  1. each `case <val>:`  effectively serves as the label for each case block
+  1. each `case <val>:` effectively serves as the label for each case block
   1. the default keyword appears as if it is a label, which it is
   1. each break statement explicitly refers to the {stmt} label of the switch statement
   1. there is a `mips.merge();` instruction at the end of each case block
@@ -299,36 +316,18 @@ Consider the following code template:
   1. Introduce a new variable to serve as the control variable, say $t1
   1. Insert the statement `$t1 = {expression};`  into the {init}
      * Transform the statement `$t1 = {expression};` into TAC style
-  1. Associated the {stmp} label with `switch( $t1 ) {`
+  1. Associated the {stmt} label with `switch( $t1 ) {`
   1. Append the {done} label, with a null statement, after the end of the switch 
-  1. For each case
+  1. For each case:
      1. Insert a null statement as the first instruction 
      1. Modify all breaks to be explicit, i.e., `break;` --> `break {stmt};`
      1. Append `mips.merge();` as the last instruction
-  1. For the default
+  1. For the default:
      1. Ensure there is a default!
      1. Insert a null statement as the first instruction (associated with the `case`)
-     1. Append `break {top};` as the last instruction
+     1. Append `break {stmt};` as the last instruction
 
-      * Example
-        ```java tac
-                  value = expression;
-        top:      switch(value) {
-                    case x:  ;
-                             // code block
-                             break top;
-                             mips.merge();
-                    case 2:  ;
-                             // code block
-                             break top;
-                             mips.merge();
-                    default: ;
-                             // code block
-                             break top;
-                  }
 
-        done:     ;
-        ``` 
 
 ### Switch Statements with Ranges
 
@@ -354,7 +353,8 @@ Java does not allow you to include a range within a case statement. This is unfo
     return digit;
   }
   ```
-To mimic this function in Java, you need to enumerate each and every case value.  For example,
+
+To mimic this function in Java, you need to enumerate each and every case value. For example,
 
    ```java
    case 'a':

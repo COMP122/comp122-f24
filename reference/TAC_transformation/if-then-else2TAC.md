@@ -1,6 +1,6 @@
 # Conversion of an if-then-else statement into TAC Style
 
-The if-the-else statement is common to every programming language.  This statement conditional executes one of two blocks of code based upon the value a Boolean expression (known as the `test`).  These two blocks of code are known as the consequence (cons) and the alternative (alt).  The `cons` block is executed whenever the Boolean expression is evaluated as TRUE, alternatively the `alt` block is executed. 
+The if-the-else statement is common to every programming language. This statement conditional executes one of two blocks of code based upon the value a Boolean expression (known as the `test`). These two blocks of code are known as the consequence (cons) and the alternative (alt). The `cons` block is executed whenever the Boolean expression is evaluated as TRUE, alternatively the `alt` block is executed. 
 
 
 Consider the following example of an if-then-else statement, and its control flow graph.
@@ -41,12 +41,12 @@ Transforming the control flow graph into equivalent code, using the TAC style, r
   done:  ; 
   ```
 
-Notice that labels have been inserted into the code to explicitly denote the start of each block.  Additionally, a comment has been inserted at the end of both the `cons` and `alt` blocks to explicitly indicate the intended control flow. Most programming languages provide a `goto` statement, but Java has reserved the `goto` keyword -- as such we need to include this statement within a comment.  (In other programming languages, e.g., C, there is n need to comment out this statement.)
+Notice that labels have been inserted into the code to explicitly denote the start of each block.  Additionally, a comment has been inserted at the end of both the `cons` and `alt` blocks to explicitly indicate the intended control flow. Most programming languages provide a `goto` statement, but Java has reserved the `goto` keyword -- as such we need to include this statement within a comment. (In other programming languages, e.g., C, there is n need to comment out this statement.)
 
-Notice that the semantics of the original Java statement and the resulting statement in TAC form are identical.  While the second form (TAC style) is more tedious to write, it is closer to assembly code -- which is our goal.
+Notice that the semantics of the original Java statement and the resulting statement in TAC form are identical. While the second form (TAC style) is more tedious to write, it is closer to assembly code -- which is our goal.
 
 
-## Algorithm:  If-then-else --> TAC Transformation 
+## Algorithm: If-then-else --> TAC Transformation 
 
 Consider the following code template:
 
@@ -71,11 +71,11 @@ Consider the following code template:
       * If the test code is of the form `a <comp> b`, you are done!
       * Otherwise, simplify the boolean expression into three parts
         - evaluate the left-hand side into $l
-          - move the evalution of $l into the {init} block
+          - move the evaluation of $l into the {init} block
         - evaluate the right-hand side into $r
           - move the evaluation of $r into the {init} block
-        - replace the boolean expression with a simple test:  `$l <comp> $r`
-          - yielding:    `if ( $l <comp> $r ) {`
+        - replace the boolean expression with a simple test: `$l <comp> $r`
+          - yielding: `if ( $l <comp> $r ) {`
 
    1. Transform the `cons` block into TAC style
       1. Insert the {cons} label, with a null statement, at top of the consequence code block
@@ -105,3 +105,4 @@ Applying the above algorithm results in the following template:
    done:    ;
    ```
 
+[^opt]: Only the {alt} and {done} labels are required.
