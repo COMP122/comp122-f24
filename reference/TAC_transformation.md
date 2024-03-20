@@ -79,9 +79,9 @@ By converting the original mathematical expression into TAC style, you can have 
 
 
 
-### [Conversion of an if-then-else statement into TAC](./if-then-else2TAC.md)
+### [Conversion of an if-then-else statement into TAC](./TAC_transformation/if-then-else2TAC.md)
 
-### [Conversion of a for-loop statement into TAC style](./for-loop2TAC.md)
+### [Conversion of a for-loop statement into TAC style](./TAC_transformation/for-loop2TAC.md)
 
 ### Conversion of while-loop statement into TAC style
 
@@ -242,7 +242,7 @@ Consider the following example of switch statement, and its control flow graph.
    ```
 
 
-![Control Flow Graph for a switch statement](switch.png)
+![Control Flow Graph for a switch statement](./TAC_transformation/switch.png)
 
 
 Notice that the control flow graph depicts a box of code for the entire switch statement, and within this block there are six blocks of code and one control block. The names of these blocks are:
