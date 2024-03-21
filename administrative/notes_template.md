@@ -15,16 +15,16 @@
 ## Review from Last-time:
   
 
-
 ---
 # Today's Material
+# Today's Lab Material
 
 
 ---
-## Resources
+# Resources
 
 ---
 <!-- This section is for student's to place their own notes. -->
 <!-- This section will not be updated by the Professor.   -->
 
-## Notes  
+# Notes  
