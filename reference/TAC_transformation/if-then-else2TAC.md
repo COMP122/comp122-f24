@@ -17,31 +17,31 @@ Consider the following example of an if-then-else statement, and its control flo
 
 Notice that the control flow graph depicts a box of code for the entire if-then-else statement, and within this block there is five blocks of code that are directly associated with if-then-else statement.  The names of these blocks are:
 
-  1. {init}: the implicit first line of code executed as part of the if-then-else statement
-  1. {test}: the boolean expression of the if-then-else statement
-  1. {cons}: the consequence code block for the if-then-else statement
-  1. {alt}:  the alternative code block for the if-then-else statement
-     * for an if-then statement, this block of code implicitly exists as a `null` block
-  1. {done}: the implicit last line of code executed as part of if-then-else statement
-     * we insert a `null` statement into the statement to explicitly depict this line of code
+  1. {init}: the implicit first line of code executed as part of the if-then-else statement.
+  1. {cond}: the block of code associated with the condtional statement.
+  1. {cons}: the consequence code block for the if-then-else statement.
+  1. {alt}:  the alternative code block for the if-then-else statement.
+     * for an if-then statement, this block of code implicitly exists as a `null` block.
+  1. {done}: the implicit last line of code executed as part of if-then-else statement.
+     * we insert a `null` statement into the statement to explicitly depict this line of code.
 
 Transforming the control flow graph into equivalent code, using the TAC style, results in the following:
 
   ```java tac
   init:   ;
-  test:   if ( a <= b ) {
-  cons:      ;
-             a = a + 1;
-             // goto next;
-           } else {
-  alt:     ;
-             b = b - a;
-             // goto next;
-           }
-  done:  ; 
+  cond:   if ( a <= b ) {
+  cons:     ;
+            a = a + 1;
+            break cond;
+          } else {
+  alt:      ;
+            b = b - a;
+            break cond;
+          }
+  done:   ; 
   ```
 
-Notice that labels have been inserted into the code to explicitly denote the start of each block.  Additionally, a comment has been inserted at the end of both the `cons` and `alt` blocks to explicitly indicate the intended control flow. Most programming languages provide a `goto` statement, but Java has reserved the `goto` keyword -- as such we need to include this statement within a comment. (In other programming languages, e.g., C, there is n need to comment out this statement.)
+Notice that labels have been inserted into the code to explicitly denote the start of each block.  Additionally, a `break` statement has been inserted at the end of both the `cons` and `alt` blocks to explicitly indicate the intended control flow. In the example above, the `break cond` statement forces the next line of code to be executed is the line after the instruction named: `cond`.  That is to say, the next line of code to be executed is the line named `done`.
 
 Notice that the semantics of the original Java statement and the resulting statement in TAC form are identical. While the second form (TAC style) is more tedious to write, it is closer to assembly code -- which is our goal.
 
@@ -51,7 +51,7 @@ Notice that the semantics of the original Java statement and the resulting state
 Consider the following code template:
 
    ```java
-   if ( <test_block> ) {
+   if ( <test> ) {
      <consequence block>
    } else {   
      <alternative block>
@@ -63,11 +63,11 @@ Consider the following code template:
    1. Append the {done} label, with a null statement, after the end of the if-then-else
 
    1. Identify the other three parts of the if-the-else statement statement
-      * {test}: the boolean expression of the if-then-else statement
+      * {cond}: the line of code that contains `if ( <test> ) {`
       * {cons}: the consequence code block for the if-then-else statement
       * {alt}:  the alternative code block for the if-then-else statement
 
-   1. Transform the code within the `<test_block>` arm into TAC style
+   1. Transform the code within the `<test>` arm into TAC style
       * If the test code is of the form `a <comp> b`, you are done!
       * Otherwise, simplify the boolean expression into three parts
         - evaluate the left-hand side into $l
@@ -75,16 +75,16 @@ Consider the following code template:
         - evaluate the right-hand side into $r
           - move the evaluation of $r into the {init} block
         - replace the boolean expression with a simple test: `$l <comp> $r`
-          - yielding: `if ( $l <comp> $r ) {`
+          - yielding: `cond:  if ( $l <comp> $r ) {`
 
    1. Transform the `cons` block into TAC style
       1. Insert the {cons} label, with a null statement, at top of the consequence code block
-      1. Append '// goto {done};' to the end of consequence code block
+      1. Append 'break {cond};' to the end of consequence code block
       1. Transform the code within the block to conform to the TAC style
 
-   1. Transform the `cons` block into TAC style
+   1. Transform the `alt` block into TAC style
       1. Insert the {alt} label, with a null statement, at top of the alternative code block
-      1. Append '// goto {done};' to the end of consequence code block
+      1. Append 'break {cond};' to the end of consequence code block
       1. Transform the code within the block to conform to the TAC style
 
 Applying the above algorithm results in the following template:
@@ -93,14 +93,14 @@ Applying the above algorithm results in the following template:
    init:    ;
             $l = ...;
             $r = ...;
-            if( $l <comp> $r ) {
+   cond:      if( $l <comp> $r ) {
    cons:      ;
               <consequence>
-              // goto done;
+              break cond;
              } else {  
    alt:       ;
               <alternative>
-              // goto done;
+              break cond; 
             }
    done:    ;
    ```

@@ -24,7 +24,7 @@ The template for this example is as follows:
 Notice that the control flow graph depicts a box of code for the entire for-loop statement, and within this block there are five blocks of code. The names of these blocks are:
 
   1. {init}: the block of code that is executed prior to the controlling Boolean expression
-  1. {loop}: the block of code that contains the Boolean expression.
+  1. {loop}: the block of code associated with loop.
   1. {test}: the boolean expression of the for-loop statement
   1. {body}: the repetitive code block to be executed each time the for-loop statement executed
   1. {next}: the code block used to setup for the next evaluation of the Boolean expression
