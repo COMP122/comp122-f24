@@ -1,4 +1,4 @@
-# COMP122 Lecture Notes: January 23, 2023
+# COMP122 Lecture Notes: 
 
 ## Announcements:
    1. 
@@ -7,9 +7,9 @@
    1. 
 
 ## Questions from Last Lecture/Lab, etc.:
-   * M/W @ 9:00 am
+   * M/W @ 10:00 am
 
-   * T/R @ 9:00 am
+   * T/R @ 10:00 am
 
 
 ## Review from Last-time:

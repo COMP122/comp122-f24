@@ -1,7 +1,7 @@
 # COMP122 Lecture Notes: September 4, 2023
 
 ## Announcements:
-   1. No class on Monday September 4, 2023
+   1. No class on Monday September 2, 2023
 
 
 ## Today's Agenda:
@@ -12,24 +12,10 @@
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W @ 9:00 am
-     - when do I do a git commit?
-     - what is git diff?
-     - are there update command for WSL / Ubuntu / Sublime
-     - if I use native Ubuntu is the anything significantly different on the CLI?
-
+ 
+ 
    * T/R @ 9:00 am
-     - How do I know what I did wrong?
-     - Open versus Start -- Open is a Mac command, Start is a Windows command
-         * Ubuntu -- it is the open command -- but you need to install it.
-           * `sudo apt get install <package name>`
-           * `sudo apt search sublime-text`
-     - Note being able run ~Sublime~ `subl`
-     - Nomenclature for symbols
-     - What is a makefile? 
-     - Grade reports because the prof refuses to use Canvas!
-     - How are assignments given?
-
-
+ 
 
 ## Review from Last-time:
 
@@ -142,17 +128,17 @@
 
     1. Use `java_subroutine to fill in the following table`
 
-       |  a    |  b   |  $v0 |
-       |-------|------|------|
-       |   0   |  0   |   error   |   `java_subroutine equation 0 0`
-       |   0   |  1   |      |   `java_subroutine equation 0 1`
-       |   0   |  2   |      |   `java_subroutine equation 0 2`
-       |   1   |  0   |      |   `java_subroutine equation 1 0`
-       |   1   |  1   |   0   |   `java_subroutine equation 1 1`
-       |   1   |  2   |   2  |   `java_subroutine equation 1 2`
-       |   2   |  0   |      |   `java_subroutine equation 2 0`
-       |   2   |  1   |      |   `java_subroutine equation 2 1`
-       |   2   |  2   |      |   `java_subroutine equation 2 2`
+       |  a    |  b   |  $v0    |
+       |-------|------|---------|
+       |   0   |  0   |  error  |   `java_subroutine equation 0 0`
+       |   0   |  1   |         |   `java_subroutine equation 0 1`
+       |   0   |  2   |         |   `java_subroutine equation 0 2`
+       |   1   |  0   |         |   `java_subroutine equation 1 0`
+       |   1   |  1   |   0     |   `java_subroutine equation 1 1`
+       |   1   |  2   |   2     |   `java_subroutine equation 1 2`
+       |   2   |  0   |         |   `java_subroutine equation 2 0`
+       |   2   |  1   |         |   `java_subroutine equation 2 1`
+       |   2   |  2   |         |   `java_subroutine equation 2 2`
       
 
 ---
@@ -167,4 +153,3 @@
 <!-- This section is for students to place their notes -->
 
 
-this is my students
