@@ -1,5 +1,22 @@
 #! /bin/bash
 
+
+function nl_check () {
+  FILE="$1"
+
+  retval=0
+
+  if [[ -f ${FILE} ]] ; then 
+    LAST_CHAR=$(hexdump -v -e '1/1 "%02x\n"' ${FILE}  | tail -1)
+    if [[ $LAST_CHAR != "0a" ]] ; then
+      echo "Warning: You need a newline (\n) at the end of the file."
+      retval=1
+    fi
+  fi
+  return $retval
+}
+
+
 function base2_digits () {
   local digits=0
   local hex_digits=0
