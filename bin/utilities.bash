@@ -1,6 +1,8 @@
 #! /bin/bash
 
-
+# Potentially make a file for
+#  submmission_support.bash
+#
 function nl_check () {
   FILE="$1"
 
