@@ -232,7 +232,7 @@ As part of the transliteration of a `switch` statement, each of the "case" label
      | `mips.print_di(imm);`         | `print_di(imm)`           |
      | ...                           |                           |
 
-     * See [print_routines.md](.print_routines.md)
+     * See [print_routines.md](./print_routines.md)
 
   1. Input Routines
 

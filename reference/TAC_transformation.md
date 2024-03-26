@@ -70,7 +70,7 @@ By using PEMDAS (order of operations), you can rewrite the statement as follows:
 
 Notice that there are three mathematical operations, and each is computed separately with the result placed into a new temporary variable ($t1, $t2, $t3).  We further constrain TAC style to require immediate values (e.g., the literal 2) to be first be assigned to a variable.  With this constraint in place, the resulting set of instructions are:
 
-  ```java
+  ```java tac
   $t0 = 2;
   $t1 = $t0 * b;
   $t2 = $t1 + a;
