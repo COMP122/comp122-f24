@@ -3,7 +3,7 @@
 # Potentially make a file for
 #  submmission_support.bash
 #
-function nl_check () {
+function newline_check () {
   FILE="$1"
 
   retval=0
