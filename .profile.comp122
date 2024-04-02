@@ -3,6 +3,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export COMP122_HOME="$HOME/classes/comp122"
 export COMP122_BIN="${COMP122_HOME}/bin"
+export COMP122_LIBEXEC="${COMP122_HOME}/libexec"
+
 export COMP122_KEY="$HOME/.ssh/id_comp122_github"
 
 export GIT_EDITOR
@@ -77,5 +79,7 @@ GIT_EDITOR="$SUBLIME"
 
 source ${COMP122_BIN}/utilities.bash
 source ${COMP122_BIN}/git_extensions.bash
+source ${COMP122_LIBEXEC}/sth.bash
+
 
 
