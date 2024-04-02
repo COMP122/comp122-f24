@@ -1,0 +1,29 @@
+# The script presume the following information is provided for each test case
+#
+# | ENV      | Description                          | Example                 | Option    |
+# |----------|--------------------------------------|-------------------------|-----------|
+# | DRIVER   | The default driver program           | java_subroutine         | Parameter |
+# | OPTIONS  | The options passed to ${PROG}        | "-L '*.j'"              | Optional  |
+# | ENTRY    | The entry point to start testing     | binaryReal              | Required  |
+# | ARGS     | The arguments passed to ${ENTRY}     | '8 "\#"  1234 "." 43'   | Optional  |
+# | INPUT    | The filename contain the input       |                         | Optional  |
+# | OUTPUT   | The filename of the expected output  |                         | Optional  |
+# | RETVAL   | The expected return value            | 0                       | Optional  |
+#
+# Notes:
+#    - the value of PROG can provided va the associated function call to the testing function
+#    - the value of INPUT can either be a string or a filename
+#    - the value of OUTPUT can either be a string or a filename
+#
+# Given the above example, the following command will be executed.
+#   NOTE: Ensure you conform to bash quoting rules
+#
+# cat ${INPUT} | ${PROG} ${OPTIONS} ${ENTRY} ${ARGS} 
+
+DRIVER=                       # In this case, value must be provided via the CLI
+OPTIONS="-L '*.j' -S"
+ENTRY=binaryReal
+INPUT=  
+ARGS='10 \# "1234\0" . 4321'   
+OUTPUT="2# 10011010010.01101110100111100001101"
+RETVAL=10
