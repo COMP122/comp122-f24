@@ -79,7 +79,6 @@ GIT_EDITOR="$SUBLIME"
 
 source ${COMP122_BIN}/utilities.bash
 source ${COMP122_BIN}/git_extensions.bash
-source ${COMP122_LIBEXEC}/sth.bash
 
 
 
