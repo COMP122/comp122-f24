@@ -12,6 +12,35 @@ Ideas for the Fall...
       - (reserved: gp, at, k1, k2), T-s, S-es, a-s, v-s, fp, sp
 
 
+make template/MD template/MD  into a git module
+
+
+Update mips_subroutine / java_subroutine
+   - to return an appropriate $?
+   - to remove the extra banner information
+     * banner should be added only if print_register is called, etc.
+     * i.e., the default output is NUL and not the register
+     * this makes the output more like MARS with a list of registers to present as an option
+
+   - update to remove suffix name with the -L option,
+     * automatically insert the appropriate suffix
+       - mips_subroutine -L `foo` : includes foo.a
+       - java_subroutine -L  `*`  : includes *.j
+     * pathentally, allow the -L option to be a path-spec
+       - expand, then only include the appropriate  .{SUFFIX} at the end
+     *  -L '*'  ==>  *.j
+
+
+1. validate the output placement and redirection:  tty, /dev/stdin, /dev/stdout
+
+
+
+
+1. Error in java_subroutine....
+Testing: java_subroutine   
+Usage:  mips_sub [ option ... ] name [ arg ... ]
+
+
 
 ## Multiplication
    - [ ] update the slides to include cost analysis

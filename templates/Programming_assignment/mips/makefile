@@ -113,6 +113,14 @@ grade: ${TO_GRADE}
 
 grade_all: grade_java_code grade_java_tac_code grade_mips_code grade_validation
 
+# How about...
+mkdir gradinging sucheckout
+checkout each tag
+copy the appropriate files into that location
+cd ins solution
+make in that directory...
+
+
 grade_java_code: final_java_code
 	mkdir -p grading ; subl grading
 	git checkout java_code
