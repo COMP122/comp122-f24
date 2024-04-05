@@ -1,0 +1,33 @@
+#! /bin/bash
+
+# Simple Test Harness (sth)
+###########################
+# MAIN ROUTINE
+#
+#   1. sth_execute {pathspec}...
+#      - Similar to `sth_validate`, but with the following differences
+#        * the validating step is skipped 
+#        * no transcript of activities are emitted to stdout
+#        * no summary information is presented
+#      - The exist status ($?) is set to the result of the last test case
+#
+
+function sth_execute () {
+  (
+    local pathspec="$@"
+    local exit_val=
+
+    STH_OLD_EXECUTE_ONLY=${STH_EXECUTE_ONLY}    
+    export STH_EXECUTE_ONLY=TRUE
+    
+    sth_validate "$@"
+    exit_val="$?"
+
+    STH_EXECUTE_ONLY=${STH_OLD_EXECUTE_ONLY}
+    
+    return ${exit_val}
+  )
+}
+
+
+sth_execute "$@"
