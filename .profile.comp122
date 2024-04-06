@@ -65,9 +65,16 @@ function comp122-keygen () {
 
      echo 
      echo "A copy of your public key has been placed into the clip board."
-     echo "  Copy this public key to your github account!"
-     echo
-     echo "  ${LAUNCH} https://github.com/settings/keys"
+     echo "Add this key to your github account."
+     echo 
+     echo "1. Execute the following command:"
+     echo "  ${LAUNCH} https://github.com/settings/ssh/new"
+     echo "2. Fill in the form"
+     echo "   a. For 'Title': enter a name for this key, e.g., COMP122"
+     echo "   b. For 'Key type': select 'Authentication Key'"
+     echo "   c. For 'Key': paste your key"
+     echo "3. Click on the 'Add SSH Key' button"
+     echo 
    else
      echo "Error: a public/private key pair was not correctly generated."
    fi
