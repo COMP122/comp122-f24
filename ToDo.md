@@ -1,3 +1,7 @@
+
+
+
+
 Ideas for the Fall...
 
 1. In mapping section bring up 
