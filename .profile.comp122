@@ -10,7 +10,7 @@ export COMP122_KEY="$HOME/.ssh/id_comp122_github"
 export GIT_EDITOR
 export SUBLIME_BIN
 export SUBLIME
-export LAUNCH
+export LAUNCH=open
 export CLIP_COPY
 
 
@@ -23,21 +23,19 @@ fi
 
 case "${_OS}" in
    Msys )   # Windows Machine using GitBash
+     alais open=start
      SUBLIME_BIN='/c/Program Files/Sublime Text/'
      SUBLIME='subl.exe -w'
-     LAUNCH="start"
      CLIP_COPY="clip"
      ;;
    Darwin ) # MacOS
      SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
      SUBLIME='subl -w -n'
-     LAUNCH="open"
      CLIP_COPY="pbcopy"
      ;;
    GNU/Linux ) # Ubuntu
      #SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
      SUBLIME='subl -w -n'
-     LAUNCH="open"
      #CLIP_COPY="pbcopy"
      ;;
 esac
