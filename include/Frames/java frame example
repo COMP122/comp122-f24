@@ -1,0 +1,64 @@
+
+
+// Ad-hoc frame
+int public static  subname(a, b ,c ,d) {
+            
+   int e = (Integer) mips.pop();
+   int f = (Integer) mips.pop(); 
+   int g = (Integer) mips.pop();
+
+   int retval = 0;
+
+   retval = a + b + c + d + e + f + g;
+   return retval
+
+}
+
+int public static  name () {
+    int x = 0;        
+
+    mips.push(7);
+    mips.push(6);
+    mips.push(5);
+    x = subname ( 1, 2, 3, 4);
+
+    return x;
+}
+
+
+
+// Full frame
+ -- under full frames... all subroutines return void..
+
+void public static  subname(a, b ,c ,d) {
+
+   mips.setup();  // Handle by the compiler -- this is a NOP here.
+     //  1. make space for locals
+     //  2. save the $ra
+     //  3. saves the s registers
+
+   int e = (Integer) mips.STACK( mips.$fp, 7);
+   int f = (Integer) mips.STACK( mips.$fp, 6);
+   int g = (Integer) mips.STACK( mips.$fp, 5);
+
+   int retval = 0;
+
+   retval = a + b + c + d + e + f + g;
+
+   mips.cleanup(retval);
+
+   return;
+
+}
+
+void public static  name () {
+    int x = 0;        
+
+       mips.sub_precall(5, 6, 7);
+       mips.set_frame()
+    subname ( 1, 2, 3, 4);
+       mips.unset_frame()
+       x = mips.sub_postcall(5, 6, 7);
+
+    return;
+}

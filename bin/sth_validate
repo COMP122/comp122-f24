@@ -1,0 +1,206 @@
+#! /bin/bash
+
+# Simple Test Harness (sth)
+###########################
+# MAIN ROUTINE
+#
+#   1. sth_validate {pathspec}... 
+#      - Executes and validates each test case that is provided in {pathspec}
+#        * if a {pathspec} is a directory, then every file with .sth_case.
+#      - During execution:
+#        * each test case is validated
+#        * a transcript of activities is emitted to stderr
+#        * a summary of activities is emitted to stdout
+#      - The exit status ($?) is set to 0 for SUCCESS, when ALL test cases pass
+#
+#
+# SUPPORTING FUNCTIONS
+#   1. sth_case_validate
+#      - executes a single test case based upon the defined ENV variables
+#      - the optional {driver} overrides the {DRIVER} value defined for all test cases
+#
+#   1. sth_config_reader   {file}
+#      - reads a file and generates a set of temporary files, one per test case
+#
+#   1. sth_strips_comments  {file}
+#      - strips comments and blank lines from a given file
+#
+
+export STH_TMPDIR=/tmp/STH.$$
+
+
+function sth_validate () {
+  local file_dir="$@"
+
+  local exit_val=
+  local count=0
+  local passed=0
+  local test_case=
+
+  local files=
+
+  for f in ${file_dir} ; do
+     [[ -d ${f}  ]]  && files="$files $(echo ${f}/*.sth_case)"
+     [[ -f ${f}  ]]  && files="$files $f"
+  done
+
+  mkdir -p ${STH_TMPDIR}
+  for f in ${files} ; do 
+    [[ ! -s $f ]] && continue
+    [[ $f != *.sth_case ]] && continue
+
+    rm -rf ${STH_TMPDIR}/*
+    sth_config_reader ${f}
+       # create individual files  
+       #   1. the 'default' file
+       #   1. the 'global' file
+       #   1. a set of test cases: *.sth_case
+    for test_case in ${STH_TMPDIR}/*.sth_case ; do
+      source ${STH_TMPDIR}/default
+      source ${test_case}
+      source ${STH_TMPDIR}/global
+
+      # Override Environment Variables with STH specific ENV VARIABLES
+      [[ -n "${STH_DRIVER}"  ]] && DRIVER=${STH_DRIVER}
+      [[ -n "${STH_OPTIONS}" ]] && OPTIONS=${STH_OPTIONS}
+      [[ -n "${STH_ENTRY}"   ]] && ENTRY=${STH_ENTRY}
+      [[ -n "${STH_ARGS}"    ]] && ARGS=${STH_ARGS}
+      [[ -n "${STH_INPUT}"   ]] && INPUT=${STH_INPUT}
+      [[ -n "${STH_OUTPUT}"  ]] && OUTPUT=${STH_OUTPUT}
+      [[ -n "${STH_EXIT_STATUS}" ]] && EXIT_STATUS=${STH_EXIT_STATUS}
+
+      # Check that the required VARIABLES are defined
+      { 
+        [[ -z "${ENTRY}" ]]   && { echo "Error: Invalid test in ${f}, missing \"ENTRY\", skipping..."  ; continue; } 
+        [[ -z "${EXIT_STATUS}" ]] && { echo "Error: Invalid test in ${f}, missing \"EXIT_STATUS\" skipping..." ; continue; }
+      } > /dev/stderr
+
+      sth_case_validate
+      exit_val=$?
+      echo > /dev/stderr
+
+      [[ ${exit_val} == 0 ]] && ((passed ++))
+      (( count ++ ))
+    done
+  done
+  if (( count == 0 )) ; then 
+     echo "Error: No files with a .sth_case extension provided." > /dev/stderr
+     return 1
+  fi
+  rm -fr ${STH_TMPDIR}
+
+  if [[ ${STH_EXECUTE_ONLY} == "TRUE" ]] ; then
+    : #return ${exit_val}
+  else
+    echo "Summary: ${passed}/${count}  (Passed/Count)"  >$(tty)
+    #return $((  count - passed ))
+  fi
+  return $((  count - passed ))
+}
+
+
+function sth_case_validate () {
+  (   
+
+    local failed=0
+    local output_error=0
+    local exit_error=0
+
+    [[ -z ${DRIVER} ]] && DRIVER=${eval} && OPTIONS=""
+    [[ -z ${INPUT}  ]] && INPUT=/dev/null
+    [[ -z ${OUTPUT} ]] && OUTPUT=/dev/null
+
+
+    SHOW_INPUT='cat'
+    SHOW_OUTPUT='cat'
+    [[ ! -f ${INPUT}  ]] && SHOW_INPUT='echo'
+    [[ ! -f ${OUTPUT} ]] && SHOW_OUTPUT='echo'
+
+    actual_exit_val=
+    actual_output="${STH_TMPDIR}/${DRIVER}.output"      
+
+    if [[ -n ${DRIVER} ]] ; then 
+      echo "# Testing: ${DRIVER} ${OPTIONS} ${ENTRY} ${ARGS}" 
+      ${SHOW_INPUT} ${INPUT} | eval ${DRIVER} ${OPTIONS} ${ENTRY} ${ARGS} > ${actual_output}
+      actual_exit_val="$?"
+    else
+      echo "# Testing: ${DRIVER} ${OPTIONS} ${ENTRY} ${ARGS}" 
+      ${SHOW_INPUT} ${INPUT} |                           ${ENTRY} ${ARGS} > ${actual_output}
+      actual_exit_val="$?"
+    fi
+
+    # Determine if the test case failed
+    ${SHOW_OUTPUT} ${OUTPUT} | diff -q - ${actual_output} >/dev/null
+    output_error=$?
+
+    [[ ${EXIT_STATUS} == ${actual_exit_status} ]]
+    exit_error=$?
+
+    if [[ ${output_error} != 0 ]] || [[ ${exit_error} != 0 ]] ; then
+      failed=1
+    fi
+
+    cat ${actual_output} #| tee /dev/stdout
+    # the above puts the output in both stderr and stdout
+    # this is okay if they are different
+    # Provide a transcript of activities
+
+    if [[ ${STH_EXECUTE_ONLY} != "TRUE" ]] ; then 
+      # PROCESS stdout
+      if [[  ${output_error} != 0 ]] ; then
+        echo "# =========================="
+        echo "# Error: Correct Output is:"
+        echo "# =========================="
+        ${SHOW_OUTPUT}  ${OUTPUT}
+        echo "# =========================="
+      fi
+
+      # Process the EXIT VALUE
+      if [[ ${EXIT_STATUS} != ${actual_exit_stats} ]] ; then
+        echo
+        echo "# Expected Exit Value: ${EXIT_STATUS}"
+        echo "# Actual   Exit Value: ${actual_exit_status}"
+      fi
+    fi 
+
+    (( failed == 0 ))
+  )
+ } >/dev/stderr
+
+
+function sth_config_reader () {
+  local config_file=$1
+
+  local count=0
+  local output=${STH_TMPDIR}/${count}.sth_case
+
+  cat /dev/null > ${STH_TMPDIR}/default
+  cat /dev/null > ${STH_TMPDIR}/global
+  while read -r _line ; do
+    case "${_line}" in
+       \[default\]* ) output=${STH_TMPDIR}/default
+                      ;;
+
+       \[global\]*  ) output=${STH_TMPDIR}/global
+                      ;;
+
+       \[case\]*    ) ((count ++))
+                      output=${STH_TMPDIR}/${count}.sth_case
+                      ;; 
+
+       *            ) echo "${_line}" >> ${output}
+                      ;;
+    esac
+  done < <( sth_strip_comments ${config_file} )
+}
+
+
+function sth_strip_comments () {
+  cat "$1" | sed -e '/^ *#.*/d' -e '/^ *$/d'
+}
+
+
+sth_validate "$@"
+
+
+

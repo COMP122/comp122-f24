@@ -1,0 +1,95 @@
+#! /bin/bash
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export COMP122_HOME="$HOME/classes/comp122"
+export COMP122_BIN="${COMP122_HOME}/bin"
+export COMP122_LIBEXEC="${COMP122_HOME}/libexec"
+
+export COMP122_KEY="$HOME/.ssh/id_comp122_github"
+
+export GIT_EDITOR
+export SUBLIME_BIN
+export SUBLIME
+
+export MIPS_SUBROUTINE_HOME=${COMP122_HOME}
+export STH_HOME=${COMP122_HOME}
+
+
+export LAUNCH=open
+export CLIP_COPY
+
+
+# Check which effective OS is being used
+_OS=$(uname -o 2>/dev/null)
+if [[ -z "$_OS" ]] ; then
+   # Older versions of MacOS don't support the -o option
+  _OS="$(uname -s)"
+fi
+
+case "${_OS}" in
+   Msys )   # Windows Machine using GitBash
+     alais open=start
+     SUBLIME_BIN='/c/Program Files/Sublime Text/'
+     SUBLIME='subl.exe -w'
+     CLIP_COPY="clip"
+     ;;
+   Darwin ) # MacOS
+     SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
+     SUBLIME='subl -w -n'
+     CLIP_COPY="pbcopy"
+     ;;
+   GNU/Linux ) # Ubuntu
+     #SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
+     SUBLIME='subl -w -n'
+     #CLIP_COPY="pbcopy"
+     ;;
+esac
+
+function rebuild_MIPS_OS_Interface () {
+  ( cd $COMP122_BIN
+    javac MIPS_OS_Interface.java 
+  )
+}
+
+function comp122-keygen () {
+   
+   mkdir -m 700 -p ~/.ssh
+   ssh-keygen -t ed25519 -C "comp122 git@github.com" 2>/dev/null
+   COMP122_KEY=~/.ssh/id_ed25519
+
+   if [[ $? != 0 ]] ; then 
+     # Note if the ed25519 type is not recognized then use RSA with 4096 bits
+     ssh-keygen -t rsa -b 4096 -C "comp122 git@github.com"
+     COMP122_KEY=~/.ssh/id_rsa
+   fi
+
+   if [[ $? == 0 ]] ; then 
+     ${CLIP_COPY} < "${COMP122_KEY}.pub"
+
+     echo 
+     echo "A copy of your public key has been placed into the clip board."
+     echo "Add this key to your github account."
+     echo 
+     echo "1. Execute the following command:"
+     echo "  ${LAUNCH} https://github.com/settings/ssh/new"
+     echo "2. Fill in the form"
+     echo "   a. For 'Title': enter a name for this key, e.g., COMP122"
+     echo "   b. For 'Key type': select 'Authentication Key'"
+     echo "   c. For 'Key': paste your key"
+     echo "3. Click on the 'Add SSH Key' button"
+     echo 
+   else
+     echo "Error: a public/private key pair was not correctly generated."
+   fi
+   return $?
+}
+
+PATH="${COMP122_BIN}:${SUBLIME_BIN}:$PATH"
+GIT_EDITOR="$SUBLIME"
+
+source ${COMP122_BIN}/utilities.bash
+source ${COMP122_BIN}/git_extensions.bash
+
+
+
+

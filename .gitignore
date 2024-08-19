@@ -1,0 +1,9 @@
+scratch
+.DS_Store
+local
+deliverables
+assignment-grading
+.bootstrap.*
+~*
+*.class
+*.bak
