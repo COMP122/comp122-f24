@@ -90,24 +90,26 @@
        1. Accept what is expected to change: Improvise, Adapt, Overcome!
 
 
-   1. Class Notes:
-     - `notes_[01][0-9]_[0-3][0-9].md`
-       - +1 ([0-9]{3}) [0-9]{3} - [0-9]{4}
-     - Markdown verses Markup
-       - reference/markdown-cheat-sheet.md
-     - Sublime Text
-       - subl
-     - Spacing and Indentation is important!
-       - $ cat ../syllabus.md | sed 's/ //g' | awk '{ print $0 }' | sed '/^$/d'
-       - cat
-         - catenate the file ../syllabus.md onto the current file -- which is the terminal window
-       - sed 's/ //g'   
-         - \# stream editor (sed) command to "s"ubstitute a space with nothing, "g"lobal within the line
-       - awk '{ printf $0}'
-         - awk command to print out a line of text without a '\n'
-         - as compared to awk '{ printf $0 "\n" }'
-       - sed '/^$/d'
-         - "d"elete all empty lines
+  1. Class Notes:
+    - `notes_[01][0-9]_[0-3][0-9].md`
+      - +1 ([0-9]{3}) [0-9]{3} - [0-9]{4}
+    - Markdown verses Markup
+      - reference/markdown-cheat-sheet.md
+    - Sublime Text
+      - subl
+    - Spacing and Indentation is important!
+      - $ cat ../syllabus.md | sed 's/ //g' | awk '{ print $0 }' | sed '/^$/d' | tr '\n' ''
+      - cat
+        - catenate the file ../syllabus.md onto the current file -- which is the terminal window
+      - sed 's/ //g'   
+        - \# stream editor (sed) command to "s"ubstitute a space with nothing, "g"lobal within the line
+      - awk '{ printf $0}'
+        - awk command to print out a line of text without a '\n'
+        - as compared to awk '{ printf $0 "\n" }'
+      - sed '/^$/d'
+        - "d"elete all empty lines
+      - tr '\n' ' '
+        - translate the charactor '\n' to ' '
 
   1. The Command Line Interface versus the Graphical User Interface
      - Hierarchical File System and Naming (tree)
@@ -129,7 +131,7 @@
         - editing
         - pins
 
-  1. Class Material Walk Through:  README.md
+  1. Class Material Walk Through: README.md
 
   1. Syllabus
 
