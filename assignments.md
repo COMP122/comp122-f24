@@ -3,7 +3,7 @@
 This file contains the list of deliverables for COMP 122. Such deliverables include general tasks, assignments, quizzes and exams.
 
 ### Menu
-1. [Quizzes and Exams](#quizzes) (Section *0)
+1. [Quizzes and Exams](#quizzes)
 1. [General Assignments](#general) (Section 0)
 1. [Models of Comp/Comm](#models) (Section 1)
 1. [Formats and Encodings](#formats) (Section 2)

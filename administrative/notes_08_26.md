@@ -1,9 +1,39 @@
 # COMP122 Lecture Notes: August 26, 2024
 
 ## Announcements
-   1. Greetings / Attendance
+   1. Greetings & Announcements
+      1. Adding the Class & Permission Numbers
+      1. No class on Monday September 2, 2024
+   
+   1. Attendance:
+      - Feedback System: https://www.csun.edu/~steve/classes/feedback/ 
 
-   1. The Topic of This Class:  "Computer Architecture and Assembly Language"
+      - Is Attendance Mandatory?  Yes and No!
+        * "Eighty percent of success is showing up." #quote Woody Allen
+        * "Don't mistake routine for commitment, just showing up is not enough."  #quote Tommy Amaker
+
+   1. Class Notes:
+      - `notes_[01][0-9]_[0-3][0-9].md`
+        - +1 ([0-9]{3}) [0-9]{3} - [0-9]{4}
+      - Markdown verses Markup
+        - reference/markdown-cheat-sheet.md
+      - Sublime Text
+        - subl
+      - Spacing and Indentation is important!
+        - $ cat ../syllabus.md | sed 's/ //g' | awk '{ print $0 }' | sed '/^$/d' | tr '\n' ''
+        - cat
+          - catenate the file ../syllabus.md onto the current file -- which is the terminal window
+        - sed 's/ //g'   
+          - \# stream editor (sed) command to "s"ubstitute a space with nothing, "g"lobal within the line
+        - awk '{ printf $0}'
+          - awk command to print out a line of text without a '\n'
+          - as compared to awk '{ printf $0 "\n" }'
+        - sed '/^$/d'
+          - "d"elete all empty lines
+        - tr '\n' ' '
+          - translate the charactor '\n' to ' '
+
+   1. Landscape Slide: The Topic of This Class:  "Computer Architecture and Assembly Language"
       - We will be focusing on the MIPS Architecture -- Alternatives x86, ARM, ...
       - Will you program in MIPS in the future?
       - Consider:  Telsa uses 1000 - 2000 computer chips in their vehicles
@@ -12,27 +42,18 @@
           * traffic lights have change
           * etc. 
 
-   1. Adding the Class & Permission Numbers
-   1. No class on Monday September 2, 2024
-
-   
-   1. Feedback System: https://www.csun.edu/~steve/classes/feedback/ 
-
-   1. Attendance
-      - Is Attendance Mandatory?  Yes and No!
-        - "Eighty percent of success is showing up." #quote Woody Allen
-        - "Don't mistake routine for commitment, just showing up is not enough."  #quote Tommy Amaker
-
+ 
    1. Classroom Management
       - I try to be interactive as much as possible in class.
         - I have slides, but I don't want death by power point 
+          * slides are in the slide_presentations subdirectories
         - I modify my notes on the fly
         - I demonstrate the software development process interactively
 
       - Feel free to make various point-of-orders
-        - Speak louder, Slow down, Speed up, etc
+        - Speak louder, Slow down, Speed up, 
         - Can we take a break, Please review,
-        - Can you share that command again.
+        - Can you share that command again, ...
 
       - Show engagement by asking questions (don't stand on ceremony)
         * I love questions:
@@ -49,6 +70,7 @@
 
 ## Today's Agenda
    * See the "Today's Material" Section
+
 
 ## Questions from Last Lecture/Lab, etc.:
    * First Lecture, hence no questions from last time!
@@ -90,54 +112,15 @@
        1. Accept what is expected to change: Improvise, Adapt, Overcome!
 
 
-  1. Class Notes:
-    - `notes_[01][0-9]_[0-3][0-9].md`
-      - +1 ([0-9]{3}) [0-9]{3} - [0-9]{4}
-    - Markdown verses Markup
-      - reference/markdown-cheat-sheet.md
-    - Sublime Text
-      - subl
-    - Spacing and Indentation is important!
-      - $ cat ../syllabus.md | sed 's/ //g' | awk '{ print $0 }' | sed '/^$/d' | tr '\n' ''
-      - cat
-        - catenate the file ../syllabus.md onto the current file -- which is the terminal window
-      - sed 's/ //g'   
-        - \# stream editor (sed) command to "s"ubstitute a space with nothing, "g"lobal within the line
-      - awk '{ printf $0}'
-        - awk command to print out a line of text without a '\n'
-        - as compared to awk '{ printf $0 "\n" }'
-      - sed '/^$/d'
-        - "d"elete all empty lines
-      - tr '\n' ' '
-        - translate the charactor '\n' to ' '
+  1. Quick Overview Tools and Resources (see slide)
 
-  1. The Command Line Interface versus the Graphical User Interface
-     - Hierarchical File System and Naming (tree)
-     - Navigation: cd, pushd, popd (stack)
-     - Examination: ls -lF
-     - Execution:  open/start, subl
-     - Modification: 
-       - mkdir, touch 
-       - rmdir, rm 
-       - cp, mv, ln, ln -s 
-     - Manual: man 
+  1. Slack (see slide)
 
----
-  1. Overview Tools and Resources
-     1. Slack
-        - actionable
-        - images versus snippets
-        - threads
-        - editing
-        - pins
+  1. Syllabus (see syllabus.md)
 
-  1. Class Material Walk Through: README.md
+  1. The Setup Process (see setup.md)
 
-  1. Syllabus
-
-  1. Comp122 Landscape
-
-  1. Lab: Walk Through
+  1. Assignments (see deliverables/assignments.md)
 
 
 ---

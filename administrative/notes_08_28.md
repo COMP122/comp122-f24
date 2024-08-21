@@ -22,7 +22,7 @@
 # Today's Material
   1. Comp122 Landscape
 
-  1. Lab: Walk Through
+  1. Assignment #2 Walk Through:
 
   1. Git
      - A version control system (VCS) that utilizes a repository
@@ -84,7 +84,7 @@
 <!-- This section is for student's to place their own notes. -->
 <!-- This section will not be updated by the Professor.   -->
 
-## Notes 
+# Notes 
 
 
 
