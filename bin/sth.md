@@ -10,7 +10,7 @@ This README.md file provides you with an overview of the structure of the $HOME/
 ## Tasks:
    1. Finish reading this document
    1. Complete the tasks in the https://github.com/COMP122/comp122-f24/blob/main/setup.md
-   1. Consider working on the first assignment: https://github.com/COMP122/first-assignment
+   1. Consider working on the first assignment: https://github.com/COMP122/02-first-MD-assignment
 
 ---
 ## Key Information:

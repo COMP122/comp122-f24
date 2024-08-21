@@ -116,17 +116,17 @@ function sth_case_validate () {
     [[ ! -f ${INPUT}  ]] && SHOW_INPUT='echo'
     [[ ! -f ${OUTPUT} ]] && SHOW_OUTPUT='echo'
 
-    actual_exit_val=
+    actual_exit_status=
     actual_output="${STH_TMPDIR}/${DRIVER}.output"      
 
     if [[ -n ${DRIVER} ]] ; then 
       echo "# Testing: ${DRIVER} ${OPTIONS} ${ENTRY} ${ARGS}" 
       ${SHOW_INPUT} ${INPUT} | eval ${DRIVER} ${OPTIONS} ${ENTRY} ${ARGS} > ${actual_output}
-      actual_exit_val="$?"
+      actual_exit_status="$?"
     else
       echo "# Testing: ${DRIVER} ${OPTIONS} ${ENTRY} ${ARGS}" 
       ${SHOW_INPUT} ${INPUT} |                           ${ENTRY} ${ARGS} > ${actual_output}
-      actual_exit_val="$?"
+      actual_exit_status="$?"
     fi
 
     # Determine if the test case failed

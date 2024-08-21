@@ -82,8 +82,9 @@
   1. First Programming Assignment
      - https://
 
-     - Review of Repository
-     - Review of Countdown
+     - Review of Structure of the Repository
+     - Review of Countdown Program
+     - Review `make` and `sth`
 
 
   1. PEMDAS and Three Address code
