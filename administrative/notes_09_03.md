@@ -8,7 +8,11 @@
    1. Review / Questions
       - List of CLI Commands
 
-   1. Programming Overview
+   1. Sublime Updates
+
+   1. PEMDAS and Three Address Code
+
+   1. Programming Assignment Overview
 
 
 ## Questions from Last Lecture/Lab, etc.:
@@ -54,16 +58,12 @@
       <!-- PROMPT_COMMAND='(( $? == 0 )) && echo success'  -->
 
 ---
-# Today's Lecture Material
-  1. Updates to support Ubuntu within Windows/WSL
-     - see revised setup.md file
+# Today's  Material
   1. Make sure everyone is up-to-speed
      - The command line
      - Your comp122 environment
      - Walking through the logistics of git & assignments
 
-
-# Today's Lab Material
   1. Install MIPS syntax package into sublime
      - "Install Package Control"
         * cmd+shift+p  or Windows+shift+p or Ctrl+shift+p
@@ -75,88 +75,44 @@
       - Associate Java Syntax with all .j files within Sublime Text
         * New File (%N)
         * Save as `equation.j`
-        * bottom-right-hand corner -- select desired syntax
+        * Bottom-right-hand corner -- select desired syntax
           - Open all with current extension as...
           - Select 'java'
 
-  1. First Programming Assignment
-     - https://
+  1. PEMDAS and Three Address Code (TAC)
+     1. Run the command:  `subl -n quad.j`
 
-     - Review of Structure of the Repository
-     - Review of Countdown Program
-     - Review `make` and `sth`
-
-
-  1. PEMDAS and Three Address code
      1. Solve the following equation:  ``a^2*x + b*x + c = 0``
 
-        ![Quadratic Formula](Quadratic.formula.jpg)
+        ![Quadratic Formula](quadratic_formula.png)
 
-     1. Rewrite into a single linear equation: ``$v0 = expression;``
+     1. Rewrite into a single linear equation: ``x = expression;``
         - use only the following operators: () * / + -
         - use the sqrt() function
 
      1. Rewrite into a series of linear equation
         - Each equation must be in TAC (Three Address Code)
         - That is to say, each equation must be in the one of the following forms:
-          * temp = constant;
-          * temp = variable;
-          * temp = variable (op) variable;
-          * temp = func(variable);
-          * $v0  = temp;
+          * variable = literal;
+          * variable = variable;
+          * variable = variable (op) variable;
+          * variable = func(variable);
 
      * Requirements:
-       - 'temp' variables are named: $t1, $t2, $t3, .. $t9, etc.
-       - each 'temp' variable can be used only once!
+       - 'temp' variables are named: t1, t2, t3, ...
+       - each 'temp' variable can be defined only once!
 
-     
-  1. Write Java Method to compute ``$v0 = 2*b + (a + b)/2``
-     - Create a file called equation.j in the java subdirectory
-     - Use the following template for your method
-       ```java
-   
-       public static int equation(int a, int b) {
-         int $v0;
-         int $t0;
-         int $t1;
-         int $t2;
-         int $t3;
-   
-         // Insert your statement to compute $v0 = s2*b + (a + b)/2`
+  1. Programming Assignment Overview
+     - https://
 
-         return $v0;
-        }
-        ```
+     - Review of Structure of the Repository
+     - Review of the `countdown` Program
+     - Review `make` and `sth`
 
-     - Requirements:
-        - Delete all unnecessary lines
-        - Ensure proper formatting
-        - Ensure your code complies with `java_subroutine` using "make"
 
-     - Use `java_subroutine to fill in the following table`
+  1. Participation Assignment (https://)
 
-       |  a    |  b   |  $v0  |
-       |-------|------|-------|
-       |   0   |  0   |  xxx  |   `java_subroutine equation 0 0`
-       |   0   |  1   |  xxx  |   `java_subroutine equation 0 1`
-       |   0   |  2   |  xxx  |   `java_subroutine equation 0 2`
-       |   1   |  0   |  xxx  |   `java_subroutine equation 1 0`
-       |   1   |  1   |  xxx  |   `java_subroutine equation 1 1`
-       |   1   |  2   |  xxx  |   `java_subroutine equation 1 2`
-       |   2   |  0   |  xxx  |   `java_subroutine equation 2 0`
-       |   2   |  1   |  xxx  |   `java_subroutine equation 2 1`
-       |   2   |  2   |  xxx  |   `java_subroutine equation 2 2`
-      
 
-   1. Write Java TAC Method to compute ``$v0 = 2*b + (a + b)/2``
-      - Use your Java Method as a starting point
-      - Transform your single linear equation into a series of TAC statements
-      - Create a file called equation.j in the java_tac subdirectory
-      - Use `java_subroutine` to validate your results
-
-   1. Given Time:
-      - Create one or more sth test case: 'template.sth_case'
-      - Use make to test everything
 
 ---
 ## Resources
