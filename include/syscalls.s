@@ -396,7 +396,7 @@
 
 .macro exit(%reg)
         nop                     # exit: exit with a value
-        move $a0, %reg          #    marshal value to become EXIT STATUS
+        move $a0, %reg          #    marshal value that becomes the EXIT STATUS
         li $v0, 17              #    set service number
         syscall                 #    make call to the OS
         nop                     #    THIS LINE IS NEVER EXECUTED
@@ -404,7 +404,7 @@
 .end_macro
 .macro exiti(%imm)
         nop                     # exiti: exit with an immediate value
-        li $a0, %imm            #    marshal value to become EXIT STATUS
+        li $a0, %imm            #    marshal value that becomes the EXIT STATUS
         li $v0, 17              #    set service number
         syscall                 #    make call to the OS
         nop                     #    THIS LINE IS NEVER EXECUTED
