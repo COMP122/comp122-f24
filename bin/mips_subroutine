@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-MIPS_SUBROUTINE_HOME=/Users/steve/classes/comp122
+: ${MIPS_SUBROUTINE_HOME:=.}
 
 MIPS_SUBROUTINE_LIB=${MIPS_SUBROUTINE_HOME}/lib
 MIPS_SUBROUTINE_INCLUDE=${MIPS_SUBROUTINE_HOME}/include
@@ -26,7 +26,7 @@ EXIT_STATUS=0
 
 ### FILE NAME RELATED ENVIRONMENT VARIABLES
 BOOTSTRAP_DIR="."
-BOOTSTRAP_FILE="${BOOTSTRAP_DIR}/bootstrap.${ASM_EXT}"
+BOOTSTRAP_FILE="${BOOTSTRAP_DIR}/.bootstrap.${ASM_EXT}"
 
 
 function rebuild_MIPS_library () {
@@ -48,7 +48,7 @@ function rebuild_MIPS_library () {
 #
 
 function usage_synopsis () {
-  echo "Usage:  mips_sub [ option ... ] name [ arg ... ]"
+  echo "Usage: $0 [ option ... ] name [ arg ... ]"
 }
 
 function usage_full () {
@@ -117,7 +117,13 @@ fi
 SUB_NAME=""                # The name of the subroutine to be executed
 SUB_NAME_FILE=""           # The default name of the file containing $SUB_NAME
 LOAD_FILES=""              # The list of files to be load
+
 LIB_FILES="$(echo ${MIPS_SUBROUTINE_LIB}/*.s)"               # A list of library files to be 
+if [[ ${LIB_FILES} == "${MIPS_SUBROUTINE_LIB}/*.s" ]] ; then
+  LIB_FILES=
+fi
+
+
 
 SUB_CALL=""                # The actual subroutine call, e.g., sub(1, 2, 3)
 
