@@ -103,7 +103,8 @@
        - each 'temp' variable can be defined only once!
 
   1. Programming Assignment Overview
-     - https://
+     - https://classroom.github.com/a/DDeWVuqO
+     - [Workflow cheatsheet](../reference/programming_workflow.md)
 
      - Review of Structure of the Repository
      - Review of the `countdown` Program
