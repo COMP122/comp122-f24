@@ -20,7 +20,7 @@
       - Sublime Text
         - subl
       - Spacing and Indentation is important!
-        - $ cat ../syllabus.md | sed 's/ //g' | awk '{ print $0 }' | sed '/^$/d' | tr '\n' ''
+        - $ cat ../syllabus.md | sed 's/ //g' | awk '{ print $0 }' | sed '/^$/d' | tr '\n' ' '
         - cat
           - catenate the file ../syllabus.md onto the current file -- which is the terminal window
         - sed 's/ //g'   
