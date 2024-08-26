@@ -97,38 +97,39 @@
         - close the current terminal window
         - launch a new terminal window
 
-     1. Create the canonical folder for the class: \~/classes/comp122 
-        ```
-         cd
-         mkdir -p classes/comp122
-         ```
-     1. Setup your git global configuration: <br />
-        (update the following command to reflect your name and email address)
-        ```
-        git config --global user.name "John Doe"
-        git config --global user.email johndoe@my.csun.edu
-        git config --global pull.rebase false 
-        ```
+  1. Create the canonical folder for the class: \~/classes/comp122 
+      ```
+       cd
+       mkdir -p classes/comp122
+       ```
+  1. Setup your git global configuration: <br />
+     (update the following command to reflect your name and email address)
+     ```
+     git config --global user.name "John Doe"
+     git config --global user.email johndoe@my.csun.edu
+     git config --global pull.rebase false 
+     ```
 
-     1. Clone a copy of this repository:
-        ```
-        cd classes
-        git clone https://github.com/COMP122/comp122-f24.git comp122
-        ```
-     1. Update the appropriate startup file to source COMP122's `.profile.comp122`.   For example:
-        ```
-        cd
-        touch .profile
-        mv .profile .profile.orig
-        echo 'source ~/classes/comp122/.profile.comp122'  >> .profile
-        source .profile
-        ```
+  1. Clone a copy of this repository:
+      ```
+      cd classes
+      git clone https://github.com/COMP122/comp122-f24.git comp122
+      ```
+  
+  1. Update the appropriate startup file to source COMP122's `.profile.comp122`.   For example:
+     ```
+     cd
+     touch .profile
+     mv .profile .profile.orig
+     echo 'source ~/classes/comp122/.profile.comp122'  >> .profile
+     source .profile
+     ```
 
-        * If you make an error in the above step, the best thing to do is to execute the following commands and redo the step
-          ```
-          cd
-          cp .profile.orig .profile
-          ```
+  * If you make an error in the above step, the best thing to do is to execute the following commands and redo the step
+    ```
+    cd
+    cp .profile.orig .profile
+    ```
 
   1. Quick Access Setup
      *  For Windows Users:
