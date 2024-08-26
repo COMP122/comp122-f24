@@ -125,11 +125,11 @@
      source .profile
      ```
 
-    * If you make an error in the above step, the best thing to do is to execute the following commands and redo the step
-      ```
-      cd
-      cp .profile.orig .profile
-      ```
+     * If you make an error in the above step, the best thing to do is to execute the following commands and redo the step
+       ```
+       cd
+       cp .profile.orig .profile
+       ```
 
   1. Quick Access Setup
      *  For Windows Users:
