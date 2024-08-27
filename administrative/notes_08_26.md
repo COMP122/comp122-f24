@@ -111,13 +111,13 @@
           (mis)understandings.
        1. Accept what is expected to change: Improvise, Adapt, Overcome!
 
-
+-----
   1. Quick Overview Tools and Resources (see slide)
 
   1. Slack (see slide)
 
   1. Syllabus (see syllabus.md)
-
+---
   1. The Setup Process (see setup.md)
 
   1. Assignments (see deliverables/assignments.md)
