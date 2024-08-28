@@ -1,11 +1,12 @@
 # COMP122 Lecture Notes: August 28, 2024
 
 ## Announcements
-   1. No class on Monday September 4, 2024
+   1. No class on Monday September 2, 2024
 
 
 ## Today's Agenda
    1. Pickup where were left off
+      - but first, some shell priming 
    1. SSH : Walk through of github authentication
    1. Git
    1. Walk through of the assignments
