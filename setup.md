@@ -115,14 +115,11 @@
       cd classes
       git clone https://github.com/COMP122/comp122-f24.git comp122
       ```
-  
+
+--
   1. Update the appropriate startup file to source COMP122's `.profile.comp122`.   For example:
      ```
-     cd
-     touch .profile
-     mv .profile .profile.orig
-     echo 'source ~/classes/comp122/.profile.comp122'  >> .profile
-     source .profile
+     x 
      ```
 
      * If you make an error in the above step, the best thing to do is to execute the following commands and redo the step
@@ -159,6 +156,13 @@
         1. Control-click the Mars4_5.jar icon
         1. Choose Open from the shortcut menu
         1. Hereafter, you can Double-click the Mars4_5.jar icon to open the application.
+
+  1. Alternatively for the Microsoft users
+     - launch a terminal and execute the following commands:
+       ```bash
+       cd ~/classes/comp122/bin
+       java -jar Mars4_5.jar
+       ```
 
   1. Create a short-cut on your Desktop for Comp122 for easy access
      - Open File Explorer or Finder

@@ -16,14 +16,32 @@
      1. 
 
    * T/R @ 10:00 pm
-     1. 
+     1. What is PNJ?
 
 
 ---
 # Today's Material
-  1. Comp122 Landscape
+  1. The shell
+     1. Features in a programming language
+        - Variables: Data: Objects, Integers, Floats
+          ```bash
+          X=value
+          echo $X
+          ```
+        - Subroutine: Procedures, Functions, Methods, Classes, 
+        - Control Structures: Loops, while, do-while, for, for-each, if-then-else, switch/case
+        - Libraries, Packages, Modules, 
+     1. Syntactical Structure:
+     1. Anatomy of the Command Line
+        - Commands
+        - Arguments
+        - Options
+        - Files
+          - stdin(0) (System.in)
+          - stdout(1) (System.out)
+          - stderr(2) (System.err)       
 
-  1. Assignment #2 Walk Through:
+  1. Pickup where were left off
 
   1. Git
      - A version control system (VCS) that utilizes a repository
