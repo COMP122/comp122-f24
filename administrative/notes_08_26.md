@@ -77,7 +77,7 @@
      - The purpose of questions is to enhance the learning process
        - They ensure the current material is being understood, and 
        - they inform how to better present future material
-
+   * What is JNG?
 
 
 ---
@@ -118,6 +118,8 @@
 
   1. Syllabus (see syllabus.md)
 ---
+#### Deferred till Wednesday/Thursday
+
   1. The Setup Process (see setup.md)
 
   1. Assignments (see deliverables/assignments.md)
@@ -132,4 +134,4 @@
 <!-- This section is for student's to place their own notes. -->
 <!-- This section will not be updated by the Professor.   -->
 
-# Notes  
+# Notes
