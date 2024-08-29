@@ -17,32 +17,37 @@
 
    * T/R @ 10:00 pm
      1. What is PNJ?
+     1. What is subl?
 
 
 ---
 # Today's Material
   1. The shell
-     1. Features in a programming language
-        - Variables: Data: Objects, Integers, Floats
+     1. Features in a Programming Language
+        - variables:  classes, integers, floats
           ```bash
-          X=value
+          X=" hello"
           echo $X
           ```
-        - Subroutine: Procedures, Functions, Methods, Classes, 
-        - Control Structures: Loops, while, do-while, for, for-each, if-then-else, switch/case
-        - Libraries, Packages, Modules, 
+        - control structures: while-loop, do-loop, if-then-else, switch/case, for-each
+        - subroutine: methods, functions, procedure, co-rountines
+
      1. Syntactical Structure:
+        - semicolons to end a statement
+
+
      1. Anatomy of the Command Line
-        - Commands
-        - Arguments
-        - Options
-        - Files
-          - stdin(0) (System.in)
-          - stdout(1) (System.out)
-          - stderr(2) (System.err)       
+        - command, subcommands
+        - arguements
+        - options
+        - files
+          * stdin (0), System.in
+          * stdout (1), System.out
+          * stderr (2), System.err
 
   1. Pickup where were left off
 
+---
   1. Git
      - A version control system (VCS) that utilizes a repository
        - repository: a complete copy of an entire project _throughout_ its lifetime  
