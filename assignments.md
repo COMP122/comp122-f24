@@ -62,12 +62,12 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
      * Follow the steps in: ~/classes/comp122/setup.md
    - Due Date: ASAP
 
-1. Name: My First Assignment
+1. Name: My MD First Assignment
    - Status: Released, but not Assigned
    - Deliverable ID: 02-
-   - Public_URL: https://github.com/COMP122/02-first-MD-assignment
+   - Public_URL: https://github.com/COMP122/02-first-MD-assignment-public
    - Invitation URL: https://classroom.github.com/a/5mXbyUv_
-   - Due Date: Sep 03 23:59:59
+   - Due Date: Sep 06 23:59:59
 
 
 1. Name: Mathematical Review (Credit/No Credit)
