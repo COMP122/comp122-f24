@@ -3,25 +3,25 @@
 ## Announcements:
    1. No class on Monday September 2, 2024
 
-
 ## Today's Agenda:
    1. Review / Questions
       - List of CLI Commands
-
-   1. Sublime Updates
-
-   1. PEMDAS and Three Address Code
-
-   1. Programming Assignment Overview
+   1. Git (for MW1130)
+   1. SSH
+   1. Install MIPS syntax package into sublime
+   1. MD Assignment Walk Through
+   1. PEMDAS and Three Address Code (next time?)
+   1. Programming Assignment Overview (next time?)
 
 
 ## Questions from Last Lecture/Lab, etc.:
-   * M/W @ 9:00 am
+   * M/W @ 10:00 am
 
-   * T/R @ 9:00 am
+   * T/R @ 10:00 am
 
 
-## Review from Last-time:
+---
+# Today's  Material
 
    1. List of CLI commands
       ```bash
@@ -57,12 +57,46 @@
 
       <!-- PROMPT_COMMAND='(( $? == 0 )) && echo success'  -->
 
----
-# Today's  Material
-  1. Make sure everyone is up-to-speed
-     - The command line
-     - Your comp122 environment
-     - Walking through the logistics of git & assignments
+   1. Git (for MW1130)
+       - A version control system (VCS) that utilizes a repository
+       - repository: a complete copy of an entire project _throughout_ its lifetime  
+       - commit:  a specific point in time in the life of a repository
+
+     - Command reference `open ../reference/git-cheatsheet.png` and Major Components
+        - remote repository (origin/main) (upstream)
+        - local repository 
+        - staging/index
+        - working directory
+
+     - Additional Concepts: (Foreshadowing future stuff)
+       - branch:  an offshoot of "official" evolutionary path of the repository
+         - merge: a commit point where branch information is combined with another branch
+
+   1. SSH
+      - secure connection to a remote resources
+      - Authentication
+        - something that you know
+        - something about you
+        - something that you have
+      - SSL: secure socket layer (deprecated)
+      - TLS: transport layer security (also known as SSL)
+
+   1. Name: My First MD Assignment
+      1. Assignments.md excerpt
+         - Status: Released, but not Assigned
+         - Deliverable ID: 02-
+         - Public_URL: https://github.com/COMP122/02-first-MD-assignment-public
+         - Invitation URL: https://classroom.github.com/a/5mXbyUv_
+         - Due Date: Sep 06 23:59:59
+
+      1. Review of Structure of the Repository
+      1. README.md
+      1. md_assignment_workflow.md
+      1. Review `make`
+         - or maybe not
+         - just pretend it's a button on the GUI you need to click, i.e., more later.
+
+
 
   1. Install MIPS syntax package into sublime
      - "Install Package Control"
@@ -103,7 +137,7 @@
        - each 'temp' variable can be defined only once!
 
   1. Programming Assignment Overview
-     - https://classroom.github.com/a/DDeWVuqO
+     - URL: https://classroom.github.com/a/DDeWVuqO
      - [Workflow cheatsheet](../reference/programming_workflow.md)
 
      - Review of Structure of the Repository
@@ -111,8 +145,8 @@
      - Review `make` and `sth`
 
 
-  1. Participation Assignment (https://)
-
+  1. Participation Assignment (https://classroom.github.com/a/DDeWVuqO
+     - README.md
 
 
 ---

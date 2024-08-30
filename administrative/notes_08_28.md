@@ -83,17 +83,6 @@
      | `git checkout`     | Go backwards and forwards in time to view a version of the repo |
      | `git pull-request` | Review what your are submitting as part of the assignment       |
 
-   * SSH
-      - secure connection to a remote resources
-      - Authentication
-        - something that you know
-        - something about you
-        - something that you have
-      - SSL: secure socket layer (deprecated)
-      - TLS: transport layer security (also known as SSL)
-
-   * Assignment Walk Through
-
 
 
 ---
