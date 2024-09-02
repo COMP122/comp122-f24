@@ -36,7 +36,8 @@ Note that Section 4 will be covered in concurrently with the other section of th
 |   x    | 12/09 | Review, Take home Final | **FINALS**          |                       |
 
 ## Notes:
-   1. Labor Day is 9/02 -- campus is closed, No class on this Monday nor Tuesday
-   1. Veterans Day is 11/11 -- campus is closed, No class on this Monday nor Tuesday
-   1. Thanksgiving is 11/28 -- campus is closed, No class on this Thursday nor Wednesday
-   1. There is a possibility that the Prof will need to be on travel Sept 23 -- 26
+   1. Labor Day is 9/02 -- campus is closed, No class on this Monday nor Tuesday.
+   1. The 10/8 lecture will be cut short, and the lab session will be delay (or cancelled).   
+   1. Veterans Day is 11/11 -- campus is closed, No class on this Monday nor Tuesday.
+   1. Thanksgiving is 11/28 -- campus is closed, No class on this Thursday nor Wednesday.
+
