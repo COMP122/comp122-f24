@@ -18,6 +18,13 @@
    * M/W @ 10:00 am
 
    * T/R @ 10:00 am
+     - how do I launch sublime text from the CLI?
+      ```bash
+      subl notes_08_03.md
+      subl .
+      ```
+     - where subl located on windows?
+
 
 
 ---
