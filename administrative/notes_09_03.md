@@ -8,39 +8,16 @@
       - List of CLI Commands
    1. Git (for MW1130)
    1. SSH
-   1. MD Assignment Walk Through
    1. Install MIPS syntax package into sublime
+   1. MD Assignment Walk Through
    1. PEMDAS and Three Address Code (next time?)
    1. Programming Assignment Overview (next time?)
 
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W @ 10:00 am
-     - Where are the notes?
-       - ~/classes/comp122/adminstrative 
-     - What is the authorative location to find the Due Date of an assignment?
-       - ~/classes/comp122/deliverables/assignments.md
-     - how do I go back on the CLI, with regard to a directory?
-     - how do I go up on the CLI, with regard to a directory?
-       ```bash
-       cd ..
-       ```
-
-
 
    * T/R @ 10:00 am
-     - how do I launch sublime text from the CLI?
-      ```bash
-      subl notes_08_03.md
-      subl .
-      ```
-     - where subl located on windows?
-       - they moved again!
-       - but you ant to install it on Ubuntu
-         ```bash
-         sudo apt install subl-text
-         snap install subl-text
-         ```
 
 
 ---
@@ -50,24 +27,24 @@
       ```bash
       cd
       chsh
-      cp, mv    # cp A /tmp/
+      cp; mv    # cp A /tmp/
       echo
       git
-      git add
+      git add; git rm
       git clone
       git commit
       git config --global --list
       git config --list
       git log
-      git push
+      git push              # git fetch; git merge 
       git status
       git branch
       git checkout
-      ls -l -t -a, ls -lta
+      ls -l -t -a
       mars
       mips_subroutine
       java_subroutine
-      mkdir, rmdir, rm -ri
+      mkdir, rmdir, rm -r
       open                   # start
       pbcopy                 # clip
       pwd
@@ -75,7 +52,7 @@
       ssh
       ssh-keygen
       subl
-      touch, rm
+      touch; rm
       ```
 
       <!-- PROMPT_COMMAND='(( $? == 0 )) && echo success'  -->
@@ -103,7 +80,7 @@
         - something that you have
       - SSL: secure socket layer (deprecated)
       - TLS: transport layer security (also known as SSL)
-      - PKI: Public Key Infrastructure
+      - PKI: public key infrastructure
 
    1. Name: My First MD Assignment
       1. Assignments.md excerpt
@@ -119,6 +96,8 @@
       1. Review `make`
          - or maybe not
          - just pretend it's a button on the GUI you need to click, i.e., more later.
+
+
 
   1. Install MIPS syntax package into sublime
      - "Install Package Control"
