@@ -40,11 +40,11 @@
       git status
       git branch
       git checkout
-      ls -l -t -a
+      ls -l -t -a; ls -lta;  ls --color="always"
       mars
       mips_subroutine
       java_subroutine
-      mkdir, rmdir, rm -r
+      mkdir; rmdir; rm -r
       open                   # start
       pbcopy                 # clip
       pwd
