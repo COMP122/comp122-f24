@@ -47,7 +47,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Status: Unassigned
    - Deliverable ID: 40-
    - Invitation URL:
-   - Due Date: Sunday, Dec 15 23:59:59
+   - Due Date: Sunday, Dec 15 23:59 PDT
 
 
 ---
@@ -67,20 +67,20 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Deliverable ID: 02-
    - Public_URL: https://github.com/COMP122/02-first-MD-assignment-public
    - Invitation URL: https://classroom.github.com/a/5mXbyUv_
-   - Due Date: Sep 06 23:59:59
+   - Due Date: Sep 06 23:59 PDT
 
 
 1. Name: Mathematical Review (Credit/No Credit)
    - Status: Released, but not Assigned
    - Deliverable ID: 03-
    - Invitation URL: https://classroom.github.com/a/vI8CO8Ez
-   - Due Date: Sep 06 23:59:59
+   - Due Date: Sep 06 23:59 PDT
 
 1. Name: My First Programming Assignment
    - Status: AReleased, but not Assigned
    - Deliverable ID: 04-
    - Invitation URL: https://classroom.github.com/a/DDeWVuqO
-   - Due Date: Sep 11 23:59:59 PDT
+   - Due Date: Sep 11 23:59 PDT
 
 ---
 

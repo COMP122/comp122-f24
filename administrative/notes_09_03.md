@@ -88,7 +88,7 @@
          - Deliverable ID: 02-
          - Public_URL: https://github.com/COMP122/02-first-MD-assignment-public
          - Invitation URL: https://classroom.github.com/a/5mXbyUv_
-         - Due Date: Sep 06 23:59:59
+         - Due Date: Sep 06 23:59 PDT
 
       1. Review of Structure of the Repository
       1. README.md
