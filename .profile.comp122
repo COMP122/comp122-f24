@@ -11,9 +11,14 @@ export GIT_EDITOR
 export SUBLIME_BIN
 export SUBLIME
 
+alias mdview=~/go/bin/mdview
+
+#export MDVIEW_DIR=$HOME/.mdview-temp
+export PATH="$HOME/go/bin:$PATH"
+
+
 export MIPS_SUBROUTINE_HOME=${COMP122_HOME}
 export STH_HOME=${COMP122_HOME}
-
 
 export LAUNCH=open
 export CLIP_COPY
@@ -84,7 +89,7 @@ function comp122-keygen () {
    return $?
 }
 
-PATH="${COMP122_BIN}:${SUBLIME_BIN}:$PATH"
+PATH="${COMP122_BIN}:${SUBLIME_BIN}:/usr/local/go/bin:$PATH"
 GIT_EDITOR="$SUBLIME"
 
 source ${COMP122_BIN}/utilities.bash
