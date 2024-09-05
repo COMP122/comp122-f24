@@ -1,4 +1,4 @@
-# COMP122 Lecture Notes: September 5, 2023
+# COMP122 Lecture Notes: September 5, 2024
 
 ## Announcements:
    1. Because of No class on Monday September 2, 2024
