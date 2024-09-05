@@ -97,7 +97,8 @@
          - or maybe not
          - just pretend it's a button on the GUI you need to click, i.e., more later.
 
-
+---
+#### This is where we left off
 
   1. Install MIPS syntax package into sublime
      - "Install Package Control"

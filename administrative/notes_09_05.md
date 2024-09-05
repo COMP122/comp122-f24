@@ -3,28 +3,80 @@
 ## Announcements:
    1. Because of No class on Monday September 2, 2024
       T/R has an extra day -- which is today.
-
+   1. For Ubuntu User:
+      1. subl does not launch via the CL?
+         - https://kskroyal.com/run-ubuntu-24-04-on-windows-11-with-gui-using-wsl/
+      1. A markdown view for Ubuntu
+         - https://snapcraft.io/install/mdview/ubuntu
+         - mdview {filename}
 
 ## Today's Agenda:
    1. Review, More Git, and Individual Support
-
+   1. Install MIPS syntax package into sublime
+   1. MD Assignment Walk Through
+   1. PEMDAS and Three Address Code
+   1. Programming Assignment Overview
 
 ## Questions from Last Lecture/Lab, etc.:
-   * T/R @ 9:00 am
-     - TAC: 
-     - How do I save my own notes
+   * M/W @ 10:00 am
 
-
+   * T/R @ 10:00 am
 
 # Today's Lecture Material
   1. Review Questions
   1. Oh my Git
-  1. Git Discussion
-  1. 
+  1. Subl support from the CLI
+     - Need help?
 
-# Today's Lab Material
-  1. Time to help individual students during lab
+  1. Install MIPS syntax package into sublime
+     - "Install Package Control"
+        * cmd+shift+p  or Windows+shift+p or Ctrl+shift+p
+        * Install Package Control
+      - Install mips syntax
+        * cmd+shift+p or Windows+shift+p
+        * Package Control: Install Package 
+        * mips-syntax
+      - Associate Java Syntax with all .j files within Sublime Text
+        * New File (%N)
+        * Save as `equation.j`
+        * Bottom-right-hand corner -- select desired syntax
+          - Open all with current extension as...
+          - Select 'java'
 
+  1. PEMDAS and Three Address Code (TAC)
+     1. Run the command:  `subl -n quad.j`
+
+     1. Solve the following equation:  ``a^2*x + b*x + c = 0``
+
+        ![Quadratic Formula](quadratic_formula.png)
+
+     1. Rewrite into a single linear equation: ``x = expression;``
+        - use only the following operators: () * / + -
+        - use the sqrt() function
+
+     1. Rewrite into a series of linear equation
+        - Each equation must be in TAC (Three Address Code)
+        - That is to say, each equation must be in the one of the following forms:
+          * variable = literal;
+          * variable = variable;
+          * variable = variable (op) variable;
+          * variable = func(variable);
+
+     * Requirements:
+       - 'temp' variables are named: t1, t2, t3, ...
+       - each 'temp' variable can be defined only once!
+
+  1. Programming Assignment Overview
+     - URL: https://classroom.github.com/a/DDeWVuqO
+     - [Workflow cheatsheet](../reference/programming_workflow.md)
+
+     - Review of Structure of the Repository
+     - Review of the `countdown` Program
+     - Review `make` and `sth`
+
+
+  1. Participation Assignment (https://classroom.github.com/a/DDeWVuqO
+     - README.md
 
 ---
 ## Resources
