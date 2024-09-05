@@ -4,7 +4,7 @@
    1. Because of No class on Monday September 2, 2024
       T/R has an extra day -- which is today.
    1. For Ubuntu User:
-      1. subl does not launch via the CL?
+      1. subl does not launch via the CLI?
          - https://kskroyal.com/run-ubuntu-24-04-on-windows-11-with-gui-using-wsl/
       1. A markdown view for Ubuntu
          - https://snapcraft.io/install/mdview/ubuntu
@@ -24,10 +24,17 @@
    * M/W @ 10:00 am
 
    * T/R @ 10:00 am
+     -
+
+
 
 # Today's Lecture Material
   1. Review Questions
-  1. Oh my Git
+  1. Oh my Git:  
+     ```bash
+     oh_my_git
+     ```
+
   1. Subl support from the CLI
      - Need help?
 
