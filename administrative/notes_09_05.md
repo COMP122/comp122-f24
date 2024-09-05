@@ -9,6 +9,9 @@
       1. A markdown view for Ubuntu
          - https://snapcraft.io/install/mdview/ubuntu
          - mdview {filename}
+   1. MacOS users might want to install mdview -- I plan on switching
+      - install go: `https://go.dev/doc/install`
+      - install mdview: `sudo go install github.com/mapitman/mdview@latest`
 
 ## Today's Agenda:
    1. Review, More Git, and Individual Support
