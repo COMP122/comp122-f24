@@ -26,14 +26,15 @@
    * T/R @ 10:00 am
      -
 
-
-
 # Today's Lecture Material
   1. Review Questions
   1. Oh my Git:  
      ```bash
      oh_my_git
      ```
+     * the above only works for MacOS
+     * for windows users:
+       - download: https://ohmygit.org
 
   1. Subl support from the CLI
      - Need help?
@@ -45,7 +46,7 @@
       - Install mips syntax
         * cmd+shift+p or Windows+shift+p
         * Package Control: Install Package 
-        * mips-syntax
+        * 'mips syntax'
       - Associate Java Syntax with all .j files within Sublime Text
         * New File (%N)
         * Save as `equation.j`
