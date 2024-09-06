@@ -79,7 +79,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 1. Name: My First Programming Assignment
    - Status: Released, but not Assigned
    - Deliverable ID: 04-
-   - Invitation URL: https://classroom.github.com/a/DDeWVuqO
+   - Invitation URL:
    - Due Date: Sep 11 23:59 PDT
 
 ---
