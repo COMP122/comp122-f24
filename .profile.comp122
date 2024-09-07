@@ -45,8 +45,11 @@ case "${_OS}" in
      ;;
    GNU/Linux ) # Ubuntu
      #SUBLIME_BIN='/Applications/Sublime Text.app/Contents/SharedSupport/bin'  
+     #sudo apt-get -y install xdg-utils
+     alias open="xdg-open"
      SUBLIME='subl -w -n'
-     #CLIP_COPY="pbcopy"
+	#sudo apt-get install xclip -y
+     CLIP_COPY="xclip -selection clipboard"
      ;;
 esac
 
