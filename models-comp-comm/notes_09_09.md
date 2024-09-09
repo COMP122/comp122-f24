@@ -95,6 +95,7 @@
 
   1. Programming Assignment Overview
      - URL: https://classroom.github.com/a/O4w6B-Ly
+      
      - [Workflow cheatsheet](../reference/programming_workflow.md)
 
      - Review of Structure of the Repository
