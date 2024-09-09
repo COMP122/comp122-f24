@@ -94,8 +94,7 @@
        - each 'temp' variable can be defined only once!
 
   1. Programming Assignment Overview
-     - nit URL: https://classroom.github.com/a/DDeWVuqO
-     - cruft
+     - URL: https://classroom.github.com/a/O4w6B-Ly
      - [Workflow cheatsheet](../reference/programming_workflow.md)
 
      - Review of Structure of the Repository
