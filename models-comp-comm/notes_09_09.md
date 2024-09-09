@@ -20,13 +20,32 @@
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W @ 10:00 am
+     - How do I know if....I submitted things correctly?
+       1. run `make validate`: checks minimum requirements
+       1. run `make confirm`: 
+          - `make validate`, and 
+          - shows you what the prof sees
+       1. check the web page:
 
    * T/R @ 10:00 am
 
 
 ## Review from Last-time:
 
-   1. 
+   1. Submission of assignment via the CLI
+      ```bash
+      cp assignment.md submission.md
+      subl submission.md
+      make response_key
+      git add {filename}
+      git commit -m {message}
+      make validate
+      git pull ; git push
+      git push origin submitted
+      make confirm
+      ```
+   1. MIPS packages..
+   1. PEMDAS -- (not quite on MW)
 
 ---
 # Today's Lecture Material
@@ -75,7 +94,8 @@
        - each 'temp' variable can be defined only once!
 
   1. Programming Assignment Overview
-     - URL: https://classroom.github.com/a/DDeWVuqO
+     - nit URL: https://classroom.github.com/a/DDeWVuqO
+     - cruft
      - [Workflow cheatsheet](../reference/programming_workflow.md)
 
      - Review of Structure of the Repository
