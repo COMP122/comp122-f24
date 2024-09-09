@@ -102,8 +102,6 @@
      - Review `make` and `sth`
 
 
-  1. Participation Assignment (https://classroom.github.com/a/DDeWVuqO
-     - README.md
 
 ---
 ## Resources
