@@ -78,7 +78,11 @@
        - each 'temp' variable can be defined only once!
 
   1. Programming Assignment Overview
-     - URL: https://classroom.github.com/a/DDeWVuqO
+     - URL: https://classroom.
+
+     github.com/a/DDeWVuqO
+
+
      - [Workflow cheatsheet](../reference/programming_workflow.md)
 
      - Review of Structure of the Repository
