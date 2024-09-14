@@ -25,15 +25,25 @@
 
 ## Review from Last-time:
    1. Models
-      - they are essential to providing a service to our customers
-      - needed to understand and describe a problem
-      - needed to understand and to implement a solution
-      - needed to understand and to reason about system failures
+      * MW class
+        - very important
+         - the world is complex and we need to make it simpler to under it.
+         - we can devise a solution
+         - we can implement a solution
+         - we can debug/maintain that solution
+      * TR
+        - they are essential to providing a service to our customers
+        - needed to understand and describe a problem
+        - needed to understand and to implement a solution
+        - needed to understand and to reason about system failures
 
-   1. Layers of Communication
+   1. Layers of Communication: Networking Model
       - four layers  for TCP/IP model
       - seven layers for OSI/ISO model
       - TCP/IP is a subset of the OSI/ISO model
+      - Different protocols at each layer
+      - Different analogies at each layer
+
 
    1. The names of layers
       1. Physical             | flash light tag                   |  interface | symbols
@@ -45,7 +55,6 @@
       5. (Session)
       6. (Presentation)
       7. Application                                              | URL
-
 
    1. Models of COMP
 
