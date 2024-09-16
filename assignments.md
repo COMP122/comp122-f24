@@ -80,7 +80,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Status: Released, but not Assigned
    - Deliverable ID: 04-
    - Invitation URL: https://classroom.github.com/a/O4w6B-Ly
-   - Due Date: Sep 11 23:59 PDT
+   - Due Date: Sep 17 23:59 PDT
 
 ---
 
