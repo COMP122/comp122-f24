@@ -47,7 +47,8 @@
 
 
 ## Review from Last-time:
-   1. Models of COMP
+### Monday's Class
+  1. Models of COMP
       - theoretical models:
         4. Turing Machine              Recursively Enumerable
         3. Limited Bounded Automate    Context Sensitive Language
@@ -78,7 +79,46 @@
       - MIPS
       - ARM7 & ARM8
       - x86, `M[123]` 
+### Tuesday's Class
+   1. Different Models of Computation
+      4. Turing Machine (can compute anything that is computable)
+         - RE: Recursively Enumerable
+      3. LBA: Linear Bounded Automata
+         - CSL: Context Sensitive Language
+      2. PDA: Push Down Automata
+         - CFL: Context Free Langue (Java is an example of a CFL)
+      1. FA: Finite State Machine
+         - Regular Expressions (Regular Language)
 
+      ---
+
+      -1. Sequential Circuits (we have notation of State and Time)
+          - none that the Prof could find
+      -2. Combinational Circuits (evaluate any function that exists)
+          - Boolean Algebra 
+
+   1. Universal Computer
+      - important because -- this is our field of study
+        - closes theoretical model to what we use every day 
+      - Turing Machine but
+        - infinite tape is transferred into limited MEMORY (really its an LBA)
+        - firmware: control is specialized (can be program, sometimes)
+        - operating system: special program
+        - user-program: generic program 
+
+   1. Notion of Correctness:
+      - partially correct: e.g., OS, means: the correct answer is provided when the program halts
+      - total correct: the correct answer is provide when the programs, and the program is guaranteed to halt.
+
+   1. Abstract Machines
+      - Theoretical --> Abstract --> Physical
+      - von Neumann: CPU <-> MEM, von Neumann bottleneck, limits the speed of computation
+      - Havard: rearranged the piece, separate data & instruction memory, control unit services a traffic cop
+
+   1. Physical 
+      - ARM7 & ARM 9
+      - MIPS
+      - x86
 
 
 ---
@@ -92,7 +132,7 @@
 
   1. Programming Assignment Overview
      - URL: https://classroom.github.com/a/O4w6B-Ly
-     - [Workflow cheatsheet](../reference/programming_workflow.md)
+     - [Workflow cheat-sheet](../reference/programming_workflow.md)
 
   1. Pickup where we left off -- if not done
      - MIPS code
