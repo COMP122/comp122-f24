@@ -1,4 +1,4 @@
-# COMP122 Lecture Notes: September 15, 2024
+# COMP122 Lecture Notes: September 16, 2024
 
 ## Announcements:
    1. Setup Issues: Got Any?
