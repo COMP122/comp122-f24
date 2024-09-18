@@ -67,7 +67,6 @@
         - the memory
         - the output file
 
- 
   1. MIPS Execution Cycles
      1. Fetch:
      2. Decode:
@@ -105,20 +104,25 @@
   1. Intro to Control Flow
      - assembly-programming/slide_presentations/intro_to_control_flow.pdf
 
-  1. The declaration for min and max
+  1. The declaration for min, max, average
      ```java
      // type signature
      public static int min(int a, int b);
+     public static int max(int first, int second);
      ```
 
      ```mips
                 .text
                 .globl min     # int <- int x int
                                # $v0 <- $a0 x $a1
+
+                .text 
+                .globl max     # int <- int x int
+                               # $v0 <- $a0 x $a1
      ```
   1. The definition of min and max
 
-     1. Java
+     1. Java's min
      ```java
      {
          int min;
@@ -131,35 +135,37 @@
          }
          return min;
      }
-
      ```
 
-     1. java_tac
+     1. Java's max
      ```java
      {
-         int min;
+        int max; 
 
-
-                 min = 0;
-
-       init:     ;          
-       bob:      if (a <= b) {
-       cons:        ;
-                    min = a;
-                    break bob;
-                 } else {
-       alt:         ;
-                    min = b;
-                    break bob;
-                 }
-       done:     ;
-                 return min;
+        max = 0;
+        if (a <= b) {
+          max = b;
+        } else {
+          max = a;
+        }
+        return max;
      }
      ```
 
+     1. Java's average
+     ```java
+
+     ```
+
+     1. Java-tac
+        - see: assembly_programming/code_09_18/max.j
+        - see: assembly_programming/code_09_18/min.j
+        - see: assembly_programming/code_09_18/average.j
      1. mips
-     ```
-     ```
+        - see: assembly_programming/code_09_18/max.s
+        - see: assembly_programming/code_09_18/min.s
+        - see: assembly_programming/code_09_18/average.s     
+
 ---
 ## Resources
    * reference/TAC_transformation/if-then-else2TAC.md
@@ -207,7 +213,7 @@
   | `!=`         | `ne`          | `eq`            |  `==`         |
   | `==`         | `eq`          | `ne`            |  `!=`         |
   | `>=`         | `ge`          | `lt`            |  `<`          |
-  | `>`          | `gt`          | `le`            |  `>=`         |
+  | `>`          | `gt`          | `le`            |  `<=`         |
    
 
 ---
