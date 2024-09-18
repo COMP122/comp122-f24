@@ -106,7 +106,7 @@ Note that sometimes there is not a 100% direct correlation between your JAVA TAC
       | `!=`         | `ne`          | `eq`            |  `==`         |
       | `==`         | `eq`          | `ne`            |  `!=`         |
       | `>=`         | `ge`          | `lt`            |  `<`          |
-      | `>`          | `gt`          | `le`            |  `>=`         |
+      | `>`          | `gt`          | `le`            |  `<=`         |
    
 
 
