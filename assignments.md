@@ -63,7 +63,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Due Date: ASAP
 
 1. Name: My First MD Assignment
-   - Status: Assigned
+   - Status: Closed
    - Deliverable ID: 02-
    - Public_URL: https://github.com/COMP122/02-first-MD-assignment-public
    - Invitation URL: https://classroom.github.com/a/5mXbyUv_
@@ -71,13 +71,13 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 
 
 1. Name: Mathematical Review (Credit/No Credit)
-   - Status: Assigned
+   - Status: Closed
    - Deliverable ID: 03-
    - Invitation URL: https://classroom.github.com/a/vI8CO8Ez
    - Due Date: Sep 06 23:59 PDT
 
 1. Name: My First Programming Assignment
-   - Status: Released, but not Assigned
+   - Status: Closed
    - Deliverable ID: 04-
    - Invitation URL: https://classroom.github.com/a/O4w6B-Ly
    - Due Date: Sep 17 23:59 PDT
@@ -86,13 +86,13 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 
 <h3 id="models">Models of Computation and Communication (Section 1)</h3>
 
-1. Assignment: practice-quiz-models
-   - Status: Unassigned
+1. Assignment: practice-quiz
+   - Status: Assigned
    - Additional Information: 
      - It's a practice quiz -- time yourself
-   - Deliverable ID: 11-
-   - Invitation URL: 
-   - Due Date: 
+   - Deliverable ID: 11-practice-quiz
+   - Invitation URL: https://classroom.github.com/a/oD2pD7Vi
+   - Due Date: Sep 25 23:59 PDT
 
 ---
 
