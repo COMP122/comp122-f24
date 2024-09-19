@@ -90,6 +90,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Status: Assigned
    - Additional Information: 
      - It's a practice quiz -- time yourself
+     - Note that the actual quiz will be smaller in size
    - Deliverable ID: 11-practice-quiz
    - Invitation URL: https://classroom.github.com/a/oD2pD7Vi
    - Due Date: Sep 25 23:59 PDT
