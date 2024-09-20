@@ -16,11 +16,11 @@
 ## Today's Agenda:
    1. Lecture: 
       - Instruction Set Architecture Part II
-      - Processes
+      - ~Processes~
 
    1. Lab:
       - Intro to Control Flow
-      - Java --> Java_tac --> mips:  min, max
+      - java --> java_tac --> mips:  min, max, abs
 
 
 ## Questions from Last Lecture/Lab, etc.:
@@ -28,13 +28,13 @@
      - No Questions..
 
      ```text
-     Bad news is Good news,
-       Good news is No news, 
-         No news is Bad news
+     No news is Bad news
+       Bad news is Good news,
+          Good news is No news, 
      ```
 
    * T/R @ 10:00 am
-
+     - 
 
 
 ## Review from Last-time:
@@ -89,7 +89,32 @@
       - executes up to 5 instructions at a time in pipelined fashion
 
 ### Tuesday's Class
- 
+   1. MIPS micro architecture.
+      - five stages
+        1. Fetch: reads one instruction from memory and placed into the IR
+        2. Decode / (Register Fetch): sets controls to allow data to flow to the ALU
+        3. Execute: Actives the ALU which evaluates a function
+        4. Memory Access: either read or writes to memory
+        5. Write Back: writes the resulting data to a register
+           - data comes from ALU or from Memory
+   1. Generalized Execution cycle
+      - Fetch, decode, execute, write-back
+
+   1. RISC (Reduced Instruction Set Computer) & CISC (Complex Instruction Set Computer set)
+      - RISC:  less instructions in favor of other stuff
+      - CISC:  lots of interesting instructions in favor of other stuff
+
+   1. ISA : instruction set architecture
+      - its a layer of abstract just above the physical hardware
+      - its akin to an API
+   1. Characteristic of an ISA
+      1. instructions: number of, syntax, and the semantics
+      1. supported data types: ints (three sizes), binary32, binary64, ~char
+      1. register: number of, size, purpose
+      1. memory: layout, size, endianness
+      1. OS interface: how we communication with the OS
+
+
 
 ---
 # Today's Lecture Material
@@ -100,15 +125,34 @@
 
 
 # Today's Lab Material
+  1. Classroom control
+     - Don't stand on ceremony
+
+  1. OS interface
+
+     - subroutine call
+     ```
+        li $a0, 5                        # x = min(5, 3);
+        li $a1, 3
+        jal min
+        move x, $v0
+     ```
+     - syscall (system call)
+     ```
+     move $a0, x                         #  print_int(x)
+     li $v0, 5     # jal print_int
+     syscall 
+     ```
 
   1. Intro to Control Flow
      - assembly-programming/slide_presentations/intro_to_control_flow.pdf
 
-  1. The declaration for min, max, average
+  1. The declaration for min, max, abs
      ```java
      // type signature
      public static int min(int a, int b);
      public static int max(int first, int second);
+     public static int abs(int a);
      ```
 
      ```mips
@@ -119,8 +163,12 @@
                 .text 
                 .globl max     # int <- int x int
                                # $v0 <- $a0 x $a1
+
+                .text
+                .globl abs     # int <- int 
+                               # $v0 <- $a0 
      ```
-  1. The definition of min and max
+  1. The definition of min, max, abs
 
      1. Java's min
      ```java
@@ -152,19 +200,29 @@
      }
      ```
 
-     1. Java's average
+     1. Java's abs
      ```java
+     {
+       int answer;
 
+       answer = 0;
+       if ( a < 0 ) {
+          answer = a * -1;
+       } else {
+          answer = a;
+       }
+       return answer;
+     }
      ```
 
      1. Java-tac
         - see: assembly_programming/code_09_18/max.j
         - see: assembly_programming/code_09_18/min.j
-        - see: assembly_programming/code_09_18/average.j
+        - see: assembly_programming/code_09_18/abs.j
      1. mips
         - see: assembly_programming/code_09_18/max.s
         - see: assembly_programming/code_09_18/min.s
-        - see: assembly_programming/code_09_18/average.s     
+        - see: assembly_programming/code_09_18/abs.s     
 
 ---
 ## Resources
