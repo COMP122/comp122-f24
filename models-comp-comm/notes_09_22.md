@@ -109,7 +109,7 @@
      * mips/macros/io.s     
      * mips/macros/*frames.s (defer till later)
   1. Discussion on Stacks
-  1. Discussion on printf: reference/tidbits/print_routines.md 
+  1. Discussion on printf: tidbits/print_routines.md 
 
   1. If-then-else Review
      - assembly_programming/code_09_18/*
