@@ -2,7 +2,7 @@
 
 ## Announcements:
    1. Quiz: 10-
-      - End of next week (Sept 27), details to follow
+      - End of this week (Sept 27), details to follow
       - In general, details to follow
         - open resource
         - online 
@@ -24,6 +24,7 @@
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W @ 10:00 am
+     - 
 
    * T/R @ 10:00 am
 
@@ -63,8 +64,32 @@
         syscall 
         ```
 
-### Monday's Class
-### Tuesday's Class
+### MW's Class
+
+  1. Types of instructions
+     - native
+       1. arithmetic and logic
+       1. data transfers
+       1. basic control flows
+
+     - idiomatic 
+       - pleasing to see...
+         * beq $zero, $zero, label   # versus
+         * b label
+     - pseudo instructions
+       - one or more instructions inserted by the assembler
+
+     - macro instructions
+       - user-level pseudo instructions 
+
+     - subroutine
+       - jal, jr, j
+       - plus a bunch of conventions to follow for registers
+
+   1. MIPS ISA architecture (reviewed)
+
+
+### TR's Class
 
 
 ---
@@ -72,39 +97,11 @@
 
   1. See Slides
      -  models-comp-comm/slide*/processes*.pdf
-
-  1. Processes
-     - Files
-       - Output redirection:  1>, 1>>, 2>, 2>>
-         * ls > output 
-         * ls >> output
-       - Input redirection:   0<, 0<<, 0<<< 
-         * cat < filename
-         * sort <<EOF
-           the input is between
-           the first EOF and 
-           the last EOF
-           EOF
-         * base64 <<< word
-       - Pipelining: |
-         * ls -R | sort | uniq -c | sort -n
-     - Environment
-       - printenv
-       - export NAME=Value 
-     - Return Information
-       - echo $?
-     - Command line execution
-       - Sequential:  ;
-         * git pull ; date ; git push ; date
-       - Concurrently:    &
-         * git pull & date & git push & date
-       - Conditional:  &&, ||, 
-         * git commit -m 'update' && echo success
-         * git commit -m 'update' || echo failure
-
-
+  1. Finish up slides in Lab
+  
 
 # Today's Lab Material
+  1. Finish lecture slides
 
   1. Macros: (see assembly*/slide*/macros_stack.pdf)
      * mips/macros/syscalls
