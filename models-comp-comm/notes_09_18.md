@@ -114,8 +114,6 @@
       1. memory: layout, size, endianness
       1. OS interface: how we communication with the OS
 
-
-
 ---
 # Today's Lecture Material
 
@@ -129,25 +127,25 @@
      - Don't stand on ceremony
 
   1. OS interface
-
      - subroutine call
-     ```
-        li $a0, 5                        # x = min(5, 3);
-        li $a1, 3
-        jal min
-        move x, $v0
-     ```
+       ```mips
+       li $a0, 5                        # x = min(5, 3);
+       li $a1, 3
+       jal min
+       move x, $v0
+       ```
      - syscall (system call)
-     ```
-     move $a0, x                         #  print_int(x)
-     li $v0, 5     # jal print_int
-     syscall 
-     ```
+       ```mips
+       move $a0, x                         #  print_int(x)
+       li $v0, 5     # jal print_int
+       syscall 
+       ```
 
   1. Intro to Control Flow
      - assembly-programming/slide_presentations/intro_to_control_flow.pdf
 
-  1. The declaration for min, max, abs
+  1. The declaration for min, max, abs:
+
      ```java
      // type signature
      public static int min(int a, int b);
@@ -171,6 +169,7 @@
   1. The definition of min, max, abs
 
      1. Java's min
+
      ```java
      {
          int min;
@@ -186,6 +185,7 @@
      ```
 
      1. Java's max
+
      ```java
      {
         int max; 
@@ -240,10 +240,11 @@
    * If-then-else Statements:
 
    * Reference labels
+     * {init}: the statement *BEFORE* the `if-then-else` statement
      * {cond}: the line of code that contains: `if ( a <cond> b)`
      * {cons}: the consequence code block for the `if-then-else` statement
      * {alt}:  the alternative code block for the `if-then-else` statement
-     * {done}: the statement after `if-then-else` statment
+     * {done}: the statement *AFTER* the `if-then-else` statment
      
 
   | TAC Control Flow                  | MIPS Instruction           |
