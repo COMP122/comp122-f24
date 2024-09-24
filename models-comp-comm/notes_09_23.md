@@ -1,4 +1,4 @@
-# COMP122 Lecture Notes: September 22, 2024
+# COMP122 Lecture Notes: September 23, 2024
 
 ## Announcements:
    1. Quiz: 10-
@@ -104,7 +104,7 @@
   1. Finish lecture slides
 
   1. Macros: (see assembly*/slide*/macros_stack.pdf)
-     * mips/macros/syscalls
+     * mips/macros/syscalls.s
      * mips/macros/stack.s     
      * mips/macros/io.s     
      * mips/macros/*frames.s (defer till later)
