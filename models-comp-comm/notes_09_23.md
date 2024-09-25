@@ -10,7 +10,7 @@
         - 48 hour window to take the quiz
    1. MD Assignment: 11-
       - Invitation URL: https://classroom.github.com/a/oD2pD7Vi
-      - Due Date: Sep 25 23:59 PDT 
+      - Due Date: Sep 25 23:59 PDT (Thursday)
 
 
 ## Today's Agenda:
@@ -27,6 +27,7 @@
      - 
 
    * T/R @ 10:00 am
+     - 
 
 
 ## Review from Last-time:
@@ -90,6 +91,35 @@
 
 
 ### TR's Class
+   1. ISA Instruction Set Architecture
+      1. What is an ISA ?
+         - A layer of abstraction just above the hardware
+      1. Characteristics of an ISA
+         1. A set of instructions and their semantics
+         2. The data types that are directly supported by the hardware
+         3. The number of registers, their names, size, and purpose.
+         4. The orientation of memory, its alignment, its endianness, and size, and layout
+         5. The protocol by which we make request to the OS via a defined interface.
+
+   1. More detail about the MIPS ISA
+      1. basic instruction:  
+         1. arithmetic and logic (controlling the CPU)
+         1. data transfers to and from registers/memory
+         1. basic control flow: b, b<cond>, j, jal, jr
+      1. memory layout
+         - size = 0x 1 0000 0000 ( 0x 0000 0000 .. 0x ffff ffff )
+         - orientation: 0x 0000 0000 is at the bottom
+         - big endian
+         - alignment -- deferred 
+         - layout:  text, data, heap, and stack
+      1. OS interface (see above)
+
+   1. Generalized Execute Steps: Fetch, Decode, Execute, (Mem Access), Write-Back
+   1. What is a kernel?
+      - the most important part of the OS, 
+      - the part of the OS that remains in memory 
+   1. RISC (Reduced Instruction) versus CISC (Complex Instruction)
+      - design philosophy 
 
 
 ---
@@ -104,10 +134,10 @@
   1. Finish lecture slides
 
   1. Macros: (see assembly*/slide*/macros_stack.pdf)
-     * mips/macros/syscalls.s
-     * mips/macros/stack.s     
-     * mips/macros/io.s     
-     * mips/macros/*frames.s (defer till later)
+     * include/syscalls.s
+     * include/stack.s     
+     * include/io.s     
+     * include/*frames.s (defer till later)
   1. Discussion on Stacks
   1. Discussion on printf: tidbits/print_routines.md 
 
