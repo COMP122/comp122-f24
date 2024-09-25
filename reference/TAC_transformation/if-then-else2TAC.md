@@ -105,4 +105,4 @@ Applying the above algorithm results in the following template:
    done:    ;
    ```
 
-[^opt]: Only the {alt} and {done} labels are required.
+[^opt]: Only the {cond}, {alt} and {done} labels are required.

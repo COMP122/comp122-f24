@@ -339,7 +339,7 @@ EOF
     echo -n "    ${SUB_RETURN_TYPE} "
   fi
   echo "\$f0 = \$v0;"
-  echo "exit_status = \$v0;"
+  echo "    exit_status = \$v0;"
 
   echo
   echo "    // List of AFTER actions"  

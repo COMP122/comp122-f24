@@ -2,10 +2,13 @@
 
 ## Announcements:
    1. Quiz: 10-
-      - End of this week (Sept 27)
+      - Follow the process, it is part of the quiz
+        - name, account, add, commit, push
+        - subsequent interative commits at least 6 commits
+        - `make validate`
       - Released at 6:00pm on Sept 27
         * URL Inviation linke posted on #fitzgerald-f24
-      - Closed at  12:00pm on Sept 29
+      - Closed at 11:59 pm on Sept 29
       - Timelimit: 60 minutes.
         * you are responsible for timing yourself
       - DRES accomodations:

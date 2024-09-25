@@ -113,7 +113,8 @@ Note that sometimes there is not a 100% direct correlation between your JAVA TAC
 ### If-then-else Statements:
 
   * Reference labels
-     * {cond}: the line of code that contains: `if ( a <cond> b)`
+     * {init}: the implicit first line of code executed as part of the if-then-else statement.
+     * {cond}: the line of code that contains: `if (a <cond> b)`
      * {cons}: the consequence code block for the `if-then-else` statement
      * {alt}:  the alternative code block for the `if-then-else` statement
      * {done}: the statement after `if-then-else` statment
