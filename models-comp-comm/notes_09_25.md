@@ -4,14 +4,14 @@
    1. Quiz: 10-
       - Follow the process, it is part of the quiz
         - name, account, add, commit, push
-        - subsequent interative commits at least 6 commits
+        - subsequent iterative commits at least 6 commits
         - `make validate`
-      - Released at 6:00pm on Sept 27
-        * URL Inviation linke posted on #fitzgerald-f24
-      - Closed at 11:59 pm on Sept 29
-      - Timelimit: 60 minutes.
+      - Released at 6:00pm on Sept 27 (Friday)
+        * URL Invitation link posted on #fitzgerald-f24
+      - Closed at 11:59 pm on Sept 29 (Sunday)
+      - Time limit: 60 minutes.
         * you are responsible for timing yourself
-      - DRES accomodations:
+      - DRES accommodations:
         * make sure you inform me out of band
 
 ## Today's Agenda:
@@ -20,7 +20,7 @@
 
    1. Lab:
       - Loop Transformation into Java TAC
-      - Loop Translitertion into MIPS
+      - Loop Transliteration into MIPS
 
 
 ## Questions from Last Lecture/Lab, etc.:
@@ -28,14 +28,115 @@
      - 
 
    * T/R @ 10:00 am
-     - 
+     - public/private key (PKI) -- ssh uses it.
+
 
 ## Review from Last-time:
 
 ### MW's Class
+  1. Interrupts and Traps
+     - interrupt its an asynchronous event
+     - trap its a synchronous event
+  1. System Calls (e.g., read) 
+     - its a trap
+  1. Process Status Diagram: 
+     - example of FA(Q, \Sigma, q0, F)
+       1. Q is the set of states
+       1. \Sigma input alphabet (aka the transition)
+       1. q0: the initial state
+       1. F is a set of state that are deemed final
+     - transitions: members of \Sigma
+       1. admit
+       2. dispatch
+       3. interrupt
+       4. trap
+       5. completion
+       6. exit 
+     - states: members of `Q`
+       1. new
+       2. wait
+       3. running
+       4. blocked
+       5. terminate 
+
+   1. lval and rval
+      - memory is an associate array
+        - each element in the array has
+          1. an address (aka the lval)
+          1. a value associated with the element (aka the rval)
+          1. zero or more labels (i.e., names)
+
+      - lval is the address of a variable of memory
+      - rval is the value associated with the address in memory 
+
+   1. pointers: its an address, which means it stores an lval
+   1. &, and \*:  
+      - &: go lookup the lval
+      - \*: use the rval of variable as an lval and then get get the value.
+
+   1. Process:
+      1. a file of instructions (i.e., program)
+      1. set of I/O files, at least three
+         0.  stdin, System.in
+         1.  stdout, System.out
+         2.  stderr, System.err
+      1. an environment: an associative array  
+      1. a return value or exit value,  `echo $?`  
 
 ### TR's Class
+   1. FA: a 4-tuple (Q, \Sigma, q0, F)
+      - PSD as example: Process Status Diagram 
+        - modules the state of *ALL* processes managed by the OS
+        - 5 states
+          1. N: new
+          2. W: wait
+          3. R: running
+          4. T: terminate
+          5. B: blocked
+        - 6 elements of the alphabet
+          1. admit
+          2. dispatch
+          3. exit
+          4. interrupt
+          5. trap
+          6. i/o complete / service complete / trap complete
+    1. interrupts: typically generated outside your process
+       - asynchronous..
+       - OS seizes control 
+       - example:
+         ```
+         My program makes a request to the OS to set a timer.  -- that is a trap.
+         When the timmer goes off -- that is interrupt.
+         ```
+    1. trap: generated inside your process
+       - synchronous..
+       - yield control back to the OS
 
+    1. Combination Circuit versus Sequential Circuit
+       - base upon 3 functions: and, or, not
+       - Combinational Logic
+         - combine the gates in a multitude of ways -- equivalent Boolean Algebra
+       - Sequential Circuit
+         Combinational Circuit + Time + State 
+       - Feedback Loops provides a way to store info (i.e. state)
+    1. Memory
+       - array of bytes
+       - Index arrays, and Associative arrays     (lval & rval)
+         - Index: A[x] = v ;    v = A[x];  where x = 0, 1, ... max_int
+         - Associative:   A["label"] = v ; v = A["label"]
+       - an associative array of bytes at the ISA layer
+       - an index array of bytes at the physical layer
+    1. Label: associated with one byte in memory
+       - lval: the address
+       - rval: the valued stored at that address
+         ```
+         x = x + 1;
+         ```
+    1. process
+       1. environment
+       1. files
+       1. instructions/code
+       1. return value / exit value
 
 ---
 # Today's Lecture Material
@@ -90,6 +191,7 @@
 
         for (int c=top ; c>0; c--) {
            mips.print_d(c);
+           mips.print_ci('\n')
         }
         mips.print_ci('!');
         mips.print_ci('\n');
@@ -101,16 +203,71 @@
 
   1. Loop Transformation into Java TAC
      ```java tac
+     public static int count_down(int top) {
+                 int c;
+
+         init:   ;
+                 c=top;
+
+         kevin:  for (; c>0; ) {
+         bd:        ;
+                    mips.print_d(c);
+                    mips.print_ci('\n')
+         nt:        ;
+                    c = c - 1 ;   // c--;
+                    continue kevin;
+                 }
+         dn:     ;
+
+                 mips.print_ci('!');
+                 mips.print_ci('\n');
+
+
+                 return top; 
+     }
      ```
 
-  1. Loop Translitertion into MIPS
+  1. Loop Transliteration into MIPS
      ```mips
+                   .text
+                   .globl count_down
+
+
+      count_down:  nop                        # public static int count_down(int top) {
+             # v0: {return value}
+             # a0: top
+
+             # t7: c                          # int c;
+
+         init:     nop                        # ;
+                   move $t7, $a0              # c=top;
+
+         kevin:    ble $t7, $zero, done       # for (; c>0; ) {
+
+         bd:       nop                        #    ;
+                   print_d($t7)               #    print_d(c);
+                   print_ci('\n')             #    print_ci('\n')
+
+
+         nt:       nop                        #    ;
+                   subi $t7, $t7, 1           #    c = c - 1 ;   // c--;
+                   b kevin                    #    continue kevin;
+                                              # }
+         dn:       nop                        # ;
+
+                   print_ci('!')              # print_ci('!');
+                   print_ci('\n)              # print_ci('\n');
+
+                 
+                   move $v0, $a0              # return top; 
+                   jr $ra
+                                              #}
      ```
 
   1. Examples: ( see assembly_programming/code_09_25/* )
+     - factorial of _N_
      - multiplication of _N_ & _M_ via iteration
      - sum over 1 .. _N_
-     - factorial of _N_
 
 ---
 ## Resources
