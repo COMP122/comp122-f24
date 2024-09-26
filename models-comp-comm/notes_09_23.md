@@ -1,5 +1,12 @@
 # COMP122 Lecture Notes: September 23, 2024
 
+As reported by some students, when you pushed a tag, the github action did not run... This was an error on my part.
+
+In many causes, the last github action that executed was in error (i.e. a red x is ) 
+
+error -- specifically the 'submitted' tag was missing.  This then caused an error.
+
+
 ## Announcements:
    1. Quiz: 10-
       - End of this week (Sept 27), details to follow
@@ -10,7 +17,7 @@
         - 48 hour window to take the quiz
    1. MD Assignment: 11-
       - Invitation URL: https://classroom.github.com/a/oD2pD7Vi
-      - Due Date: Sep 25 23:59 PDT (Thursday)
+      - Due Date: Sep 26 23:59 PDT (Thursday)
 
 
 ## Today's Agenda:
