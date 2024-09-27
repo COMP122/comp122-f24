@@ -1,11 +1,5 @@
 # COMP122 Lecture Notes: September 23, 2024
 
-As reported by some students, when you pushed a tag, the github action did not run... This was an error on my part.
-
-In many causes, the last github action that executed was in error (i.e. a red x is ) 
-
-error -- specifically the 'submitted' tag was missing.  This then caused an error.
-
 
 ## Announcements:
    1. Quiz: 10-
