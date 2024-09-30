@@ -20,13 +20,13 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 
 
 1. Quiz 1: Models of Communication and Computation
-   - Status: Unassigned
+   - Status: Closed
    - Additional Information: 
      - paper-like deliverable
      - 2 hour timed quiz: 
      - time starts when you accept the assignment
    - Deliverable ID: 10-
-   - Invitation URL: 
+   - Invitation URL: https://classroom.github.com/a/pHmEC8eh
 
 1. Exam 2: Formats and Encodings
    - Status: Unassigned
@@ -63,7 +63,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Due Date: ASAP
 
 1. Name: My First MD Assignment
-   - Status: Closed
+   - Status: Closed, Graded
    - Deliverable ID: 02-
    - Public_URL: https://github.com/COMP122/02-first-MD-assignment-public
    - Invitation URL: https://classroom.github.com/a/5mXbyUv_
@@ -71,7 +71,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 
 
 1. Name: Mathematical Review (Credit/No Credit)
-   - Status: Closed
+   - Status: Closed, Graded
    - Deliverable ID: 03-
    - Invitation URL: https://classroom.github.com/a/vI8CO8Ez
    - Due Date: Sep 06 23:59 PDT
@@ -87,7 +87,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 <h3 id="models">Models of Computation and Communication (Section 1)</h3>
 
 1. Assignment: practice-quiz
-   - Status: Assigned
+   - Status: Closed
    - Additional Information: 
      - It's a practice quiz -- time yourself
      - Note that the actual quiz will be smaller in size
