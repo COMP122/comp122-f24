@@ -2,13 +2,14 @@
 
 ## Announcements:
   1. Graded Assignments:
-     * 02-first-MD-assignment:
-     * 03-mathematical-review:
+     - more adminstrative/grade.report.example 
+     * 02-first-MD-assignment: see slack
+     * 03-mathematical-review: see slack
 
   1. Upcoming Assignments:
      * 21-table-encodings  (to be assigned tonight)
      * 22-utf8-encodings
-     * 41-pemdas-coding
+     * 41-pemdas-coding    (to be assigned Friday)
     
   1. Starting New Section - format-encodings
      - Introduction to Encodings 
@@ -34,9 +35,6 @@
 
   1. Lab: 
      - Table Lookup Examples
-       * https://drive.google.com/drive/u/0/folders/1ZLRC2SE5znDr8orhsZveRKd45TQs0A_e
-
-
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W 
