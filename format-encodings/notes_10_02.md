@@ -1,9 +1,13 @@
 l# COMP122 Lecture Notes: October 2, 2024
 
 ## Announcements:
+  1. Oct 8 (Tuesday) 
+     * class and lab will must likely be cancelled
+     * this will impact Oct 7th plan, as well as Oct 9th's plan
+
   1. Upcoming Assignments:
-     * 21-table-encodings  (to be assigned Monday/today)
-     * 22-utf8-encodings
+     * 21-table-encodings  (to be last Monday)
+     * 22-utf8-encodings   (to be assigned Wedneday/today)
      * 41-pemdas-coding    (to be assigned Friday)
 
 
@@ -52,7 +56,7 @@ l# COMP122 Lecture Notes: October 2, 2024
 
      - mips_cli:
 
-     
+
 
   1. Encoding and Decoding of UTF-8
  
