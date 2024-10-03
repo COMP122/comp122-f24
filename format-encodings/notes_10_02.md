@@ -98,38 +98,35 @@ l# COMP122 Lecture Notes: October 2, 2024
        * I: | oooooo | sssss | ttttt | iiii iiii iiii iiii iiii |
        * J: | oooooo |         aa aaaa aaaa aaaa aaaa aaaa aaaa |
 
-     - mips_cli:
-
-     * Example:
-       - add $t1, $t2, $s4
-
-       ```response
+     * Example: `add $t1, $t2, $s4`
        - op:   000 000
        - func: 100 000
        - rd: $t1 : 0 1001
        - rs: $t2 : 0 1010
        - rt: $s4 : 1 0100
        - sh: 00000
+       - ~imm:~
+       - ~addr:~
+       - Packing into 32 bits:
+         * R: | oooooo | sssss | ttttt | ddddd | >>>>> | ffffff   |
+         * R: | 000000 | 01010 | 10100 | 01001 | 00000 | 100000   |
+         * R: 0000 0001 0101 0100 0100 1000 0010 0000  
+         * 16# 01544820
+  
+     * Example: `addi $t8, $t5, 0x23`
+       - op: 001 000
+       - ~func:~
+       - ~rd:~
+       - rs: $t5 : '0 1101
+       - rt: $t8 : '1 1000
+       - ~sh:~
+       - imm: 0x23 : 0000 0000 0000 0010 0011
+       - ~addr:~
+       - Packing into 32 bits:
+         * I: | oooooo | sssss | ttttt | iiii iiii iiii iiii iiii |
+         * I: | 001 000 | 0 1101| 1 1000 | 0000 0000 0000 0010 0011 |
 
-       * R: | 000000 | 01010 | 10100 | 01001 | 00000 | 100000   |
-       * R: 0000 0001 0101 0100 0100 1000 0010 0000  
-       *  16# 01544820
-       ```
-
-     * Example:  
-       - addi $t8, $t5, 0x23
-       ```
-       op: 001 000
-       ~func:~
-       ~rd:~
-       rs: $t5 : '0 1101
-       rt: $t8 : '1 1000
-       imm: 0x23 : 0000 0000 0000 0010 0011
-       ~addr:~
-       ```
-       * I: | oooooo | sssss | ttttt | iiii iiii iiii iiii iiii |
-       * I: | 001 000 | 0 1101| 1 1000 | 0000 0000 0000 0010 0011 |
-
+      * Example: `mul $t1, $t2`
 
 
 
@@ -157,22 +154,14 @@ l# COMP122 Lecture Notes: October 2, 2024
           * 2# 1110 0100 1001 0101 1010 0111          # present in 4-bit chucks
           * 0x16 E495A7                               # present in hex
 
-        * 0X cd85    ==> U+0345 
-          * 0b 1100 1101 1000 0101                    # convert to binary
-          * | 110- 0 1101 | 10- 00 0101 |             # gather the bytes, and check
-          * | fff- 0 1101 | ff- 00 0101 |             # identify framing bits
-          * 2# 0011 0100 0101                         # unpack data bits
-          * 16# 345                                   # convert to hex
-          * U+0345                                    # present as unicode
-
         * U+0260
-          * 0x 0260
-          * 0b 0000 00 "1" 0 0110 0000
-          * p == 10, l = 11, b = 2
+          * 0x 0260                         
+          * 0b 0000 00 "1" 0 0110 0000    
+          * p == 10, l = 11, b = 2        
           * | 0 1001 | 10 0000 |
-          * | 110 xxxxx   | 10 xxxxxx |
-          * | 110 0 1001  | 10 10 0000 |
-          * 2# 1100 1001 1010 0000
+          * | 110 xxxxx   | 10 xxxxxx |       
+          * | 110 0 1001  | 10 10 0000 |    
+          * 2# 1100 1001 1010 0000        
           * 16# C9A0
 
         * U+2FFFF
@@ -184,21 +173,30 @@ l# COMP122 Lecture Notes: October 2, 2024
           * | 11110 xxx | 10 xxxxxx | 10 xxxxxx | 10 xxxxxx |
           * | 11110 000 | 10 10 1111 | 10 1111 11 | 10 1111 11 |          
           * 2#  1111 0000 1010 1111 1011 1111 1011 1111
-          * 0x  F0 AF BF BF
+          * 0x F0 AF BF BF
 
+     1. Decoding Examples
+        * 0X cd85    ==> U+0345 
+          * 0b 1100 1101 1000 0101                    # convert to binary
+          * | 110- 0 1101 | 10- 00 0101 |             # gather the bytes, and check
+          * | fff- 0 1101 | ff- 00 0101 |             # identify framing bits
+          * 2# 0011 0100 0101                         # unpack data bits
+          * 16# 345                                   # convert to hex
+          * U+0345                                    # present as unicode
 
-      * 0x  F0 AF BF BF || 93 7D -> U+2FFFF 
-        * 1111 0000 | 1010 1111 | 1011 1111 | 1011 1111 || 1001 0011 0111 1101
-        *   1111 0- 000 | 10 - 10 1111 | 10 - 11 1111  | 10 - 11 1111 | (first char)
-        * | 1111 0  xxx | 10   xx xxxx | 10   xx xxxx  | 10   xx xxxx |
-        *           000        10 1111        11 1111         11 1111 
-        * 2#  0 0010 1111 1111 1111 1111 
-        * 16# 2FFFF
-        * U+2FFFF
+        * 0xF0 AF BF BF || 93  -> U+2FFFF 
+          * 1111 0000 | 1010 1111 | 1011 1111 | 1011 1111 |     # convert to binary
+          * 1111 0-000 | 10-10 1111 | 10-11 1111 | 10-11 1111 | # gather and check
+          * 1111 0 xxx | 10 xx xxxx | 10 xx xxxx | 10 xx xxxx | # identify framing bits
+          *        000      10 1111      11 1111      11 1111   # unpack
+          * 2#  0 0010 1111 1111 1111 1111 
+          * 16# 2FFFF                                           # convert to hex
+          * U+2FFFF                                             # present as unicode
 
 
 ---
 ## Resources
+  * Encoding Tables: https://drive.google.com/drive/u/0/folders/1ZLRC2SE5znDr8orhsZveRKd45TQs0A_e
   * format-encodings/encode-utf8.md
   * format-encodings/decode-utf8.md
 
