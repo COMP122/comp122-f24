@@ -23,7 +23,7 @@
   git push origin {task}
   ```
 
-### Incrementally Work on a {task} Task
+### Incrementally Work on the {task} Task
 
   ```bash
   git switch {task}
@@ -32,7 +32,7 @@
     make test_{task}
     git commit -m '{insert message}' -a
     if [[ done or need a drink ]] ; then
-      break;
+       break;
     fi
   done
   git pull origin {task} ; git push origin {task}
@@ -57,10 +57,24 @@
   make confirm
   ```
 
+## To Reset and to Republish a Tag
+
+  * To reset your tag:
+     ```bash
+     git tag --delete {task}_submitted       # to delete the tag
+     git tag {task}_submitted                # to set the tag at the current commit, i.e., HEAD
+     # git tag {task}_submitted {commit}     # to set the tag at a specific commit 
+     ```
+  * To republish the Tag
+    ```bash
+    git push origin :{task}_submitted        # to unpublish the tag
+    git push origin {task}_submitted         # to publish the tag
+    ```
+
 
 ## To Obtain your Grade Report
 
-  After the Professor announces, via slack, that grades are avaliable.
+  After the Professor announces, via slack, that grades are available.
   ```bash
   git pull
   cat grade.report
