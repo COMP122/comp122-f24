@@ -9,7 +9,7 @@ l# COMP122 Lecture Notes: October 7, 2024
        - Professor will be available via slack
   1. Oct 8 (Tuesday) 
      * The lecture will be conducted asynchronously
-       - the video captured on Oct 7 via OBS will be provide
+       - the video captured on Oct 7 via OBS will be provided
      * The lab will be on-line
        - Students can work on their programing assignments
        - Professor will be available via slack
