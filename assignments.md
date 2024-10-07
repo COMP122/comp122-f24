@@ -149,17 +149,17 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
 ---
 <h3 id="mips">MIPS Programming (Section 4)</h3>
 
-1. Assignment: PEMDAS and TAC
-   - Status: Unassigned
+1. Assignment: Simple Interest
+   - Status: Assigned
    - Deliverable ID: 41-
-   - Invitation URL: 
-   - Due Date: 
+   - Invitation URL: https://classroom.github.com/a/p5JjzpA1
+   - Due Date: Oct 11 23:59 PDT
 
 1. Assignment: Checksum
-   - Status: Unassigned
+   - Status: Assigned
    - Deliverable ID: 42-
-   - Invitation URL: 
-   - Due Date: 
+   - Invitation URL: https://classroom.github.com/a/l7xqHwlp
+   - Due Date: Oct 16 23:59 PDT
 
 1. Assignment: binary32 
    - Status: Unassigned
