@@ -45,8 +45,8 @@ l# COMP122 Lecture Notes: October 7, 2024
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W 
+     - none to speak of
 
-    
    * T/R 
 
 
@@ -54,7 +54,7 @@ l# COMP122 Lecture Notes: October 7, 2024
 # Today's Lecture Material
 
   * 41-simple-interest
-    ```
+    ```java
     public static int simple_interest(int P, int R, int T);
     ```
 
@@ -64,23 +64,24 @@ l# COMP122 Lecture Notes: October 7, 2024
        P  = 1000                        // $1000.00 initial principal
        R  = 5                           // 5% interest rate
        T  = 3                           // 3 Years
-       SI = 3/100 * 5 * 1000
-          = .03 * 5 * 1000
-          = .15 * 1000
-          = 150
+       SI = 1/100 * R  * T * P
+          = 0.01 * 5 * 3 * 1000
+          = 0.05 * 3 * 1000
+          = 0.15 * 1000
+          = 150 
        ```
        but
        ```math-integer
        P  = 1000                        // $1000.00 initial principal
        R  = 5                           // 5% interest rate
        T  = 3                           // 3 Years
-       SI = 3/100 * 5 * 1000            // <-- integer division
-          = 0 * 5 * 1000
-          = 0 * 1000
+       SI = 1/100 * R * T * P
+          = 0 * R * T * P
           = 0
         ```
 
      1. Test case creation: test_cases/{account}.sth_case
+        - e.g., test_cases/smf-steve.sth_case
         ```sth
         [case]
         ARGS="1000 5 3"
@@ -88,6 +89,7 @@ l# COMP122 Lecture Notes: October 7, 2024
         ```
 
      1. Native MIPS instructions for mult/div
+
         ```mips
         mult rs, rt       #  {hi, lo} = rs * rt
         div  rs, rt       #  lo = rs / rt; hi = rs % rt 
@@ -100,6 +102,13 @@ l# COMP122 Lecture Notes: October 7, 2024
   * 42-checksum
      1. Review of IPv4
         - See slide on 7: format-encodings/slide_presentations/introduction-to-encodings.pdf
+
+     1. TAC/MIPS Input
+        ```java tac
+        mips.read_d();          //  read_d()
+        X = mips.retval();      //  move X, $v0
+        ```
+
      1. Execution of the Professor's java solution
      1. Test case creation: test_cases/{account}.sth_case
      1. Review of the README.md file
