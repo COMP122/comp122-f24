@@ -50,8 +50,8 @@ l# COMP122 Lecture Notes: October 2, 2024
           xxxx        xxxx    # I.Sum  >--------  
                                                |  
        C  cccc     C  cccc    # Carries        |  
-      x   xxxx        xxxx    # I.Sum  <--------  
-          0xx0        0xx0    # Fix?              
+          xxxx        xxxx    # I.Sum  <--------  
+      +   0xx0        0xx0    # Fix?              
       --  ----        ----                        
        C  xxxx        xxxx                        
 
@@ -73,8 +73,8 @@ l# COMP122 Lecture Notes: October 2, 2024
           1011        1011    # I.Sum  >--------  
                                                |  
        1  1100     1  1100    # Carries        |  
-      x   1011        1011    # I.Sum  <--------  
-          0110        0110    # Fix?              
+          1011        1011    # I.Sum  <--------  
+      +   0110        0110    # Fix?              
       --  ----        ----                        
        1  0001        0001                        
 
@@ -94,8 +94,8 @@ l# COMP122 Lecture Notes: October 2, 2024
           0100        1010    # I.Sum  >--------  
                                                |  
        0  0000     1  1100    # Carries        |  
-      x   0100        1010    # I.Sum  <--------  
-          0000        0110    # Fix?              
+          0100        1010    # I.Sum  <--------  
+      +   0000        0110    # Fix?              
       --  ----        ----                        
        0  0100        0000                        
     0 40
@@ -115,8 +115,8 @@ l# COMP122 Lecture Notes: October 2, 2024
           0111        1100    # I.Sum  >--------  
                                                |  
        C  cccc     1  1000    # Carries        |  
-      x   0111        1100    # I.Sum  <--------  
-          0000        0110    # Fix?              
+          0111        1100    # I.Sum  <--------  
+      +   0000        0110    # Fix?              
       --  ----        ----                        
        0  0111        0010                        
     0 7 2
