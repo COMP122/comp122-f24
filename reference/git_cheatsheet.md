@@ -49,6 +49,8 @@
  | Command                                 | Description                          |
  |-----------------------------------------|--------------------------------------|
  | `git branch -c {branch}`                | Create a branch                      |
+ | `git branch --delete {branch}`          | Delete a branch                      |
+ | `git branch -D {branch}`                | Force delete a branch                |
  | `git --set-upstream-to=origin {branch}` | Define where to publish the branch   |
  | `git switch {branch}`                   | Change to work on alternate branch   |
  | `git merge  {branch}`                   | Merge {branch} into current branch   |
