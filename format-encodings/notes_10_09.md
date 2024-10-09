@@ -61,9 +61,34 @@
     - ` <{input}`  : the input redirection of the named file
     - ` <{output}`  : the output redirection of the named file
 
+  - Setup for the practicum
+    - Directories:
+      * Professors:
+        - `PRACTICUM=code_10_09M`
+        - `PRACTICUM=code_10_09A`
+        - `PRACTICUM=code_10_10`
+      * Suggested Student's directory to work along
+        - `PRACTICUM=code_10_10_mine`
+
+    - Commands
+      ```bash
+      history -c
+      DST=~/classes/comp122/assembly-programming/${PRACTICUM}/
+      cd ~/classes/comp122/assembly-programming
+      git init ${PRACTICUM}
+      cd ${PRACTICUM}
+      pushd ~/classes/comp122/deliverables/simple-interest-{tab}
+      cp -r bin java java_tac mips makefile test_cases ${DST}
+      popd
+      # Now we have everything to start!
+      history -w my_history
+      ls
+      ```
+
   - Review of for-loop and if-then-else transformation/transliteration
-    - java -> java_tac (transformation)
-    - java_tac -> mips (transliteration)
+    * see ~/classes/comp122/assembly-programming/code_10_09
+      - java -> java_tac (transformation)
+      - java_tac -> mips (transliteration)
 
 
 ---
