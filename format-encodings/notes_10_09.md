@@ -20,10 +20,12 @@
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W 
-
-    
+     - two questions on the lab
+     - checksum, why two for loops, is it necessary
+     - test cases and possible break.
+     
    * T/R 
-
+     - none
 
 ---
 # Today's Lecture Material
@@ -48,7 +50,12 @@
      mtlo rs           #  lo = rs
      mfhi rd           #  rd = hi
      mthi rs           #  hi = rs
-     ```
+   ```
+     - psuedo instruction:
+       * `mul rd, rs, rt`  :  rd = rs * rt
+     - correspoding native instruction:
+       * `mult rs, rt`
+       * `mflo rd`
 
   - Manually testing your code
     ```bash
@@ -68,6 +75,7 @@
         - `PRACTICUM=code_10_09A`
         - `PRACTICUM=code_10_10`
       * Suggested Student's directory to work along
+        - `PRACTICUM=code_10_09_mine`
         - `PRACTICUM=code_10_10_mine`
 
     - Commands
@@ -77,13 +85,30 @@
       cd ~/classes/comp122/assembly-programming
       git init ${PRACTICUM}
       cd ${PRACTICUM}
+      touch README.md
+      git add README.md
+      git commit -m 'initial commit'
       pushd ~/classes/comp122/deliverables/simple-interest-{tab}
       cp -r bin java java_tac mips makefile test_cases ${DST}
       popd
+      git add .
+      git commit -m 'added framework'
       # Now we have everything to start!
-      history -w my_history
+      history -w ${PRACTICUM}.history
       ls
       ```
+
+  - The git URL for the repos I created in this lab
+    * git@github.com:COMP122/code_10_09M.git
+    * git@github.com:COMP122/code_10_09A.git
+    * git@github.com:COMP122/code_10_10.git   (not yet)
+
+    * Instructions to clone them on your machine
+      ```bash
+      cd ~/classes/comp122/assembly_programming
+      git clone git@github.com:COMP122/code_10_09M.git  ## for example
+      ```
+
 
   - Review of for-loop and if-then-else transformation/transliteration
     * see ~/classes/comp122/assembly-programming/code_10_09
