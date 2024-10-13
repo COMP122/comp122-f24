@@ -2,6 +2,7 @@ scratch
 .DS_Store
 local
 deliverables
+practicums
 assignment-grading
 .bootstrap.*
 ~*
