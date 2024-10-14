@@ -1,119 +1,141 @@
-# COMP122 Lecture Notes: October 9, 2024
+# COMP122 Lecture Notes: October 13, 2024
 
 ## Announcements:
-   1. No Announcements
+   1. https://en.wikipedia.org/wiki/Indentation_style
+
+   1. New practicum setup
+      - based upon the experience from last lab..
+      - a new directory was added to comp122: practicums
+
+   1. Git Repos from last lab practicum
+      * git@github.com:COMP122/code_10_09M.git
+      * git@github.com:COMP122/code_10_09A.git
+      * git@github.com:COMP122/code_10_10.git   (not yet)
+
+      - Instructions to clone them on your machine
+        ```bash
+        cd ~/classes/comp122/
+        git pull
+        cd practicums
+        git clone git@github.com:COMP122/code_10_09M.git 
+        ```
 
 
 ## Today's Agenda:
 
   1. Lecture
-     - Introduction to Numbering System
-       - Numbering Systems
-       - Data Representation
-       - Expanded Notation
-       - Scientific Notation
+     - Review of UTF-8
+     - Review of IEEE 754 standard (binary32)
+     - Bitwise Operations
+ 
+  1. Lab: Practicum
+     - Finding the most significant bit
+       - manualy testing
+       - review of for-loop and if-then-else tranformation
 
-  1. Lab
-     - Multiplication Unit
-     - Manually Testing 
-     - Review of for-loop and if-then-else transformation/transliteration
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W 
-     - two questions on the lab
-     - checksum, why two for loops, is it necessary
-     - test cases and possible break.
-     
+ 
    * T/R 
-     - none
 
 ---
 # Today's Lecture Material
 
-  - Introduction to Numbering system
-    * see slides: introduction-to-numbering-systems.pdf
+---
+## Review:
+  - We're trained to expect inputs are always 100% correct
+  - All algorithms need to deal with exceptions
+    - i.e., we need to expect malformed data
+    - malformed data tests our understanding
+    - forward progress needs to be made
 
+  - UTF-8 decoding
+    * 0xxx xxxx : start of a 1 byte sequence
+    * 10xx xxxx : continuation byte
+    * 110x xxxx : start of a 2 byte sequence
+    * 1110 xxxx : start of a 3 byte sequence
+    * 1111 0xxx : start of a 4 byte sequence
+
+    1.
+    1.
+    1.
+
+  - UTF-8 encoding
+
+  - binary32 decoding
+    1. Sign: 1 bit
+       - 0: '+', 1: '-'
+    1. Expon: 8-bit binary number (lookup table)
+       - and then minus the defined bias (127)
+    1. Mantissa: 23 bits
+
+  - binary32 encoding
+
+---     
+  1. Bitwise Operations
+     * see slides: bitwise-operations.pdf
+
+  1. mips_cli: For the professor only
+   ```bash
+   cd ~/repositories/mips_cli
+   bin/mips_cli 
+   run INTERACTIVE
+   EMIT_ENCODINGS=FALSE
+   ```
+
+  1. Boolean-based Operations:
+     * Complement:  
+       - s1 = ~ t1;  
+       - nor $s1, $t1, $zero   # s1 = ~ ( t1 | 0 ) 
+     * And:    
+       - s1 = t1 & t2; 
+       - and $s1, $t1, $t2
+     * Or:     
+       - s1 = t1 | t2; 
+       - or $s1, $t1, $t2
+     * Xor:    
+       - s1 = t1 ^ t2; 
+       - xor $s1, $t1, $t2
+
+  1. Shift-based Operations:
+     * ~Un/Signed~ Left Shift
+       - s1 = t1 << 2; 
+       - sll $s1, $t1, 2        # Shift Left Logical
+     * Unsigned Right Shift
+       - s1 = t1 >>> 2;  
+       - srl $s1, $t1, 2        # Shift Right Logical
+     * Signed Right Shift  
+       - s1 = t1 >> 2; 
+       - sra $s1, $t1, 2        # Shift Right Arithmetic
+     * ~Unsigned Left Shift~ 
+       - ~s1 = t1 <<< t2;~
 
 
 # Today's Lab Material
-
-
-  - Multiplication Unit
-     ```mips
-     mult rs, rt       #  {hi, lo} = rs * rt
-     div  rs, rt       #  lo = rs / rt; hi = rs % rt 
-
-     madd rs, rt       #  a = a + (rs * rt)
-                       #  a is stored as {hi, lo}
-
-     mflo rd           #  rd = lo
-     mtlo rs           #  lo = rs
-     mfhi rd           #  rd = hi
-     mthi rs           #  hi = rs
-   ```
-     - psuedo instruction:
-       * `mul rd, rs, rt`  :  rd = rs * rt
-     - correspoding native instruction:
-       * `mult rs, rt`
-       * `mflo rd`
-
   - Manually testing your code
-    ```bash
-    java_subroutine [-R null] {method} [{arg0}..{arg3}] [ <{input}] [ >{output}]
-    ```
-    - '[]' : indicates an optional within the command line
-    - `-R null`  : prevents the printing of the return value of {method}
-    - `{method}` : the name of the method you want to execute
-    - `{arg0}..{arg3}` : optional command line arguments
-    - ` <{input}`  : the input redirection of the named file
-    - ` <{output}`  : the output redirection of the named file
+    * Relying on ONLY automated testing is like
+      - closing your eyes
+      - hoping everything works
+      - i.e., no thinking required
+    * java_subroutine
+    * mips_subroutine
 
-  - Setup for the practicum
-    - Directories:
-      * Professors:
-        - `PRACTICUM=code_10_09M`
-        - `PRACTICUM=code_10_09A`
-        - `PRACTICUM=code_10_10`
-      * Suggested Student's directory to work along
-        - `PRACTICUM=code_10_09_mine`
-        - `PRACTICUM=code_10_10_mine`
+  - static int pos_msb(int number);
+    - Input: a coefficient with a fix-point at n
 
-    - Commands
-      ```bash
-      history -c
-      DST=~/classes/comp122/assembly-programming/${PRACTICUM}/
-      cd ~/classes/comp122/assembly-programming
-      git init ${PRACTICUM}
-      cd ${PRACTICUM}
-      touch README.md
-      git add README.md
-      git commit -m 'initial commit'
-      pushd ~/classes/comp122/deliverables/simple-interest-{tab}
-      cp -r bin java java_tac mips makefile test_cases ${DST}
-      popd
-      git add .
-      git commit -m 'added framework'
-      # Now we have everything to start!
-      history -w ${PRACTICUM}.history
-      ls
-      ```
+      | coefficent    | number       | pos_msb |
+      |---------------|--------------|---------|
+      | 1.00101001    |    100101001 |     9   |
+      | 1.1110        |        11110 |     5   |
+      | 1.0011110     |     10011110 |     8   |
+      | 1.01101000001 | 101101000001 |    11   | 
 
-  - The git URL for the repos I created in this lab
-    * git@github.com:COMP122/code_10_09M.git
-    * git@github.com:COMP122/code_10_09A.git
-    * git@github.com:COMP122/code_10_10.git   (not yet)
+  - Review of for-loop transformation
+    - java -> java_tac (transformation)
 
-    * Instructions to clone them on your machine
-      ```bash
-      cd ~/classes/comp122/assembly_programming
-      git clone git@github.com:COMP122/code_10_09M.git  ## for example
-      ```
-
-
-  - Review of for-loop and if-then-else transformation/transliteration
-    * see ~/classes/comp122/assembly-programming/code_10_09
-      - java -> java_tac (transformation)
-      - java_tac -> mips (transliteration)
+  - Review of if-then-else transliteration
+    - java_tac -> mips (transliteration)
 
 
 ---
