@@ -1,7 +1,7 @@
 # COMP122 Lecture Notes: October 14, 2024
 
 ## Announcements:
-   1. https://en.wikipedia.org/wiki/Indentation_style
+   1. Videos are put slack: #video
 
    1. New practicum setup
       - based upon the experience from last lab..
@@ -20,7 +20,8 @@
         cd practicums
         git clone git@github.com:COMP122/code_10_09M.git 
         ```
-
+           
+   1. https://en.wikipedia.org/wiki/Indentation_style
 
 ## Today's Agenda:
 
