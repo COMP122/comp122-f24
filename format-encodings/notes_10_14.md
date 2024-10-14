@@ -1,4 +1,4 @@
-# COMP122 Lecture Notes: October 13, 2024
+# COMP122 Lecture Notes: October 14, 2024
 
 ## Announcements:
    1. https://en.wikipedia.org/wiki/Indentation_style
@@ -6,7 +6,8 @@
    1. New practicum setup
       - based upon the experience from last lab..
       - a new directory was added to comp122: practicums
-
+        - previous code has been moved
+        
    1. Git Repos from last lab practicum
       * git@github.com:COMP122/code_10_09M.git
       * git@github.com:COMP122/code_10_09A.git
@@ -113,6 +114,8 @@
 
 
 # Today's Lab Material
+  - practicum/code_10_14
+
   - Manually testing your code
     * Relying on ONLY automated testing is like
       - closing your eyes
