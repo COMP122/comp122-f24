@@ -21,7 +21,7 @@ factorial:  nop        # public static int factorial (int N) {
   body: nop                 #    ;
         mul $t0, $t0, v     #    result = result * v;
                 
-  next:                     #    ;    
+  next: nop                 #    ;    
         subi $t1, $t1, 1    #    v = v - 1 ;
         b fac               #    continue fac;   
                             #  }

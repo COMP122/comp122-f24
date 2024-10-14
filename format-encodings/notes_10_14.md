@@ -20,9 +20,10 @@
         cd practicums
         git clone git@github.com:COMP122/code_10_09M.git 
         ```
-           
-   1. https://en.wikipedia.org/wiki/Indentation_style
 
+   1. https://en.wikipedia.org/wiki/Indentation_style
+      - format_encodings/notes_10_14.s
+      
 ## Today's Agenda:
 
   1. Lecture
