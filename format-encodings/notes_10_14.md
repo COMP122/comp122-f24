@@ -11,7 +11,7 @@
    1. Git Repos from last lab practicum
       * git@github.com:COMP122/code_10_09M.git
       * git@github.com:COMP122/code_10_09A.git
-      * git@github.com:COMP122/code_10_10.git   (not yet)
+      * git@github.com:COMP122/code_10_10.git  
 
       - Instructions to clone them on your machine
         ```bash
@@ -34,12 +34,22 @@
   1. Lab: Practicum
      - Finding the most significant bit
        - manualy testing
-       - review of for-loop and if-then-else tranformation
+       - review of for-loop and if-then-else transformation
 
 
 ## Questions from Last Lecture/Lab, etc.:
-   * M/W 
- 
+   * M/W
+     - 42- assignment, what style to use
+       * which ever you want, but use 1 style
+     - UTF-8 encoding: x format
+       * binary encoding and then represented as hex
+     - Register questions:
+       - can we use the S registers on the mips
+         - yes, but refrain from using them.
+       - don't use: $at, $k0, $k1, sometimes $gp
+       - use the $zero register: whenever you can
+
+
    * T/R 
 
 ---
@@ -60,11 +70,27 @@
     * 1110 xxxx : start of a 3 byte sequence
     * 1111 0xxx : start of a 4 byte sequence
 
-    1.
-    1.
-    1.
+  - Decode the following UTF-8 string
+1. 0110 1010  | 1101 0011 | 1001 1110| 0101 0101 | 1001 1011 |
+   -  0110 1010 : look it up in the ASCII table
+   -  110 - 1 0011 | 10 - 01 1110 
+      - 0100 1101 1110 (unpack the data)
+      - 4 D E
+      - U+04DE
+   -  0101 0101 : look it up in the ASCII table
+   -  1001 1011 - error because its a continuation byte
 
-  - UTF-8 encoding
+
+    1. 1101 1001  0000 0101 0111 0001
+       - 1101 1001  0000 0101
+         - nope, not a valid UTF-8 character : error
+       - 0111 0001 : look it up in the ASCII table
+
+    1. 1101 1001  0000 0101 0111 0001
+       -  1101 1001 : error
+       -  0000 0101 : ASCII, look it up
+       -  0111 0001 : ASCII, look it up
+
 
   - binary32 decoding
     1. Sign: 1 bit
@@ -73,8 +99,25 @@
        - and then minus the defined bias (127)
     1. Mantissa: 23 bits
 
+    - 0 | 101 1101 0 | 111 0101 1101 1001 0101 0101
+    - sign: +
+    - expon/bias: 1011 1010
+    - expon (no bias): 1011 1010 - 127 = 59
+    - mantissa: 111 0101 1101 1001 0101 0101
+
+    + 1.111 0101 1101 1001 0101 0101 x 2^11 1011    // 59
+
   - binary32 encoding
 
+    - + 1101101.101010
+    - + 1.101101101010 x 2^ 0110  //6
+    - s eeeeeeee mmmmmmmmmmmmmmmmmmmmmmm
+      - s = 0
+      - e = 6 + 127 = 133 = 0x85 == 1000 0101
+      - m = 101101101010000000000000000000000000000
+    - s eeee eeee mmmmmmmmmmmmmmmmmmmmmmm
+    - 0 1000 0101 10110110101000000000000
+    
 ---     
   1. Bitwise Operations
      * see slides: bitwise-operations.pdf
@@ -116,6 +159,13 @@
 
 
 # Today's Lab Material
+
+  - checksum and its algorithm...
+    1. read in 10 integers 
+    1. add those integers together
+       - but don't add in the 6th, but save it as the "header_checksum" value
+    1. take the sum and perform the mathematical steps given
+
   - practicum/code_10_14
 
   - Manually testing your code
@@ -129,7 +179,7 @@
   - static int pos_msb(int number);
     - Input: a coefficient with a fix-point at n
 
-      | coefficent    | number       | pos_msb |
+      | coefficient   | number       | pos_msb |
       |---------------|--------------|---------|
       | 1.00101001    |    100101001 |     9   |
       | 1.1110        |        11110 |     5   |
