@@ -1,10 +1,10 @@
 # Floating Point Encoding
 
 ## Algorithm
-The following steps can be used to convert a binary number represented in scientific notation to to IEEE floating point format.
+The following steps can be used to convert a binary number represented in scientific notation to IEEE floating point format.
 
   - These steps are provided to facilitate the development of a computer program.
-  - A set of examples are also provided at the end of this document.  These examples are couched as a paper-based exercise
+  - A set of examples are also provided at the end of this document.  These examples are couched as a paper-based exercise.
 
 
 * Prerequisite:
@@ -26,16 +26,16 @@ The following steps can be used to convert a binary number represented in scient
 
 1. Encode each of the three fields of the floating point format:
    1. Sign: 
-      - Set to `1` if '-', otherwise set to `0` otherwise
+      - Set to `1` if '-', otherwise set to `0` otherwise.
    2. Exponent:
       - Convert the exponent to a signed integer
-        * Set to `- exponent` if '-', otherwise set to `exponent`
+        * Set to `- exponent` if '-', otherwise set to `exponent`.
       - Add the bias to the exponent, say 127, for binary32.
    3. Mantissa: 
       - Determine the number of bits in the coefficient
-        * i.e., determine the position of the MSb of the coefficient
-      - Shift the coefficient number to the left, until the MSb of the coefficient is removed
-        * the mantissa, which represents a fractional value is now left justified in the register
+        * I.e., determine the position of the msb (most significant bit) of the coefficient.
+      - Shift the coefficient number to the left, until the msb of the coefficient is removed.
+        * The mantissa, which represents a fractional value is now left justified in the register.
 
 1. Consider the format of binary32, a floating point format
 
@@ -43,13 +43,13 @@ The following steps can be used to convert a binary number represented in scient
    | --------:| :-----------: | :--------------------------- | 
    |  x       |   xxxx xxxx   | xxxx xxxx xxxx xxxx xxxx xxx |
 
-1. Shift the each of the three fields into their proper location.<br>
+1. Shift each of the three fields into their proper location.<br>
    For binary32, this is accomplished via the following three statements together.
    * sign = sign   << 31;  // (23+8)
    * expon = expon << 23;
-   * mantissa = mantissa >>> 9 (1 + 8);
+   * mantissa = mantissa >>> 9 (1 + 8);  // right shift logical
 
-1. Merge the three fields together
+1. Merge the three fields together:
    * $v0 = sign | expon | mantissa;
 
 ---
@@ -60,12 +60,12 @@ The following steps can be used to convert a binary number represented in scient
   - the bias for the encoding of the exponent
 
 
-|Encoding |Total|Sign|Exponent|Mantissa| Binary Bias      |Decimal Bias |
-|---------|----:|:--:|-------:|-------:|-----------------:|------------:|
-|Binary16 |  16 |  1 |      5 |     10 |           `01111`|          15 |
-|Binary32 |  32 |  1 |      8 |     23 |        `01111111`|         127 |
-|Binary64 |  64 |  1 |     11 |     52 |     `01111111111`|        1023 |
-|Binary128| 128 |  1 |     15 |    112 | `011111111111111`|       16383 |
+|Encoding |Total|Sign|Exponent|Mantissa| Binary Bias          |Decimal Bias |
+|---------|----:|:--:|-------:|-------:|---------------------:|------------:|
+|Binary16 |  16 |  1 |      5 |     10 |             `0 1111` |          15 |
+|Binary32 |  32 |  1 |      8 |     23 |          `0111 1111` |         127 |
+|Binary64 |  64 |  1 |     11 |     52 |      `011 1111 1111` |        1023 |
+|Binary128| 128 |  1 |     15 |    112 | `011 1111 1111 1111` |       16383 |
 
  * The format for all IEEE floating point numbers is the concatenation of each of the following fields in order: the sign, exponent, the mantissa.
 
@@ -97,7 +97,7 @@ The following steps can be used to convert a binary number represented in scient
 
 1. Binary16 (half):
    - Sign: `1`
-   - Expon: + `101` (5) -->  `10100` (20 = (+ 5) + 15)
+   - Expon: + `101` (5) -->  `10100` (20 =  (+ 5) + 15)
    - Mantissa: `01011010101` --> `0101101010` 
    - Note: precision is lost via this encoding scheme
 
@@ -107,7 +107,7 @@ The following steps can be used to convert a binary number represented in scient
 
 2. Binary32 (single):   
    - Sign: `1`
-   - Expon: + `101` (5) -->  `1000 0100` (132 = (+ 5) + 127)
+   - Expon: `+ 101` (5) -->  `1000 0100` (132 = (+ 5) + 127)
    - Mantissa: `01011010101` --> `010110101010000..0` 
 
      | S   | E (8)      | M (23)  | 

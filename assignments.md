@@ -112,10 +112,10 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Due Date: Oct 13 23:59 PDT
     
 1. Name: Base Conversion and Floating Point Representation
-   - Status: Unassgined
+   - Status: Assigned
    - Deliverable ID: 23-
-   - Invitation URL: 
-   - Due Date: 
+   - Invitation URL: https://classroom.github.com/a/g4fW0k44
+   - Due Date: Oct 23 23:59 PDT
  
 1. Name: Bitwise Operations
    - Status: Unassigned
@@ -162,10 +162,10 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Due Date: Oct 16 23:59 PDT
 
 1. Assignment: binary32 
-   - Status: Unassigned
+   - Status: Unassigned -- Spec needs to be written!
    - Deliverable ID: 43-
-   - Invitation URL: 
-   - Due Date: 
+   - Invitation URL: https://classroom.github.com/a/rPUz3Z0h
+   - Due Date: Oct 27 23:59 PDT
 
 
 1. Name: nextInt (atoi)
