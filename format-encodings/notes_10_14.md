@@ -23,7 +23,9 @@
 
    1. https://en.wikipedia.org/wiki/Indentation_style
       - format_encodings/notes_10_14.s
-      
+
+
+
 ## Today's Agenda:
 
   1. Lecture
@@ -49,8 +51,14 @@
        - don't use: $at, $k0, $k1, sometimes $gp
        - use the $zero register: whenever you can
 
-
    * T/R 
+     - 42-, for the java code how do we do the write the code
+       - see the code
+     - is there a video on the transformation from java --> java_tac
+       * Yes, the video from the lab on 10_14
+     - can you provide the code for 41-
+       * when I grade it, I will provide a subdirectory call "solution"
+     - note that there is an error in the 42-checksum assignment in the README.md file.  (read for intent!)
 
 ---
 # Today's Lecture Material
@@ -71,7 +79,17 @@
     * 1111 0xxx : start of a 4 byte sequence
 
   - Decode the following UTF-8 string
-1. 0110 1010  | 1101 0011 | 1001 1110| 0101 0101 | 1001 1011 |
+    1. 1101 1101 | 1010 0110 | 1011 0101 | 0111
+       - 110 - 1 1101 | 10 - 10 0110 
+         - 1 1101  10 0110
+         - 0111 0110 0110
+         - 0x0766
+         - U+0766
+       - 1011 0101 : error because not in the middle of a UTF-8 char
+       - 0111      : error not enough bits
+
+  - Decode the following UTF-8 string
+    1. 0110 1010  | 1101 0011 | 1001 1110| 0101 0101 | 1001 1011 |
    -  0110 1010 : look it up in the ASCII table
    -  110 - 1 0011 | 10 - 01 1110 
       - 0100 1101 1110 (unpack the data)
@@ -97,8 +115,19 @@
        - 0: '+', 1: '-'
     1. Expon: 8-bit binary number (lookup table)
        - and then minus the defined bias (127)
+       - 0111 1111
     1. Mantissa: 23 bits
 
+    1. Decode the following binary32
+       - 0 110 1111 1 010 1110 1010 1011 1100 1010
+       - s eee eeee e mmm mmmm mmmm mmmm mmmm mmmm
+         - s: 0  -->  0
+         - e: 110 1111 1 - 127
+           - 1101 1111 == 0xDF == 223 - 127 == 96
+         - m: 010 1110 1010 1011 1100 1010
+         - c: 1.010 1110 1010 1011 1100 1010
+
+    1. Decode the following binary32
     - 0 | 101 1101 0 | 111 0101 1101 1001 0101 0101
     - sign: +
     - expon/bias: 1011 1010
