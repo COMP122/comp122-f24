@@ -1,7 +1,7 @@
                 .text
                 .globl pos_msb 
 
-pos_msb:        nop                     # publ$t0c static int pos_msb(int $a0) {
+pos_msb:        nop                     # public static int pos_msb(int $a0) {
                 # a0: number
                 # v0: <return value>
                 # t0: i                 #   int i;

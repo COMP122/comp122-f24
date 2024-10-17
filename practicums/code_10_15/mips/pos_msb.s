@@ -8,18 +8,18 @@ pos_msb:      nop                       # public static int pos_msb(int number) 
                 # t0 : position         #   int position;
         
 start:        nop                       #   ;
-              move $t0, 0               #   position=0;
+              li $t0, 0                 #   position=0;
 
-ctl:          beq $a0, 0, done          #   for (; number != 0 ;) {
+ctl:          beq $a0, 0, complete      #   for (; number != 0 ;) {
 
-stuff:          nop                     #      ;
-                srl $a0, $a0, 1         #      number = number >>> 1;
+stuff:                               #      ;
+                sra $a0, $a0, 1         #      number = number >>> 1;
 
 again:          nop                     #      ;  
                 addi $t0, $t0, 1        #      position = position + 1;
               b ctl                     #      continue ctl;       
                                         #   }
-complete:     nop                       #   ;         
+complete:                            #   ;         
         
               move $v0, $t0             #   return position;
               jr $ra
