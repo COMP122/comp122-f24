@@ -18,7 +18,7 @@ Consider the following example of an if-then-else statement, and its control flo
 Notice that the control flow graph depicts a box of code for the entire if-then-else statement, and within this block there is five blocks of code that are directly associated with if-then-else statement.  The names of these blocks are:
 
   1. {init}: the implicit first line of code executed as part of the if-then-else statement.
-  1. {cond}: the block of code associated with the condtional statement.
+  1. {cond}: the block of code associated with the conditional statement.
   1. {cons}: the consequence code block for the if-then-else statement.
   1. {alt}:  the alternative code block for the if-then-else statement.
      * for an if-then statement, this block of code implicitly exists as a `null` block.

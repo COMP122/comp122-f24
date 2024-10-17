@@ -42,7 +42,7 @@ The general programming assignment steps are as follows:
      * while
      * do-while
   1. Use structure programming techniques
-     * Don't use the `goto` statement (which is not allowed in Jave)
+     * Don't use the `goto` statement (which is not allowed in Java)
      * Don't use the `continue` nor the `break` statement
   1. Don't use Object-Oriented Features: classes, objects, etc., 
      * Remember this is an assembly level class
@@ -215,7 +215,7 @@ The equivalent code using a switch statement is as follows:
    }
    ```
 
-Each `case` block corresponds directly to one of the consequence block of an `if-then-else` statement. The `default` block corresponds directly to the last alternative block. It is typical that each of `case` blocks end with a `break`. These `break` statements are not required, but without this statement control flow continues.  Hence, the code for both code blocks are effectveily merged together.  It is raw that this is the desired affect.   As such a `case` block without a final `break` statement is a common programming bug.
+Each `case` block corresponds directly to one of the consequence block of an `if-then-else` statement. The `default` block corresponds directly to the last alternative block. It is typical that each of `case` blocks end with a `break`. These `break` statements are not required, but without this statement control flow continues.  Hence, the code for both code blocks are effectively merged together.  It is raw that this is the desired affect.   As such a `case` block without a final `break` statement is a common programming bug.
 
 Prior to converting a `switch` statement into TAC style the following requirements must be met.
 
@@ -291,14 +291,14 @@ Transforming the control-flow graph into equivalent code, using the TAC style, r
 Notice the following
   1. {var}, a control variable for the `switch` statement, has been introduced
   1. the evaluation of {var} has placed into the {init} section
-  1. {split}, a label associated with the `switch` statment, has been introduced 
+  1. {split}, a label associated with the `switch` statement, has been introduced 
   1. for each `case` block
      - the required `break` statement has the explicit {split} label included
      - begins with `mips.next()`
      - ends with `mips.merge()`
   1. the operand to both `mips.next()` and `mips.merge()` is the value of the next case block or `default`
 
-In the Java program, the `mips.next()` and `mips.merge()` methods are effectively comments.  But these methods are important to include to cleary denoted the semantics of the `switch` statement and to perfrom the transliteration into MIPS.
+In the Java program, the `mips.next()` and `mips.merge()` methods are effectively comments.  But these methods are important to include to clearly denoted the semantics of the `switch` statement and to perform the transliteration into MIPS.
 
 
 ## Algorithm: switch statement --> TAC Transformation 
@@ -329,10 +329,10 @@ Consider the following code template:
   1. For each `case`:
      1. Insert a null statement as the first instruction 
      1. Insert `mips.next("{val}");`
-        - where {val} is the value assoicate with the next `case` block
+        - where {val} is the value associated with the next `case` block
      1. Modify all breaks to be explicit, i.e., `break;` --> `break {split};`
      1. Append `mips.merge("{var}");`
-        - where {var} is the value assoicate with the next `case` block
+        - where {var} is the value associated with the next `case` block
      * Note that if the next code block is the default block, "{value}" = "default"
   1. For the default:
      1. Ensure there is a default and that it is the last `case` block

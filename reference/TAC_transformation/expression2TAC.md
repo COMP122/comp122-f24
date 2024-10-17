@@ -26,7 +26,7 @@
        - each variable can can be defined once
        - place the final value into $v0
 
-     1. Write a java subroutine using the following template to compute the value of $v0
+     1. Write a Java subroutine using the following template to compute the value of $v0
         - Place this subroutine in the file named equation.j
           ```java
    

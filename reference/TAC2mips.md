@@ -64,7 +64,7 @@ Note that sometimes there is not a 100% direct correlation between your JAVA TAC
       |                               | `mfhi x`                  |
       |                               |                           |
 
-      | TAC Mult/Div Psuedo Equations | MIPS Instruction          |
+      | TAC Mult/Div Pseudo Equations | MIPS Instruction          |
       |-------------------------------|---------------------------|
       | `x = a * b;`                  | `mul x, a, b`             |
       | `x = a / b;`                  | `div x, a, b`             |
@@ -117,7 +117,7 @@ Note that sometimes there is not a 100% direct correlation between your JAVA TAC
      * {cond}: the line of code that contains: `if (a <cond> b)`
      * {cons}: the consequence code block for the `if-then-else` statement
      * {alt}:  the alternative code block for the `if-then-else` statement
-     * {done}: the statement after `if-then-else` statment
+     * {done}: the statement after `if-then-else` statement
      
 
   | TAC Control Flow                  | MIPS Instruction           |
@@ -169,7 +169,7 @@ As part of the transliteration of a `switch` statement, each of the "case" label
   *  `case  1 :` --> `case_1:`
 
  * Reference labels
-     * {var}:  the introduced varable for controlling the switch statement
+     * {var}:  the introduced variable for controlling the switch statement
      * {imm}:  an immediate value
      * {char}: an ASCII character
      * {next}: refers to the next case block
@@ -242,6 +242,7 @@ As part of the transliteration of a `switch` statement, each of the "case" label
      | `mips.read_d();`              | `read_d()`                |
      | `mips.read(fd, buff, imm);`   | `read(fd, buff, imm)`     |
      | ...                           | ...                       |
+     | `X = mips.retval();`          | `move X, $v0`             |
 
      * See [read_routines.md](./read_routines.md)
 
@@ -282,7 +283,7 @@ As part of the transliteration of a `switch` statement, each of the "case" label
   }
   ```
 
-  Transformig the code in the simplistic method yields:
+  Transforming the code in the simplistic method yields:
 
   ```java TAC
   init:     ;
