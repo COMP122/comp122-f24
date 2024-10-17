@@ -35,16 +35,19 @@
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W
+     - Nothing for lecture but some for lab.
 
    * T/R 
+     - When are videos upload?
+     - Do we use mips.read_d & mips.retval(); Yes.
 
 
 ---
 # Today's Lecture Material
   1. Finish the pos_msb practicum
-     - practicum/code_10_14M
-     - practicum/code_10_14A
-     - practicum/code_10_15     
+     - practicums/code_10_14M
+     - practicums/code_10_14A
+     - practicums/code_10_15     
 
   1. Introduction to MARS
      * find . -name "mars*"
@@ -54,7 +57,69 @@
 
 
   1. Review of Floating Point
-    - https://github.com/comp122/23-binary*
+    * https://github.com/comp122/23-float*
+
+
+    * Convert `- 1.101010111010101 x 2^ - 10` to binary32
+      * Parts
+        * sign of the number  | '-'                | 
+        * coefficient:        | 1.101010111010101  |
+        * whole portion:      | 1                  |
+        * fractional portion: | 101010111010101    |
+        * sign of the expon:  | '-'                |
+        * expon:              |  10  // 2          |
+
+      * Encode and Position the sign: '-' --> 1
+        - xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxx1 << 31
+        - 1zzz zzzz zzzz zzzz zzzz zzzz zzzz zzzz
+
+      * Coefficient --> Mantissa
+        - xxxx xxxx xxxx xxxx 1101 0101 1101 0101 << 16 // calc using pos_msb 
+        - 1101 0101 1101 0101 xxxx xxxx xxxx xxxx << 1  // 1 more to get rid whole
+        - 101 0101 1101 0101 xxxx xxxx xxxx xxxx x >> (1+8) // make room
+        - s eeee eeee 101 0101 1101 0101 xxxx xxxx x
+      * Expon: 2
+        - -2 =   New = - Old;
+        - 2 + 127 = 129 == 0x81
+        - xxxx xxxx xxxx xxxx xxxx xxxx 1000 0001 << 23
+        - x 1000 0001 zzzz zzzz zzzz zzzz zzzz zz
+
+      * Merge the values via the or function
+        - sign      : 1 zzzz zzzz zzz zzzz zzzz zzzz zzzz zzzzz
+        - mantissa  : s eeee eeee 101 0101 1101 0101 xxxx xxxx
+        - expon     : x 1000 0001 zzz zzzz zzzz zzzz zzzz zzzz
+        -           : 1 1000 0001 101 0101 1101 0101 0000 0000
+
+
+
+    * Convert `1.01011010101 x 2^101` to binary32
+      * Parts
+        * sign of the number  | '+'            | 
+        * coefficient:        | 1.01011010101  |
+        * whole portion:      | 1              |
+        * fractional portion: | 01011010101    |
+        * sign of the expon:  | '+'            |
+        * expon:              | 101 // 5       |
+        
+      * Encode the sign: '+'  --> 0
+        - xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxx0 << 31
+        - 0zzz zzzz zzzz zzzz zzzz zzzz zzzz zzzz
+      * Coefficient -> mantissa:
+        - xxxx xxxx xxxx xxxx xxxx 1010 1101 0101 << 20  (32 - 12)
+        - 010 1101 0101 zzzz zzzz zzzz zzzz zzzz >>> 9
+        - z zzzz zzzz 010 1101 0101 zzzz zzzz zzz
+      * Expon: 5 + 127 = 132
+        - xxxx xxxx xxxx xxxx xxxx xxxx 1000 0100  << 23  // space for the mantissa
+        - x100 0010 0zzz zzzz zzzz zzzz zzzz zzzz
+
+      * Merge using the 'or' function
+        - 0 zzz zzzz zzzz zzzz zzzz zzzz zzzz zzzz
+        - z zzz zzzz z010 1101 0101 zzzz zzzz zzzz
+        - x 100 0010 0zzz zzzz zzzz zzzz zzzz zzzz
+        * s eee eeee emmm mmmm mmmm mmmm mmmm mmmm
+
+
+---
 
   1. Review 43-binary32
     - format_encodings/43-binary32.j
