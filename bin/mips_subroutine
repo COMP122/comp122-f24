@@ -1091,7 +1091,7 @@ if [[ ${VERSION} == "mips" ]] ; then
 fi
 
 if [[ ${VERSION} == "java" ]] ; then 
-  grep -q "public  *static  *int  *${SUB_NAME} *(" ${LOAD_FILES}  || 
+  egrep -q "public[ \t]*static[ \t]*int[ \t]*${SUB_NAME}[ \t]*\(" ${LOAD_FILES}  || 
        { echo "Error: Subroutine $SUB_NAME not declared as \"public static int\"." ; exit 1; }
 fi
 

@@ -133,8 +133,12 @@ function sth_case_validate () {
     ${SHOW_OUTPUT} ${OUTPUT} | diff -q - ${actual_output} >/dev/null
     output_error=$?
 
-    [[ ${EXIT_STATUS} == ${actual_exit_status} ]]
-    exit_error=$?
+    if [[ ${EXIT_STATUS} != "IGNORE" ]] ; then
+      [[ ${EXIT_STATUS} == ${actual_exit_status} ]]
+      exit_error=$?
+    else
+      exit_error=0
+    fi
 
     if [[ ${output_error} != 0 ]] || [[ ${exit_error} != 0 ]] ; then
       failed=1
@@ -156,10 +160,12 @@ function sth_case_validate () {
       fi
 
       # Process the EXIT VALUE
-      if [[ ${EXIT_STATUS} != ${actual_exit_stats} ]] ; then
-        echo
-        echo "# Expected Exit Value: ${EXIT_STATUS}"
-        echo "# Actual   Exit Value: ${actual_exit_status}"
+      if [[ ${EXIT_STATUS} != "IGNORE" ]] ; then 
+        if [[ ${EXIT_STATUS} != ${actual_exit_stats} ]] ; then
+          echo
+          echo "# Expected Exit Value: ${EXIT_STATUS}"
+          echo "# Actual   Exit Value: ${actual_exit_status}"
+        fi
       fi
     fi 
 
