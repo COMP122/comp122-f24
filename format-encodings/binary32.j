@@ -1,4 +1,4 @@
-// FILE: encode_binary32.j
+// FILE: binary32.j
 // Description:
 //   This file provides the code to convert a binary number presented in 
 //   Scientific Notation into binary32 format.  The binary32 format is as follows:
@@ -23,7 +23,7 @@
 //        point is always located immediately to the right of the msb.
 
 
-  public static int encode_binary32(int sign, int coefficient, int expon_sign, int exponent){
+  public static int binary32(int sign, int coefficient, int expon_sign, int exponent){
             // $a0 : sign
             // $a1 : coefficient
             // $a2 : expon_sign
