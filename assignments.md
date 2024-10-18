@@ -159,7 +159,7 @@ This file contains the list of deliverables for COMP 122. Such deliverables incl
    - Status: Assigned
    - Deliverable ID: 42-
    - Invitation URL: https://classroom.github.com/a/l7xqHwlp
-   - Due Date: Oct 16 23:59 PDT
+   - Due Date: Oct 17 23:59 PDT
 
 1. Assignment: binary32 
    - Status: Unassigned -- Spec needs to be written!
