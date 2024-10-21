@@ -4,7 +4,6 @@
    1. Assignments graded
       - 03-mathematical-review
       - 21-table-encodings
-      - 21-table-encodings
       - 22-utf8-encodings
 
    1. Exceptions, Requests, etc.
@@ -24,9 +23,8 @@
         - 04-first-programming-assignment
         - 41-simple-interest.txt
 
-
    1. Assignment: binary32 
-      - Status: Released Today.
+      - Status: Announced
       - Deliverable ID: 43-
       - Invitation URL: https://classroom.github.com/a/rPUz3Z0h
       - Due Date: Oct 27 23:59 PDT
@@ -79,6 +77,29 @@
 
        Answer:      
 
+  1. Base N to Base 10 Examples:
+      -  8# 542
+
+       |   v   | = |   v   | * 8 +    | digit_10 | glyph | code |
+       |------:|:-:|------:|:--------:|---------:|:-----:|:----:|
+       |   5   | = |   0   | * 8 +    |      5   |    5  |  53  |
+       |  44   | = |   5   | * 8 +    |      4   |    4  |  52  |
+       | 354   | = |  44   | * 8 +    |      2   |    2  |  50  |
+
+       Answer: 354
+
+     - 17# A34G
+
+       |   v    | = |   v   | * 17   + | digit_10 | glyph | code |
+       |-------:|:-:|------:|:--------:|---------:|:-----:|:----:|
+       |    10  | = |    0  | * 17   + |    10    |   A   |  65  |
+       |   173  | = |   10  | * 17   + |     3    |   3   |  51  |
+       |  2945  | = |  173  | * 17   + |     4    |   4   |  52  |
+       | 50081  | = | 2945  | * 17   + |    16    |   G   |  71  |
+
+       Answer: 50081     
+
+
   1. Base 10 to Base N (WHOLE PART)
      
      - Pattern
@@ -99,6 +120,36 @@
 
        answer:    (read remainders from bottom to the top)
        ```
+  
+     - Example:  354  -> 8# 
+       ```response
+       354 = number    
+           354   / 8 = 44, 2  
+            44   / 8 =  5, 4
+             5   / 8 =  0, 5
+             0   / 8 =  0, 0
+
+
+       answer: 542   (read remainders from bottom to the top)
+       ```
+
+     - Example: 272 -> 2#
+       ```response
+       number = 272        ---
+           272   / 2 = 136, 0
+           136   / 2 =  68, 0
+            68   / 2 =  34, 0
+            34   / 2 =  17, 0
+            17   / 2 =   8, 1
+             8   / 2 =   4, 0
+             4   / 2 =   2, 0
+             2   / 2 =   1, 0
+             1   / 2 =   0, 1
+             0   / 2 = 
+
+
+       answer: 2# 1 0001 0000
+       ```
 
   1. Base 10 to Base N: Fractional Part
 
@@ -111,53 +162,60 @@
 
           answer:    (read overflows from top to bottom)
         ```
+     - Examples 0.465 ->  2# 0.011100
+       ```response
+       number = 465
+       max =  1,000
+          465  * 2 =  0, 930
+          930  * 2 =  1, 860
+          860  * 2 =  1, 720
+          720  * 2 =  1, 440
+          440  * 2 =  0, 880
 
-  1. Examples
-
- 
+       answer:  0.011100  (read overflows from top to bottom)
+       ```
 
 # Today's Lab Material
 
  1. Review 43-binary32
-    - format_encodings/43-binary32.j
+    * off-topic example:
+      ```bash
+      $ cd  practicum/code_10_15/
+      $ java_subroutine java/pos_msb 22
+      5
+      $ java_subroutine -R binary32 java/pos_msb 22
+      | 0 | 00000000 | 00000000000000000000101 |
+      ```
 
     - type_signature:   
       ```java
       public static int 
-      encode_binary32(int sign, int coefficient, int expon_sign, int exponent);
+      binary32(int sign, int coefficient, int expon_sign, int exponent);
       ```
     - example:
       * - 1.01011010101 x 2^101  // 5
-        * Inputs: java_subroutine -R binary32 '-'  2#101011010101 + 2#101
+        * Inputs: java_subroutine -R binary32 binary32 '-'  2#101011010101 + 2#101
         * Output: | 1   |  1000 0100 | 0101 1010 1010 0000 0000 000 | 
         * Test Case:
-          - ARGS="-'  2#101011010101 + 2#101"
+          - ARGS="'-'  2#101011010101 + 2#101"
           - OUTPUT="| 1 | 10000100 | 01011010101000000000000 | "
           - EXIT_VAL=0     # 0xC22D50 00 mod 0xFF == 0
 
       * - 1.01011010101 x 2^101  // 5
-        * Inputs: java_subroutine -R binary32 45  2#101011010101 42 5
+        * Inputs: java_subroutine -R binary32 binary32 45  2#101011010101 42 5
         * Output: | 1   |  1000 0100 | 0101 1010 1010 0000 0000 000 | 
         * Test Case:
           - ARGS="45  2#101011010101 42 5"
           - OUTPUT="| 1 | 10000100 | 01011010101000000000000 | "
           - EXIT_VAL= 0     # 0xC22D50 00 mod 0xFF == 0
 
-      * off-topic example:
-        ```bash
-        $ java_subroutine java/pos_msb 22
-        5
-        $ java_subroutine -R binary32 java/pos_msb 22
-        | 0 | 00000000 | 00000000000000000000101 |
-        ```
 
-
-    - starter code:
-      * format_encodings/encode_binary32.j
+    - Starter code: (format-encodings/binary32.j)
         1. Encode each of the three fields of the floating point format:
            1. Sign Encoding: (encoded_sign = )
            1. Exponent Encoding: (encoded_expon = )
            1. Mantissa Encoding: (encoded_mantissa = )
+
        1. Shift the pieces into place: sign, exponent, mantissa
           - encoded_sign     = 0;
           - encoded_exponent = 0;
@@ -166,7 +224,6 @@
        3. Merge the pieces together
           - encoding = 0;
           - return encoding;
-
 
 
    1. final keywork in java
@@ -178,6 +235,11 @@
 
       ```mips
       .eqv bias 127
+      ```
+
+      example usage
+      ```mips
+      li $t0, bias
       ```
 
 ---
