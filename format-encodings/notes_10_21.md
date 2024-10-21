@@ -6,6 +6,17 @@
       - 21-table-encodings
       - 21-table-encodings
       - 22-utf8-encodings
+
+   1. Exceptions, Requests, etc.
+      - have not dealt with any of them
+      - ~ 5 students did not accept assignment
+      - ~ 5 students fail the pregrade test
+      - I grade based upon "submitted" tag
+        * no tag, no grading
+        * tag after due date, no grading
+      - IF you tag is in the wrong place
+        - move it and request special dispensation.      - 
+
    1. Outstanding grading
       * Github Classroom made change repo creation 
         - 10-quiz.txt
@@ -26,9 +37,9 @@
      - Tags and Log file
      - Conversion between Bases
  
-  1. Lab: Time to work
-     - Review of Floating Point and Binary32 Assignments
-       - 43-binary32
+  1. Lab: 
+     - Binary32 Assignments Walk through
+     - Time to work
 
 
 ## Questions from Last Lecture/Lab, etc.:
