@@ -189,11 +189,10 @@
 
     - type_signature:   
       ```java
-      public static int 
-      binary32(int sign, int coefficient, int expon_sign, int exponent);
+      public static int binary32(int sign, int coefficient, int expon_sign, int exponent);
       ```
     - example:
-      * - 1.01011010101 x 2^101  // 5
+      * - 1.01011010101 x 2^ + 101  // 5
         * Inputs: java_subroutine -R binary32 binary32 '-'  2#101011010101 + 2#101
         * Output: | 1   |  1000 0100 | 0101 1010 1010 0000 0000 000 | 
         * Test Case:
@@ -210,9 +209,9 @@
           - EXIT_VAL= 0     # 0xC22D50 00 mod 0xFF == 0
 
 
-    - Starter code: (format-encodings/binary32.j)
+    - Starter code: (./binary32_starter.j)
         1. Encode each of the three fields of the floating point format:
-           1. Sign Encoding: (encoded_sign = )
+           1. Sign Encoding:     (encoded_sign = )
            1. Exponent Encoding: (encoded_expon = )
            1. Mantissa Encoding: (encoded_mantissa = )
 
@@ -239,7 +238,7 @@
 
       example usage
       ```mips
-      li $t0, bias
+      addi $t0, $t0, bias
       ```
 
 ---
