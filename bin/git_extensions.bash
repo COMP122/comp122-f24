@@ -7,7 +7,7 @@ function my_git () {
 
     case "$1" in 
       clone)
-        my_git_clone
+        my_git_clone "$@"
         ;;
 
       safe-to-switch)
@@ -36,11 +36,10 @@ function my_git_clone () {
   'git' 'clone' "$_URL" $_dir
 
   [[ -z "$_dir" ]] && _dir=$(basename -s .git $_URL)
-  cd $_dir
-  touch .accepted_assignment
-  git add .accepted_assignment
-  git commit -m "Assignment Accepted" 
-  git push
+  touch $_dir/.assignment_accepted
+  git -C $_dir add .assignment_accepted
+  git -C $_dir commit -m "Assignment Accepted" 
+  git -C $_dir push
 
 }
 
