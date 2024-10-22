@@ -3,6 +3,7 @@
 ## Announcements:
    1. Assignments graded
       - 03-mathematical-review
+      - 11-practice-quiz
       - 21-table-encodings
       - 22-utf8-encodings
 
@@ -18,10 +19,10 @@
 
    1. Outstanding grading
       * Github Classroom made change repo creation 
-        - 10-quiz.txt
+        - 10-quiz
       * Need to retool grading tool
         - 04-first-programming-assignment
-        - 41-simple-interest.txt
+        - 41-simple-interest
 
    1. Assignment: binary32 
       - Status: Announced
@@ -42,8 +43,10 @@
 
 ## Questions from Last Lecture/Lab, etc.:
    * M/W
+     - none
 
    * T/R 
+     - none q
 
 
 ---
@@ -78,7 +81,29 @@
        Answer:      
 
   1. Base N to Base 10 Examples:
-      -  8# 542
+     - 16#   3C2 
+
+       |   v   | = |   v   | * 16   + | digit_10 | glyph | code |
+       |------:|:-:|------:|:--------:|---------:|:-----:|:----:|
+       |    3  | = |   0   | * 16   + |    3     |   3   |  51  |
+       |   60  | = |   3   | * 16   + |   12     |   C   |  67  |
+       |  962  | = |  60   | * 16   + |    2     |   2   |  50  |
+  
+       Answer: 962
+ 
+     - 6# 34521
+
+       |   v   | = |   v   | * 6    + | digit_10 | glyph | code |
+       |------:|:-:|------:|:--------:|---------:|:-----:|:----:|
+       |    3  | = |   0   | * 6    + |     3    |   3   |      |
+       |   22  | = |   3   | * 6    + |     4    |   4   |      |
+       |  137  | = |  22   | * 6    + |     5    |   5   |      |
+       |  824  | = | 137   | * 6    + |     2    |   2   |      |
+       | 4945  | = | 824   | * 6    + |     1    |   1   |      |
+
+       Answer: 4945
+
+     - 8# 542
 
        |   v   | = |   v   | * 8 +    | digit_10 | glyph | code |
        |------:|:-:|------:|:--------:|---------:|:-----:|:----:|
@@ -114,16 +139,46 @@
      - Homework Pattern (code block) 
 
        ```response
-       number = number    
-           number   / N = quotient, remainder
-           quotient / N = 
+       number = {number}    
+           {number}   / {N} = {quotient}, {remainder}
+           {quotient} / {N} = 
 
        answer:    (read remainders from bottom to the top)
        ```
-  
-     - Example:  354  -> 8# 
+
+   1. Base 10 to Base N (WHOLE PART) Examples
+ 
+      - 2345 -> 16#
+        ```response
+         number = 2345    
+           2345   / 16 =  146, 8
+            146   / 16 =  9, 2
+              9   / 16 =  0, 9
+
+         answer: 928   (read remainders from bottom to the top)
+         ```
+
+     - 322 -> 2#
        ```response
-       354 = number    
+       number = 322    
+           322   / 2 =  161, 0
+           161   / 2 =   80, 1
+            80   / 2 =   40, 0
+            40   / 2 =   20, 0
+            20   / 2 =   10, 0
+            10   / 2 =    5, 0
+             5   / 2 =    2, 1
+             2   / 2 =    1, 0
+             1   / 2 =    0, 1
+             0   / 2 =    0, 0
+             0   / 2 =    0, 0
+       
+       answer: 00 101000010   (read remainders from bottom to the top)
+       ```
+
+     - 354  -> 8# 
+       ```response
+       number = 354
            354   / 8 = 44, 2  
             44   / 8 =  5, 4
              5   / 8 =  0, 5
@@ -133,7 +188,7 @@
        answer: 542   (read remainders from bottom to the top)
        ```
 
-     - Example: 272 -> 2#
+     - 272 -> 2#
        ```response
        number = 272        ---
            272   / 2 = 136, 0
@@ -147,7 +202,6 @@
              1   / 2 =   0, 1
              0   / 2 = 
 
-
        answer: 2# 1 0001 0000
        ```
 
@@ -156,12 +210,28 @@
      - Pattern (code block)
        ```response
           number = ddddd
-          max =  1,00000
+          max =  1, 00000
              number  * N = overflow, product
              product * N = 
 
           answer:    (read overflows from top to bottom)
         ```
+
+     - Example: .6734 -> 2# 0.10100
+
+       ```response
+          number =   6734
+          max =  1,  0000
+             6734  * 2 = 1, 3468
+             3468  * 2 = 0, 6936
+             6936  * 2 = 1, 3872
+             3872  * 2 = 0, 1936
+             1936  * 2 = 0, 0968
+
+          answer: 10100   (read overflows from top to bottom)
+       ```
+
+
      - Examples 0.465 ->  2# 0.011100
        ```response
        number = 465
@@ -189,7 +259,8 @@
 
     - type_signature:   
       ```java
-      public static int binary32(int sign, int coefficient, int expon_sign, int exponent);
+      public static int 
+      binary32(int sign, int coefficient, int expon_sign, int exponent);
       ```
     - example:
       * - 1.01011010101 x 2^ + 101  // 5
@@ -215,7 +286,7 @@
            1. Exponent Encoding: (encoded_expon = )
            1. Mantissa Encoding: (encoded_mantissa = )
 
-       1. Shift the pieces into place: sign, exponent, mantissa
+       2. Shift the pieces into place: sign, exponent, mantissa
           - encoded_sign     = 0;
           - encoded_exponent = 0;
           - encoded_mantissa = 0;
