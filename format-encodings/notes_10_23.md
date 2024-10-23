@@ -47,7 +47,61 @@
 
   1. Base 10: Mathematical Review
      - see slides: base10-mathematical-review.pdf 
+ 
+
+
   1. Base 2: 
+     1. Java `unsigned int X;` 
+        - Nope does not have it
+        - Use the next size up!
+        - But if it did!
+          * unsigned char  | .byte | 1 byte  | 0 .. 2^8-1   | 0 to 255  
+          * unsigned short | .half | 2 bytes | 0 .. 2^16 -1 | 0 .. 64K 
+          * unsigned int   | .word | 4 bytes | 0 .. 2^32 -1 | 0 .. 4GB  
+
+     1. Java: `int X;`
+        - byte  | 1 byte  | .byte  | -  2^7 ..  2^7 -1 | -128 to 127
+        - char  | 2 bytes | .half  | - 2^15 .. 2^15 -1 | -32,768 to 32,767
+        - short | 2 bytes | .half  | - 2^15 .. 2^15 -1 | -32,768 to 32,767
+        - int   | 4 bytes | .word  | - 2^31 .. 2^31 -1 | -2,147,483,648 to 2,147,483,647
+        - long  | 8 bytes | .dword | - 2^63 .. 2^63 -1 | 
+
+
+     - Encoding Tables:  Signed and Unsign Numbers: Prep
+       - Half the range is giving to negative numbers
+
+       |  # |  binary number | unsigned |   1's  |   2's  | bias 8 |
+       |---:|:--------------:|:--------:|:------:|:------:|:------:|
+       |  0 |   2# + 0000    |          |        |        |        |
+       |  1 |   2# + 0001    |          |        |        |        |
+       |  2 |   2# + 0010    |          |        |        |        |
+       |  3 |   2# + 0011    |          |        |        |        |
+       |  4 |   2# + 0100    |          |        |        |        |
+       |  5 |   2# + 0101    |          |        |        |        |
+       |  6 |   2# + 0110    |          |        |        |        |
+       |  7 |   2# + 0111    |          |        |        |        |
+       |  8 |   2# + 1000    |          |        |        |        |
+       |  9 |   2# + 1001    |          |        |        |        |
+       | 10 |   2# + 1010    |          |        |        |        |
+       | 11 |   2# + 1011    |          |        |        |        |
+       | 12 |   2# + 1100    |          |        |        |        |
+       | 13 |   2# + 1101    |          |        |        |        |
+       | 14 |   2# + 1110    |          |        |        |        |
+       | 15 |   2# + 1111    |          |        |        |        |
+
+       |  # |  binary number | unsigned |   1's  |   2's  | bias 8 |
+       |---:|:--------------:|:--------:|:------:|:------:|:------:|  
+       | -8 |   2# - 1000    |          |        |        |        |
+       | -7 |   2# - 0111    |          |        |        |        |
+       | -6 |   2# - 0110    |          |        |        |        |
+       | -5 |   2# - 0101    |          |        |        |        |
+       | -4 |   2# - 0100    |          |        |        |        |
+       | -3 |   2# - 0011    |          |        |        |        |
+       | -2 |   2# - 0010    |          |        |        |        |
+       | -1 |   2# - 0001    |          |        |        |        |
+       | -0 |      --        |          |        |        |        |  
+
+
      - see slides: base2-encoding-and-mathematical-operations.pdf
 
 
